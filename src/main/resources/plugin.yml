@@ -1,0 +1,4 @@
+name: affixes
+version: '1.0-SNAPSHOT'
+main: io.github.chasehuegel.affixes.Affixes
+api-version: '1.21'
