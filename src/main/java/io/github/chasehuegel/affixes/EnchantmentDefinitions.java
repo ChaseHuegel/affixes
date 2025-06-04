@@ -1,4 +1,4 @@
-﻿package io.github.chasehuegel.affixes;
+package io.github.chasehuegel.affixes;
 
 import java.util.List;
 import java.util.Map;
