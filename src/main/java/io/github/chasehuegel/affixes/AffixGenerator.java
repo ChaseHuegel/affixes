@@ -6,16 +6,26 @@ import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.List;
 import java.util.Map;
 
 public class AffixGenerator {
 
-    private final Rarity[] rarities;
+    private final List<Rarity> rarities;
     private final Map<String, Affix> affixes;
+    private final Map<String, List<EnchantmentDefinition>> enchantmentDefinitions;
+    private final Map<String, List<AttributeDefinition>> attributeDefinitions;
 
-    public AffixGenerator(Rarity[] rarities, Map<String, Affix> affixes) {
+    public AffixGenerator(
+        List<Rarity> rarities,
+        Map<String, Affix> affixes,
+        Map<String, List<EnchantmentDefinition>> enchantmentDefinitions,
+        Map<String, List<AttributeDefinition>> attributeDefinitions
+    ) {
         this.rarities = rarities;
         this.affixes = affixes;
+        this.enchantmentDefinitions = enchantmentDefinitions;
+        this.attributeDefinitions = attributeDefinitions;
     }
 
     public void AddAffix(ItemStack item) {

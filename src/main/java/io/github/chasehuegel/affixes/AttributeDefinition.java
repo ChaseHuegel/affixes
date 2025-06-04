@@ -1,6 +1,6 @@
 package io.github.chasehuegel.affixes;
 
-public class Attribute {
+public class AttributeDefinition {
 
     public String attribute;
     public String operation;

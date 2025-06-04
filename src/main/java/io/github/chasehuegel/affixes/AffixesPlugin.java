@@ -24,7 +24,7 @@ public final class AffixesPlugin extends JavaPlugin {
             "enchantments/base.json",
     };
 
-    rivate final String[] defaultAttributeResources = new String[] {
+    private final String[] defaultAttributeResources = new String[] {
             "attributes/base.json",
     };
 
@@ -72,19 +72,19 @@ public final class AffixesPlugin extends JavaPlugin {
         }
 
         //  Load attributes
-        var attributes = new HashMap<String, List<Attribute>>();
+        var attributeDefinitions = new HashMap<String, List<AttributeDefinition>>();
         for (String resource : defaultAttributeResources) {
-            var loadedResource = loadJsonResource(resource, Attributes.class);
+            var loadedResource = loadJsonResource(resource, AttributeDefinitions.class);
             if (loadedResource == null) {
                 continue;
             }
 
-            attributes.putAll(loadedResource.items);
+            attributeDefinitions.putAll(loadedResource.items);
         }
 
         //  Create generators
         var itemGenerator = new ItemGenerator(materialDefinitions.toArray(new MaterialDefinition[0]));
-        var affixGenerator = new AffixGenerator(rarities.toArray(new Rarity[0]), affixes);
+        var affixGenerator = new AffixGenerator(rarities, affixes, enchantmentDefinitions, attributeDefinitions);
     }
 
     @Override
