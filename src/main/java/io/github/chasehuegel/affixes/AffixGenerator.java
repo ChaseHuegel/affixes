@@ -37,13 +37,13 @@ public class AffixGenerator {
         this.attributeDefinitions = attributeDefinitions;
     }
 
-    public boolean generateAffix(ItemMeta meta, String slotName, int rarityIndex) {
+    public boolean generateAffix(ItemMeta meta, String slotName, int rarityLevel) {
         if (affixesValues.stream().noneMatch(affix -> affix.slots.contains(slotName))) {
             //  No affixes for the slot
             return false;
         }
 
-        if (rarityIndex < 0 || rarityIndex >= rarities.size()) {
+        if (rarityLevel < 0 || rarityLevel >= rarities.size()) {
             //  rarity out of bounds
             return false;
         }
@@ -58,21 +58,21 @@ public class AffixGenerator {
             return false;
         }
 
-        Rarity rarity = rarities.get(rarityIndex);
-        if (!applyEffect(meta, slotName, affix, rarity, rarityIndex)) {
+        Rarity rarity = rarities.get(rarityLevel);
+        if (!applyEffect(meta, slotName, affix, rarity, rarityLevel)) {
             return false;
         }
 
         return true;
     }
 
-    public boolean applyAffix(ItemMeta meta, Affix affix, String slotName, int rarityIndex) {
+    public boolean applyAffix(ItemMeta meta, Affix affix, String slotName, int rarityLevel) {
         if (!affix.slots.contains(slotName)) {
             //  Affix doesn't support this slot
             return false;
         }
 
-        if (rarityIndex < 0 || rarityIndex >= rarities.size()) {
+        if (rarityLevel < 0 || rarityLevel >= rarities.size()) {
             //  Rarity out of bounds
             return false;
         }
@@ -81,8 +81,8 @@ public class AffixGenerator {
             return false;
         }
 
-        Rarity rarity = rarities.get(rarityIndex);
-        if (!applyEffect(meta, slotName, affix, rarity, rarityIndex)) {
+        Rarity rarity = rarities.get(rarityLevel);
+        if (!applyEffect(meta, slotName, affix, rarity, rarityLevel)) {
             return false;
         }
 

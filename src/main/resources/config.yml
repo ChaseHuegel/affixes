@@ -1,21 +1,21 @@
 ﻿rarities:
   - name: Common
     color: green
-    chance: 0.6
+    chance: 0.55
   - name: Uncommon
     color: yellow
-    chance: 0.3
+    chance: 0.25
   - name: Rare
     color: aqua
-    chance: 0.15
+    chance: 0.12
     enchantable: true
   - name: Epic
     color: light_purple
-    chance: 0.07
+    chance: 0.05
     enchantable: true
   - name: Legendary
     color: gold
-    chance: 0.03
+    chance: 0.02
     enchantable: true
   - name: Mythic
     color: red

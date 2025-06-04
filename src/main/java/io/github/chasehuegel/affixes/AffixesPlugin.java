@@ -86,7 +86,7 @@ public final class AffixesPlugin extends JavaPlugin {
 
         //  Create generators
         var affixGenerator = new AffixGenerator(rarities, affixes, enchantmentDefinitions, attributeDefinitions);
-        var itemGenerator = new ItemGenerator(affixGenerator, materialDefinitions);
+        var itemGenerator = new ItemGenerator(affixGenerator, materialDefinitions, rarities);
     }
 
     @Override
