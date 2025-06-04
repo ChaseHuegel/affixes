@@ -1,4 +1,4 @@
-﻿package io.github.chasehuegel.affixes;
+package io.github.chasehuegel.affixes;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
@@ -7,6 +7,12 @@ import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 
 public class AffixGenerator {
+
+    private final Rarity[] rarities;
+
+    public AffixGenerator(Rarity[] rarities) {
+        this.rarities = rarities;
+    }
 
     public void AddAffix(ItemStack item) {
         var meta = item.getItemMeta();

@@ -1,0 +1,20 @@
+﻿rarities:
+  - name: Common
+    color: green
+    chance: 0.6
+  - name: Uncommon
+    color: yellow
+    chance: 0.3
+  - name: Rare
+    color: aqua
+    chance: 0.15
+  - name: Epic
+    color: light_purple
+    chance: 0.07
+  - name: Legendary
+    color: gold
+    chance: 0.03
+  - name: Mythic
+    color: red
+    chance: 0.01
+    unbreakable: true
