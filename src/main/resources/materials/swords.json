@@ -1,0 +1,36 @@
+[
+  {
+    "slots": [
+      "mainhand",
+      "offhand"
+    ],
+    "materials": [
+      "minecraft:wooden_sword",
+      "minecraft:stone_sword",
+      "minecraft:iron_sword",
+      "minecraft:iron_sword",
+      "minecraft:golden_sword",
+      "minecraft:golden_sword",
+      "minecraft:diamond_sword",
+      "minecraft:diamond_sword"
+    ],
+    "names": [
+      "Sword",
+      "Knife",
+      "Greatsword",
+      "Longsword",
+      "Blade",
+      "Katana",
+      "Shortsword",
+      "Dagger",
+      "Scimitar",
+      "Broadsword",
+      "Scythe",
+      "Cutlass",
+      "Claymore",
+      "Falchion",
+      "Glaive",
+      "Slicer"
+    ]
+  }
+]

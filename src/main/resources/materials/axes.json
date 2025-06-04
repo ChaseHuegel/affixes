@@ -1,0 +1,32 @@
+[
+  {
+    "slots": [
+      "mainhand",
+      "offhand"
+    ],
+    "materials": [
+      "minecraft:wooden_axe",
+      "minecraft:stone_axe",
+      "minecraft:iron_axe",
+      "minecraft:iron_axe",
+      "minecraft:golden_axe",
+      "minecraft:golden_axe",
+      "minecraft:diamond_axe",
+      "minecraft:diamond_axe"
+    ],
+    "names": [
+      "Axe",
+      "Battleaxe",
+      "Cleaver",
+      "Greataxe",
+      "Chopper",
+      "Tomahawk",
+      "Hatchet",
+      "Feller",
+      "Mincer",
+      "Whacker",
+      "Poleaxe",
+      "Splitter"
+    ]
+  }
+]
