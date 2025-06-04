@@ -6,7 +6,6 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Registry;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.EquipmentSlotGroup;
@@ -39,15 +38,15 @@ public class AffixGenerator {
         this.attributeDefinitions = attributeDefinitions;
     }
 
-    public boolean AddAffix(ItemStack item, String slotName, int rarityIndex) {
+    public ItemMeta AddAffix(ItemMeta meta, String slotName, int rarityIndex) {
         if (affixesValues.stream().noneMatch(affix -> affix.slots.contains(slotName))) {
             //  No affixes for the slot
-            return false;
+            return null;
         }
 
         if (rarityIndex < 0 || rarityIndex >= rarities.size()) {
             //  rarity out of bounds
-            return false;
+            return null;
         }
 
         //  Pick a random affix for the slot
@@ -56,18 +55,16 @@ public class AffixGenerator {
             affix = getRandomValue(affixesValues);
         } while (!affix.slots.contains(slotName));
 
-        var meta = item.getItemMeta();
-
         if (!ApplyName(meta, affix)) {
-            return false;
+            return null;
         }
 
         Rarity rarity = rarities.get(rarityIndex);
         if (!ApplyEffect(meta, slotName, affix, rarity, rarityIndex)) {
-            return false;
+            return null;
         }
 
-        return item.setItemMeta(meta);
+        return meta;
     }
 
     private boolean ApplyName(ItemMeta meta, Affix affix) {
