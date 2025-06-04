@@ -37,15 +37,15 @@ public class AffixGenerator {
         this.attributeDefinitions = attributeDefinitions;
     }
 
-    public ItemMeta generateAffix(ItemMeta meta, String slotName, int rarityIndex) {
+    public boolean generateAffix(ItemMeta meta, String slotName, int rarityIndex) {
         if (affixesValues.stream().noneMatch(affix -> affix.slots.contains(slotName))) {
             //  No affixes for the slot
-            return null;
+            return false;
         }
 
         if (rarityIndex < 0 || rarityIndex >= rarities.size()) {
             //  rarity out of bounds
-            return null;
+            return false;
         }
 
         //  Pick a random affix for the slot
@@ -55,38 +55,38 @@ public class AffixGenerator {
         } while (!affix.slots.contains(slotName));
 
         if (!applyName(meta, affix)) {
-            return null;
+            return false;
         }
 
         Rarity rarity = rarities.get(rarityIndex);
         if (!applyEffect(meta, slotName, affix, rarity, rarityIndex)) {
-            return null;
+            return false;
         }
 
-        return meta;
+        return true;
     }
 
-    public ItemMeta applyAffix(ItemMeta meta, Affix affix, String slotName, int rarityIndex) {
+    public boolean applyAffix(ItemMeta meta, Affix affix, String slotName, int rarityIndex) {
         if (!affix.slots.contains(slotName)) {
             //  Affix doesn't support this slot
-            return null;
+            return false;
         }
 
         if (rarityIndex < 0 || rarityIndex >= rarities.size()) {
             //  Rarity out of bounds
-            return null;
+            return false;
         }
 
         if (!applyName(meta, affix)) {
-            return null;
+            return false;
         }
 
         Rarity rarity = rarities.get(rarityIndex);
         if (!applyEffect(meta, slotName, affix, rarity, rarityIndex)) {
-            return null;
+            return false;
         }
 
-        return meta;
+        return true;
     }
 
     public boolean applyName(ItemMeta meta, Affix affix) {
