@@ -39,9 +39,14 @@ public class AffixGenerator {
         this.attributeDefinitions = attributeDefinitions;
     }
 
-    public boolean AddAffix(ItemStack item, String slotName, Rarity rarity, int rarityIndex) {
+    public boolean AddAffix(ItemStack item, String slotName, int rarityIndex) {
         if (affixesValues.stream().noneMatch(affix -> affix.slots.contains(slotName))) {
             //  No affixes for the slot
+            return false;
+        }
+
+        if (rarityIndex < 0 || rarityIndex >= rarities.size()) {
+            //  rarity out of bounds
             return false;
         }
 
@@ -57,6 +62,7 @@ public class AffixGenerator {
             return false;
         }
 
+        Rarity rarity = rarities.get(rarityIndex);
         if (!ApplyEffect(meta, slotName, affix, rarity, rarityIndex)) {
             return false;
         }
