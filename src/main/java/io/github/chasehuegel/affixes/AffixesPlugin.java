@@ -24,6 +24,10 @@ public final class AffixesPlugin extends JavaPlugin {
             "enchantments/base.json",
     };
 
+    rivate final String[] defaultAttributeResources = new String[] {
+            "attributes/base.json",
+    };
+
     @Override
     public void onEnable() {
         //  Init the config
@@ -65,6 +69,17 @@ public final class AffixesPlugin extends JavaPlugin {
             }
 
             enchantmentDefinitions.putAll(loadedResource.items);
+        }
+
+        //  Load attributes
+        var attributes = new HashMap<String, List<Attribute>>();
+        for (String resource : defaultAttributeResources) {
+            var loadedResource = loadJsonResource(resource, Attributes.class);
+            if (loadedResource == null) {
+                continue;
+            }
+
+            attributes.putAll(loadedResource.items);
         }
 
         //  Create generators

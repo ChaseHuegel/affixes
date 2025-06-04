@@ -6,6 +6,5 @@ public class Attribute {
     public String operation;
     public float min;
     public float max;
-    public String slot;
     public String id;
 }
