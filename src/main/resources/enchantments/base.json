@@ -1,0 +1,274 @@
+﻿{
+  "fire_aspect": [
+    {"enchantment": "minecraft:fire_aspect", "min": 1, "max": 1},
+    {"enchantment": "minecraft:fire_aspect", "min": 1, "max": 1},
+    {"enchantment": "minecraft:fire_aspect", "min": 1, "max": 1},
+    {"enchantment": "minecraft:fire_aspect", "min": 1, "max": 3},
+    {"enchantment": "minecraft:fire_aspect", "min": 2, "max": 4},
+    {"enchantment": "minecraft:fire_aspect", "min": 5, "max": 5}
+  ],
+  "sharpness": [
+    {"enchantment": "minecraft:sharpness", "min": 1, "max": 1},
+    {"enchantment": "minecraft:sharpness", "min": 1, "max": 1},
+    {"enchantment": "minecraft:sharpness", "min": 1, "max": 2},
+    {"enchantment": "minecraft:sharpness", "min": 3, "max": 4},
+    {"enchantment": "minecraft:sharpness", "min": 5, "max": 5},
+    {"enchantment": "minecraft:sharpness", "min": 6, "max": 10}
+  ],
+  "knockback": [
+    {"enchantment": "minecraft:knockback", "min": 1, "max": 1},
+    {"enchantment": "minecraft:knockback", "min": 1, "max": 1},
+    {"enchantment": "minecraft:knockback", "min": 1, "max": 1},
+    {"enchantment": "minecraft:knockback", "min": 1, "max": 2},
+    {"enchantment": "minecraft:knockback", "min": 2, "max": 3},
+    {"enchantment": "minecraft:knockback", "min": 3, "max": 4}
+  ],
+  "density": [
+    {"enchantment": "minecraft:density", "min": 1, "max": 1},
+    {"enchantment": "minecraft:density", "min": 1, "max": 1},
+    {"enchantment": "minecraft:density", "min": 1, "max": 2},
+    {"enchantment": "minecraft:density", "min": 3, "max": 4},
+    {"enchantment": "minecraft:density", "min": 5, "max": 5},
+    {"enchantment": "minecraft:density", "min": 6, "max": 10}
+  ],
+  "breach": [
+    {"enchantment": "minecraft:breach", "min": 1, "max": 1},
+    {"enchantment": "minecraft:breach", "min": 1, "max": 1},
+    {"enchantment": "minecraft:breach", "min": 1, "max": 2},
+    {"enchantment": "minecraft:breach", "min": 3, "max": 4},
+    {"enchantment": "minecraft:breach", "min": 5, "max": 5},
+    {"enchantment": "minecraft:breach", "min": 6, "max": 10}
+  ],
+  "wind_burst": [
+    {"enchantment": "minecraft:wind_burst", "min": 1, "max": 1},
+    {"enchantment": "minecraft:wind_burst", "min": 1, "max": 1},
+    {"enchantment": "minecraft:wind_burst", "min": 1, "max": 1},
+    {"enchantment": "minecraft:wind_burst", "min": 1, "max": 3},
+    {"enchantment": "minecraft:wind_burst", "min": 2, "max": 4},
+    {"enchantment": "minecraft:wind_burst", "min": 5, "max": 5}
+  ],
+  "smite": [
+    {"enchantment": "minecraft:smite", "min": 1, "max": 1},
+    {"enchantment": "minecraft:smite", "min": 1, "max": 1},
+    {"enchantment": "minecraft:smite", "min": 1, "max": 2},
+    {"enchantment": "minecraft:smite", "min": 3, "max": 4},
+    {"enchantment": "minecraft:smite", "min": 5, "max": 5},
+    {"enchantment": "minecraft:smite", "min": 6, "max": 10}
+  ],
+  "bane_of_arthropods": [
+    {"enchantment": "minecraft:bane_of_arthropods", "min": 1, "max": 1},
+    {"enchantment": "minecraft:bane_of_arthropods", "min": 1, "max": 1},
+    {"enchantment": "minecraft:bane_of_arthropods", "min": 1, "max": 2},
+    {"enchantment": "minecraft:bane_of_arthropods", "min": 3, "max": 4},
+    {"enchantment": "minecraft:bane_of_arthropods", "min": 5, "max": 5},
+    {"enchantment": "minecraft:bane_of_arthropods", "min": 6, "max": 10}
+  ],
+  "looting": [
+    {"enchantment": "minecraft:looting", "min": 1, "max": 1},
+    {"enchantment": "minecraft:looting", "min": 1, "max": 1},
+    {"enchantment": "minecraft:looting", "min": 1, "max": 1},
+    {"enchantment": "minecraft:looting", "min": 1, "max": 3},
+    {"enchantment": "minecraft:looting", "min": 2, "max": 4},
+    {"enchantment": "minecraft:looting", "min": 5, "max": 5}
+  ],
+  "sweeping_edge": [
+    {"enchantment": "minecraft:sweeping_edge", "min": 1, "max": 1},
+    {"enchantment": "minecraft:sweeping_edge", "min": 1, "max": 1},
+    {"enchantment": "minecraft:sweeping_edge", "min": 1, "max": 1},
+    {"enchantment": "minecraft:sweeping_edge", "min": 1, "max": 3},
+    {"enchantment": "minecraft:sweeping_edge", "min": 2, "max": 4},
+    {"enchantment": "minecraft:sweeping_edge", "min": 5, "max": 5}
+  ],
+  "unbreaking": [
+    {"enchantment": "minecraft:unbreaking", "min": 1, "max": 1},
+    {"enchantment": "minecraft:unbreaking", "min": 1, "max": 1},
+    {"enchantment": "minecraft:unbreaking", "min": 1, "max": 1},
+    {"enchantment": "minecraft:unbreaking", "min": 1, "max": 3},
+    {"enchantment": "minecraft:unbreaking", "min": 2, "max": 4},
+    {"enchantment": "minecraft:unbreaking", "min": 5, "max": 5}
+  ],
+  "mending": [
+    {"enchantment": "minecraft:mending", "min": 1, "max": 1},
+    {"enchantment": "minecraft:mending", "min": 1, "max": 1},
+    {"enchantment": "minecraft:mending", "min": 1, "max": 1},
+    {"enchantment": "minecraft:mending", "min": 1, "max": 1},
+    {"enchantment": "minecraft:mending", "min": 1, "max": 1},
+    {"enchantment": "minecraft:mending", "min": 1, "max": 1}
+  ],
+  "impaling": [
+    {"enchantment": "minecraft:impaling", "min": 1, "max": 1},
+    {"enchantment": "minecraft:impaling", "min": 1, "max": 1},
+    {"enchantment": "minecraft:impaling", "min": 1, "max": 2},
+    {"enchantment": "minecraft:impaling", "min": 3, "max": 4},
+    {"enchantment": "minecraft:impaling", "min": 5, "max": 5},
+    {"enchantment": "minecraft:impaling", "min": 6, "max": 10}
+  ],
+  "channeling": [
+    {"enchantment": "minecraft:channeling", "min": 1, "max": 1},
+    {"enchantment": "minecraft:channeling", "min": 1, "max": 1},
+    {"enchantment": "minecraft:channeling", "min": 1, "max": 1},
+    {"enchantment": "minecraft:channeling", "min": 1, "max": 1},
+    {"enchantment": "minecraft:channeling", "min": 1, "max": 1},
+    {"enchantment": "minecraft:channeling", "min": 1, "max": 1}
+  ],
+  "loyalty": [
+    {"enchantment": "minecraft:loyalty", "min": 1, "max": 1},
+    {"enchantment": "minecraft:loyalty", "min": 1, "max": 1},
+    {"enchantment": "minecraft:loyalty", "min": 1, "max": 1},
+    {"enchantment": "minecraft:loyalty", "min": 1, "max": 3},
+    {"enchantment": "minecraft:loyalty", "min": 2, "max": 4},
+    {"enchantment": "minecraft:loyalty", "min": 5, "max": 5}
+  ],
+  "riptide": [
+    {"enchantment": "minecraft:riptide", "min": 1, "max": 1},
+    {"enchantment": "minecraft:riptide", "min": 1, "max": 1},
+    {"enchantment": "minecraft:riptide", "min": 1, "max": 1},
+    {"enchantment": "minecraft:riptide", "min": 1, "max": 3},
+    {"enchantment": "minecraft:riptide", "min": 2, "max": 4},
+    {"enchantment": "minecraft:riptide", "min": 5, "max": 5}
+  ],
+  "quick_charge": [
+    {"enchantment": "minecraft:quick_charge", "min": 1, "max": 1},
+    {"enchantment": "minecraft:quick_charge", "min": 1, "max": 1},
+    {"enchantment": "minecraft:quick_charge", "min": 1, "max": 1},
+    {"enchantment": "minecraft:quick_charge", "min": 1, "max": 3},
+    {"enchantment": "minecraft:quick_charge", "min": 2, "max": 4},
+    {"enchantment": "minecraft:quick_charge", "min": 5, "max": 5}
+  ],
+  "piercing": [
+    {"enchantment": "minecraft:piercing", "min": 1, "max": 1},
+    {"enchantment": "minecraft:piercing", "min": 1, "max": 1},
+    {"enchantment": "minecraft:piercing", "min": 1, "max": 2},
+    {"enchantment": "minecraft:piercing", "min": 3, "max": 4},
+    {"enchantment": "minecraft:piercing", "min": 5, "max": 5},
+    {"enchantment": "minecraft:piercing", "min": 6, "max": 10}
+  ],
+  "multishot": [
+    {"enchantment": "minecraft:multishot", "min": 1, "max": 1},
+    {"enchantment": "minecraft:multishot", "min": 1, "max": 1},
+    {"enchantment": "minecraft:multishot", "min": 1, "max": 1},
+    {"enchantment": "minecraft:multishot", "min": 1, "max": 1},
+    {"enchantment": "minecraft:multishot", "min": 1, "max": 1},
+    {"enchantment": "minecraft:multishot", "min": 1, "max": 1}
+  ],
+  "efficiency": [
+    {"enchantment": "minecraft:efficiency", "min": 1, "max": 1},
+    {"enchantment": "minecraft:efficiency", "min": 1, "max": 1},
+    {"enchantment": "minecraft:efficiency", "min": 1, "max": 2},
+    {"enchantment": "minecraft:efficiency", "min": 3, "max": 4},
+    {"enchantment": "minecraft:efficiency", "min": 5, "max": 5},
+    {"enchantment": "minecraft:efficiency", "min": 6, "max": 10}
+  ],
+  "fortune": [
+    {"enchantment": "minecraft:fortune", "min": 1, "max": 1},
+    {"enchantment": "minecraft:fortune", "min": 1, "max": 1},
+    {"enchantment": "minecraft:fortune", "min": 1, "max": 1},
+    {"enchantment": "minecraft:fortune", "min": 1, "max": 3},
+    {"enchantment": "minecraft:fortune", "min": 2, "max": 4},
+    {"enchantment": "minecraft:fortune", "min": 5, "max": 5}
+  ],
+  "silk_touch": [
+    {"enchantment": "minecraft:silk_touch", "min": 1, "max": 1},
+    {"enchantment": "minecraft:silk_touch", "min": 1, "max": 1},
+    {"enchantment": "minecraft:silk_touch", "min": 1, "max": 1},
+    {"enchantment": "minecraft:silk_touch", "min": 1, "max": 1},
+    {"enchantment": "minecraft:silk_touch", "min": 1, "max": 1},
+    {"enchantment": "minecraft:silk_touch", "min": 1, "max": 1}
+  ],
+  "power": [
+    {"enchantment": "minecraft:power", "min": 1, "max": 1},
+    {"enchantment": "minecraft:power", "min": 1, "max": 1},
+    {"enchantment": "minecraft:power", "min": 1, "max": 2},
+    {"enchantment": "minecraft:power", "min": 3, "max": 4},
+    {"enchantment": "minecraft:power", "min": 5, "max": 5},
+    {"enchantment": "minecraft:power", "min": 6, "max": 10}
+  ],
+  "punch": [
+    {"enchantment": "minecraft:punch", "min": 1, "max": 1},
+    {"enchantment": "minecraft:punch", "min": 1, "max": 1},
+    {"enchantment": "minecraft:punch", "min": 1, "max": 1},
+    {"enchantment": "minecraft:punch", "min": 1, "max": 2},
+    {"enchantment": "minecraft:punch", "min": 2, "max": 3},
+    {"enchantment": "minecraft:punch", "min": 3, "max": 4}
+  ],
+  "flame": [
+    {"enchantment": "minecraft:flame", "min": 1, "max": 1},
+    {"enchantment": "minecraft:flame", "min": 1, "max": 1},
+    {"enchantment": "minecraft:flame", "min": 1, "max": 1},
+    {"enchantment": "minecraft:flame", "min": 1, "max": 1},
+    {"enchantment": "minecraft:flame", "min": 1, "max": 1},
+    {"enchantment": "minecraft:flame", "min": 1, "max": 1}
+  ],
+  "infinity": [
+    {"enchantment": "minecraft:infinity", "min": 1, "max": 1},
+    {"enchantment": "minecraft:infinity", "min": 1, "max": 1},
+    {"enchantment": "minecraft:infinity", "min": 1, "max": 1},
+    {"enchantment": "minecraft:infinity", "min": 1, "max": 1},
+    {"enchantment": "minecraft:infinity", "min": 1, "max": 1},
+    {"enchantment": "minecraft:infinity", "min": 1, "max": 1}
+  ],
+  "vanishing_curse": [
+    {"enchantment": "minecraft:vanishing_curse", "min": 1, "max": 1},
+    {"enchantment": "minecraft:vanishing_curse", "min": 1, "max": 1},
+    {"enchantment": "minecraft:vanishing_curse", "min": 1, "max": 1},
+    {"enchantment": "minecraft:vanishing_curse", "min": 1, "max": 1},
+    {"enchantment": "minecraft:vanishing_curse", "min": 1, "max": 1},
+    {"enchantment": "minecraft:vanishing_curse", "min": 1, "max": 1}
+  ],
+  "binding_curse": [
+    {"enchantment": "minecraft:binding_curse", "min": 1, "max": 1},
+    {"enchantment": "minecraft:binding_curse", "min": 1, "max": 1},
+    {"enchantment": "minecraft:binding_curse", "min": 1, "max": 1},
+    {"enchantment": "minecraft:binding_curse", "min": 1, "max": 1},
+    {"enchantment": "minecraft:binding_curse", "min": 1, "max": 1},
+    {"enchantment": "minecraft:binding_curse", "min": 1, "max": 1}
+  ],
+  "thorns": [
+    {"enchantment": "minecraft:thorns", "min": 1, "max": 1},
+    {"enchantment": "minecraft:thorns", "min": 1, "max": 1},
+    {"enchantment": "minecraft:thorns", "min": 1, "max": 1},
+    {"enchantment": "minecraft:thorns", "min": 1, "max": 3},
+    {"enchantment": "minecraft:thorns", "min": 2, "max": 4},
+    {"enchantment": "minecraft:thorns", "min": 5, "max": 5}
+  ],
+  "respiration": [
+    {"enchantment": "minecraft:respiration", "min": 1, "max": 1},
+    {"enchantment": "minecraft:respiration", "min": 1, "max": 1},
+    {"enchantment": "minecraft:respiration", "min": 1, "max": 2},
+    {"enchantment": "minecraft:respiration", "min": 3, "max": 4},
+    {"enchantment": "minecraft:respiration", "min": 5, "max": 5},
+    {"enchantment": "minecraft:respiration", "min": 6, "max": 10}
+  ],
+  "aqua_affinity": [
+    {"enchantment": "minecraft:aqua_affinity", "min": 1, "max": 1},
+    {"enchantment": "minecraft:aqua_affinity", "min": 1, "max": 1},
+    {"enchantment": "minecraft:aqua_affinity", "min": 1, "max": 1},
+    {"enchantment": "minecraft:aqua_affinity", "min": 1, "max": 1},
+    {"enchantment": "minecraft:aqua_affinity", "min": 1, "max": 1},
+    {"enchantment": "minecraft:aqua_affinity", "min": 1, "max": 1}
+  ],
+  "swift_sneak": [
+    {"enchantment": "minecraft:swift_sneak", "min": 1, "max": 1},
+    {"enchantment": "minecraft:swift_sneak", "min": 1, "max": 1},
+    {"enchantment": "minecraft:swift_sneak", "min": 1, "max": 1},
+    {"enchantment": "minecraft:swift_sneak", "min": 1, "max": 3},
+    {"enchantment": "minecraft:swift_sneak", "min": 2, "max": 4},
+    {"enchantment": "minecraft:swift_sneak", "min": 5, "max": 5}
+  ],
+  "feather_falling": [
+    {"enchantment": "minecraft:feather_falling", "min": 1, "max": 1},
+    {"enchantment": "minecraft:feather_falling", "min": 1, "max": 1},
+    {"enchantment": "minecraft:feather_falling", "min": 1, "max": 2},
+    {"enchantment": "minecraft:feather_falling", "min": 3, "max": 4},
+    {"enchantment": "minecraft:feather_falling", "min": 5, "max": 5},
+    {"enchantment": "minecraft:feather_falling", "min": 6, "max": 10}
+  ],
+  "soul_speed": [
+    {"enchantment": "minecraft:soul_speed", "min": 1, "max": 1},
+    {"enchantment": "minecraft:soul_speed", "min": 1, "max": 1},
+    {"enchantment": "minecraft:soul_speed", "min": 1, "max": 1},
+    {"enchantment": "minecraft:soul_speed", "min": 1, "max": 3},
+    {"enchantment": "minecraft:soul_speed", "min": 2, "max": 4},
+    {"enchantment": "minecraft:soul_speed", "min": 5, "max": 5}
+  ]
+}

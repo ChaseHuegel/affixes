@@ -20,6 +20,10 @@ public final class AffixesPlugin extends JavaPlugin {
         "affixes/base.json",
     };
 
+    private final String[] defaultEnchantmentResources = new String[] {
+            "enchantments/base.json",
+    };
+
     @Override
     public void onEnable() {
         //  Init the config
@@ -50,6 +54,17 @@ public final class AffixesPlugin extends JavaPlugin {
             }
 
             affixes.putAll(loadedResource.items);
+        }
+
+        //  Load enchantments
+        var enchantmentDefinitions = new HashMap<String, List<EnchantmentDefinition>>();
+        for (String resource : defaultEnchantmentResources) {
+            var loadedResource = loadJsonResource(resource, EnchantmentDefinitions.class);
+            if (loadedResource == null) {
+                continue;
+            }
+
+            enchantmentDefinitions.putAll(loadedResource.items);
         }
 
         //  Create generators

@@ -1,6 +1,6 @@
 package io.github.chasehuegel.affixes;
 
-public class Enchantment {
+public class EnchantmentDefinition {
 
     public String enchantment;
     public int min;
