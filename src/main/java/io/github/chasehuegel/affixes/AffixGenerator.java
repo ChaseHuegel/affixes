@@ -67,7 +67,7 @@ public class AffixGenerator {
             return false;
         }
 
-        return true;
+        return item.setItemMeta(meta);
     }
 
     private boolean ApplyName(ItemMeta meta, Affix affix) {
