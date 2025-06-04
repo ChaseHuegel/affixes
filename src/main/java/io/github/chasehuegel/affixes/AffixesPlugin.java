@@ -35,9 +35,9 @@ public final class AffixesPlugin extends JavaPlugin {
         List<Rarity> rarities = loadRaritiesFromConfig(config);
 
         //  Load materials
-        var materialDefinitions = new ArrayList<ProceduralMaterialDefinition>();
+        var materialDefinitions = new ArrayList<MaterialDefinition>();
         for (String resource : defaultMaterialResources) {
-            var loadedResource = loadJsonResource(resource, ProceduralMaterialDefinitions.class);
+            var loadedResource = loadJsonResource(resource, MaterialDefinitions.class);
             if (loadedResource == null) {
                 continue;
             }
@@ -68,7 +68,7 @@ public final class AffixesPlugin extends JavaPlugin {
         }
 
         //  Create generators
-        var itemGenerator = new ProceduralItemGenerator(materialDefinitions.toArray(new ProceduralMaterialDefinition[0]));
+        var itemGenerator = new ItemGenerator(materialDefinitions.toArray(new MaterialDefinition[0]));
         var affixGenerator = new AffixGenerator(rarities.toArray(new Rarity[0]), affixes);
     }
 

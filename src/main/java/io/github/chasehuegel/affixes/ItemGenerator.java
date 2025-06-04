@@ -3,10 +3,10 @@ package io.github.chasehuegel.affixes;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public class ProceduralItemGenerator {
-    private final ProceduralMaterialDefinition[] definitions;
+public class ItemGenerator {
+    private final MaterialDefinition[] definitions;
 
-    public ProceduralItemGenerator(ProceduralMaterialDefinition[] definitions) {
+    public ItemGenerator(MaterialDefinition[] definitions) {
         this.definitions = definitions;
     }
 
