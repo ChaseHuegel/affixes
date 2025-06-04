@@ -1,10 +1,12 @@
 package io.github.chasehuegel.affixes;
 
+import java.util.List;
+
 public class Affix {
 
     public String attribute;
     public String enchantment;
-    public String[] slots;
-    public String[] prefixes;
-    public String[] suffixes;
+    public List<String> slots;
+    public List<String> prefixes;
+    public List<String> suffixes;
 }

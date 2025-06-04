@@ -1,7 +1,9 @@
 package io.github.chasehuegel.affixes;
 
+import java.util.List;
+
 public class MaterialDefinition {
-    public String[] slots;
-    public String[] materials;
-    public String[] names;
+    public List<String> slots;
+    public List<String> materials;
+    public List<String> names;
 }

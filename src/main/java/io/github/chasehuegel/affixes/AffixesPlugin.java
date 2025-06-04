@@ -11,6 +11,8 @@ import java.util.*;
 
 public final class AffixesPlugin extends JavaPlugin {
 
+    public final static String NAMESPACE = "affixes";
+
     private final String[] defaultMaterialResources = new String[] {
         "materials/swords.json",
         "materials/axes.json",
@@ -46,7 +48,7 @@ public final class AffixesPlugin extends JavaPlugin {
                 continue;
             }
 
-            materialDefinitions.addAll(Arrays.asList(loadedResource.items));
+            materialDefinitions.addAll(loadedResource.items);
         }
 
         //  Load affixes
