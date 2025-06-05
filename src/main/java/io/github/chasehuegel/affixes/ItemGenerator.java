@@ -44,7 +44,7 @@ public class ItemGenerator {
         Component nameComponent = Component.text(itemName).color(rarityTextColor);
         meta.displayName(nameComponent);
 
-        int maxAffixes = Math.max(1, rarityLevel);
+        int maxAffixes = Math.max(1, rarityLevel + 1);
         int affixCount = maxAffixes > 1 ? random.nextInt(1, maxAffixes) : 1;
         boolean appliedAnyAffixes = false;
         for (int i = 0; i < affixCount; i++) {
