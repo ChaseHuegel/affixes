@@ -8,43 +8,49 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.*;
+import java.util.logging.Logger;
 
 public final class AffixesPlugin extends JavaPlugin {
 
+    public static Logger Logger;
+
     public final static String NAMESPACE = "affixes";
 
-    private final String[] defaultMaterialResources = new String[] {
+    private final String[] defaultJsonResources = new String[] {
         "materials/swords.json",
         "materials/axes.json",
         "materials/helmets.json",
-    };
-
-    private final String[] defaultAffixResources = new String[] {
         "affixes/base.json",
-    };
-
-    private final String[] defaultEnchantmentResources = new String[] {
         "enchantments/base.json",
-    };
-
-    private final String[] defaultAttributeResources = new String[] {
         "attributes/base.json",
     };
 
     @Override
     public void onEnable() {
+        Logger = getLogger();
+
         //  Init the config
         FileConfiguration config = getConfig();
         config.options().copyDefaults(true);
         saveDefaultConfig();
+
+        //  Init default json resources
+        for (String resource : defaultJsonResources) {
+            File file = new File(getDataFolder(), resource);
+            saveResourceIfNotExists(resource, file);
+        }
 
         //  Load config
         List<Rarity> rarities = loadRaritiesFromConfig(config);
 
         //  Load materials
         var materialDefinitions = new ArrayList<MaterialDefinition>();
-        for (String resource : defaultMaterialResources) {
-            var loadedResource = loadJsonResource(resource, MaterialDefinitions.class);
+        var materialsFolder = new File(getDataFolder(), "materials/");
+        var materialsFiles = materialsFolder.listFiles();
+        assert materialsFiles != null;
+
+        for (File file : materialsFiles) {
+            var loadedResource = loadJsonResource(file, MaterialDefinitions.class);
             if (loadedResource == null) {
                 continue;
             }
@@ -54,8 +60,12 @@ public final class AffixesPlugin extends JavaPlugin {
 
         //  Load affixes
         var affixes = new HashMap<String, Affix>();
-        for (String resource : defaultAffixResources) {
-            var loadedResource = loadJsonResource(resource, Affixes.class);
+        var affixesFolder = new File(getDataFolder(), "affixes/");
+        var affixesFiles = affixesFolder.listFiles();
+        assert affixesFiles != null;
+
+        for (File file : affixesFiles) {
+            var loadedResource = loadJsonResource(file, Affixes.class);
             if (loadedResource == null) {
                 continue;
             }
@@ -65,8 +75,12 @@ public final class AffixesPlugin extends JavaPlugin {
 
         //  Load enchantments
         var enchantmentDefinitions = new HashMap<String, List<EnchantmentDefinition>>();
-        for (String resource : defaultEnchantmentResources) {
-            var loadedResource = loadJsonResource(resource, EnchantmentDefinitions.class);
+        var enchantmentsFolder = new File(getDataFolder(), "enchantments/");
+        var enchantmentsFiles = enchantmentsFolder.listFiles();
+        assert enchantmentsFiles != null;
+
+        for (File file : enchantmentsFiles) {
+            var loadedResource = loadJsonResource(file, EnchantmentDefinitions.class);
             if (loadedResource == null) {
                 continue;
             }
@@ -76,8 +90,12 @@ public final class AffixesPlugin extends JavaPlugin {
 
         //  Load attributes
         var attributeDefinitions = new HashMap<String, List<AttributeDefinition>>();
-        for (String resource : defaultAttributeResources) {
-            var loadedResource = loadJsonResource(resource, AttributeDefinitions.class);
+        var attributesFolder = new File(getDataFolder(), "attributes/");
+        var attributesFiles = attributesFolder.listFiles();
+        assert attributesFiles != null;
+
+        for (File file : attributesFiles) {
+            var loadedResource = loadJsonResource(file, AttributeDefinitions.class);
             if (loadedResource == null) {
                 continue;
             }
@@ -98,25 +116,22 @@ public final class AffixesPlugin extends JavaPlugin {
         //  Do nothing
     }
 
-    private <T> T loadJsonResource(String resourcePath, Class<T> tClass) {
-        File swordMaterialsFile = new File(getDataFolder(), resourcePath);
-        saveResourceIfNotExists(this, resourcePath, swordMaterialsFile);
-
+    private <T> T loadJsonResource(File file, Class<T> tClass) {
         try {
-            Reader reader = new FileReader(swordMaterialsFile);
+            Reader reader = new FileReader(file);
             T value = new Gson().fromJson(reader, tClass);
             reader.close();
             return value;
         } catch (Exception ex) {
-            getLogger().warning("Error loading resource: " + resourcePath + ", exception: " + ex.getMessage());
+            getLogger().warning("Error loading resource: " + file + ", exception: " + ex.getMessage());
         }
 
         return null;
     }
 
-    public void saveResourceIfNotExists(JavaPlugin plugin, String resourcePath, File targetFile) {
+    private void saveResourceIfNotExists(String resourcePath, File targetFile) {
         if (!targetFile.exists()) {
-            plugin.saveResource(resourcePath, false);
+            saveResource(resourcePath, false);
         }
     }
 
