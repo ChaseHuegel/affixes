@@ -7,6 +7,7 @@ import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Registry;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.EquipmentSlotGroup;
@@ -188,12 +189,12 @@ public class AffixGenerator {
             return false;
         }
 
-        var attribute = Registry.ATTRIBUTE.get(attributeKey);
-        var amount = attributeDefinition.max <= attributeDefinition.min ? attributeDefinition.max : random.nextFloat(attributeDefinition.min, attributeDefinition.max);
-        var operation = getOperation(attributeDefinition.operation);
-        var slot = EquipmentSlotGroup.getByName(slotName);
-        var modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, UUID.randomUUID().toString());
-        var modifier = new AttributeModifier(modifierKey, amount, operation, slot);
+        Attribute attribute = Registry.ATTRIBUTE.get(attributeKey);
+        float amount = attributeDefinition.max <= attributeDefinition.min ? attributeDefinition.max : random.nextFloat(attributeDefinition.min, attributeDefinition.max);
+        AttributeModifier.Operation operation = getOperation(attributeDefinition.operation);
+        EquipmentSlotGroup slot = EquipmentSlotGroup.getByName(slotName);
+        NamespacedKey modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, UUID.randomUUID().toString());
+        AttributeModifier modifier = new AttributeModifier(modifierKey, amount, operation, slot);
 
         return meta.addAttributeModifier(attribute, modifier);
     }

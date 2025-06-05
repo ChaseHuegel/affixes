@@ -24,7 +24,7 @@ public class NewItemCommand implements CommandExecutor {
         }
 
         if (args.length == 0 || !args[0].equalsIgnoreCase("new")) {
-            player.sendMessage(NamedTextColor.RED + "Usage: /affixes new [amount]");
+            player.sendMessage("Usage: /affixes new [amount]");
             return true;
         }
 
@@ -32,7 +32,7 @@ public class NewItemCommand implements CommandExecutor {
         if (args.length > 1) {
             amount = Integer.parseInt(args[1]);
             if (amount <= 0) {
-                player.sendMessage(NamedTextColor.RED + "Invalid amount: " + args[1]);
+                player.sendMessage("Invalid amount: " + args[1]);
                 return true;
             }
         }
@@ -42,7 +42,7 @@ public class NewItemCommand implements CommandExecutor {
             player.getInventory().addItem(item);
         }
 
-        player.sendMessage(NamedTextColor.GREEN + "Generated " + amount + " items with affixes.");
+        player.sendMessage("Generated " + amount + " items with affixes.");
         return true;
     }
 }
