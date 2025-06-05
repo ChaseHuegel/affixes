@@ -24,7 +24,6 @@ public class ItemGenerator {
 
     public ItemStack generate(MaterialDefinition materialDefinition) {
         String itemName = getRandomValue(materialDefinition.names);
-        String slotName = getRandomValue(materialDefinition.slots);
         String materialName = getRandomValue(materialDefinition.materials);
         int rarityLevel = getWeightedRandomRarityLevel();
         Rarity rarity = rarities.get(rarityLevel);
@@ -45,9 +44,11 @@ public class ItemGenerator {
         Component nameComponent = Component.text(itemName).color(rarityTextColor);
         meta.displayName(nameComponent);
 
-        int affixCount = random.nextInt(1, Math.max(1, rarityLevel));
+        int maxAffixes = Math.max(1, rarityLevel);
+        int affixCount = maxAffixes > 1 ? random.nextInt(1, maxAffixes) : 1;
         boolean appliedAnyAffixes = false;
         for (int i = 0; i < affixCount; i++) {
+            String slotName = getRandomValue(materialDefinition.slots);
             appliedAnyAffixes |= affixGenerator.generateAffix(meta, slotName, rarityLevel);
         }
 

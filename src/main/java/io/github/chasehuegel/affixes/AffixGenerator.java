@@ -96,7 +96,7 @@ public class AffixGenerator {
         }
 
         //  Only allow a single suffix
-        Boolean hasSuffix = getCustomMetadata(meta, "hasSuffix", PersistentDataType.BOOLEAN);
+        Boolean hasSuffix = getCustomMetadata(meta, "suffix", PersistentDataType.BOOLEAN);
         boolean applyPrefix = (hasSuffix != null && hasSuffix) || random.nextBoolean();
 
         List<String> textOptions;
@@ -125,12 +125,12 @@ public class AffixGenerator {
         Component prefixComponent;
         Component suffixComponent;
         if (applyPrefix) {
-            prefixComponent = Component.text(text);
+            prefixComponent = Component.text(text + " ").mergeStyle(displayName);
             suffixComponent = displayName;
             setCustomMetadata(meta, "prefix", PersistentDataType.BOOLEAN, true);
         } else {
             prefixComponent = displayName;
-            suffixComponent = Component.text(text);
+            suffixComponent = Component.text(" " + text).mergeStyle(displayName);
             setCustomMetadata(meta, "suffix", PersistentDataType.BOOLEAN, true);
         }
 
@@ -149,13 +149,13 @@ public class AffixGenerator {
             applyAttribute = random.nextBoolean();
         }
 
-        if (applyAttribute) {
-            AttributeDefinition attributeDefinition = attributeDefinitions.get(affix.attribute).get(rarityIndex);
-            return applyAttribute(meta, slotName, affix.attribute, attributeDefinition);
+        if (!applyAttribute) {
+            EnchantmentDefinition enchantmentDefinition = enchantmentDefinitions.get(affix.enchantment).get(rarityIndex);
+            return applyEnchantment(meta, affix.enchantment, enchantmentDefinition);
         }
 
-        EnchantmentDefinition enchantmentDefinition = enchantmentDefinitions.get(affix.enchantment).get(rarityIndex);
-        return applyEnchantment(meta, affix.enchantment, enchantmentDefinition);
+        AttributeDefinition attributeDefinition = attributeDefinitions.get(affix.attribute).get(rarityIndex);
+        return applyAttribute(meta, slotName, affix.attribute, attributeDefinition);
     }
 
     public boolean applyEnchantment(ItemMeta meta, String enchantmentDefinitionKey, EnchantmentDefinition enchantmentDefinition) {
@@ -164,22 +164,15 @@ public class AffixGenerator {
             return false;
         }
 
-        var enchantmentsMetadata = getCustomMetadata(meta, "enchantments", PersistentDataType.LIST.strings());
-        if (enchantmentsMetadata.contains(enchantmentDefinitionKey)) {
+        Registry<Enchantment> enchantmentRegistry = RegistryAccess.registryAccess().getRegistry(RegistryKey.ENCHANTMENT);
+        Enchantment enchantment = enchantmentRegistry.get(enchantmentKey);
+        int level = enchantmentDefinition.max <= enchantmentDefinition.min ? enchantmentDefinition.max : random.nextInt(enchantmentDefinition.min, enchantmentDefinition.max + 1);
+
+        if (meta.hasEnchant(enchantment)) {
             return false;
         }
 
-        Registry<Enchantment> enchantmentRegistry = RegistryAccess.registryAccess().getRegistry(RegistryKey.ENCHANTMENT);
-        Enchantment enchantment = enchantmentRegistry.get(enchantmentKey);
-        int level = random.nextInt(enchantmentDefinition.min, enchantmentDefinition.max + 1);
-
-        boolean added = meta.addEnchant(enchantment, level, true);
-        if (added) {
-            enchantmentsMetadata.add(enchantmentDefinitionKey);
-            setCustomMetadata(meta, "enchantments", PersistentDataType.LIST.strings(), enchantmentsMetadata);
-        }
-
-        return added;
+        return meta.addEnchant(enchantment, level, true);
     }
 
     public boolean applyAttribute(ItemMeta meta, String slotName, String attributeDefinitionKey, AttributeDefinition attributeDefinition) {
@@ -188,25 +181,14 @@ public class AffixGenerator {
             return false;
         }
 
-        var attributesMetadata = getCustomMetadata(meta, "attributes", PersistentDataType.LIST.strings());
-        if (attributesMetadata.contains(attributeDefinitionKey)) {
-            return false;
-        }
-
         var attribute = Registry.ATTRIBUTE.get(attributeKey);
-        var amount = random.nextFloat(attributeDefinition.min, attributeDefinition.max);
+        var amount = attributeDefinition.max <= attributeDefinition.min ? attributeDefinition.max : random.nextFloat(attributeDefinition.min, attributeDefinition.max);
         var operation = getOperation(attributeDefinition.operation);
         var slot = EquipmentSlotGroup.getByName(slotName);
-        var modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, attributeDefinition.id);
+        var modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, slot + attributeDefinition.id);
         var modifier = new AttributeModifier(modifierKey, amount, operation, slot);
 
-        boolean added = meta.addAttributeModifier(attribute, modifier);
-        if (added) {
-            attributesMetadata.add(attributeDefinitionKey);
-            setCustomMetadata(meta, "attributes", PersistentDataType.LIST.strings(), attributesMetadata);
-        }
-
-        return added;
+        return meta.addAttributeModifier(attribute, modifier);
     }
 
     private AttributeModifier.Operation getOperation(String value) {

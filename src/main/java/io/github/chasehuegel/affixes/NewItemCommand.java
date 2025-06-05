@@ -21,10 +21,6 @@ public class NewItemCommand implements CommandExecutor {
             return false;
         }
 
-        if (!label.equals("new")) {
-            return false;
-        }
-
         ItemStack item = itemGenerator.generate();
         player.getInventory().addItem(item);
         return true;
