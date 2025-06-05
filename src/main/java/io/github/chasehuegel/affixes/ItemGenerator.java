@@ -2,6 +2,7 @@ package io.github.chasehuegel.affixes;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -41,7 +42,9 @@ public class ItemGenerator {
         var item = ItemStack.of(material);
         ItemMeta meta = item.getItemMeta();
 
-        Component nameComponent = Component.text(itemName).color(rarityTextColor);
+        Component nameComponent = Component.text(itemName)
+                .color(rarityTextColor)
+                .decoration(TextDecoration.ITALIC, false);
         meta.displayName(nameComponent);
 
         int maxAffixes = Math.max(1, rarityLevel + 1);

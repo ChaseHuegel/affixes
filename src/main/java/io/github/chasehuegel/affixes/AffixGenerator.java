@@ -4,6 +4,7 @@ import io.papermc.paper.registry.RegistryAccess;
 import io.papermc.paper.registry.RegistryKey;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Registry;
 import org.bukkit.attribute.AttributeModifier;
@@ -125,12 +126,18 @@ public class AffixGenerator {
         Component prefixComponent;
         Component suffixComponent;
         if (applyPrefix) {
-            prefixComponent = Component.text(text + " ").mergeStyle(displayName);
             suffixComponent = displayName;
+            prefixComponent = Component.text(text + " ")
+                    .decoration(TextDecoration.ITALIC, false)
+                    .mergeStyle(displayName);
+
             setCustomMetadata(meta, "prefix", PersistentDataType.BOOLEAN, true);
         } else {
             prefixComponent = displayName;
-            suffixComponent = Component.text(" " + text).mergeStyle(displayName);
+            suffixComponent = Component.text(" " + text)
+                    .decoration(TextDecoration.ITALIC, false)
+                    .mergeStyle(displayName);
+
             setCustomMetadata(meta, "suffix", PersistentDataType.BOOLEAN, true);
         }
 
