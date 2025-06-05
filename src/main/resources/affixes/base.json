@@ -4,34 +4,34 @@
     "enchantment": "",
     "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet", "any"],
     "prefixes": ["Brisk", "Fleeting", "Hasty", "Quick"],
-    "suffixes": ["of Speed", "of Fleetness", "of the Fleetfoot", "of Urgency", "of Expedition", "of Bustling", "of Velocity", "of Rapidity", "of Swiftness", "of Alacrity", "of Quickness", "of Celerity", "of Dashing", "of Sprinting", "of Hurry"],
+    "suffixes": ["of Speed", "of Fleetness", "of the Fleetfoot", "of Urgency", "of Expedition", "of Bustling", "of Velocity", "of Rapidity", "of Swiftness", "of Alacrity", "of Quickness", "of Celerity", "of Dashing", "of Sprinting", "of Hurry"]
   },
   "health": {
     "attribute": "health",
     "enchantment": "",
     "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet", "any"],
     "prefixes": ["Hearty", "Vigorous", "Vital", "Spirited"],
-    "suffixes": ["of Life", "of Constitution", "of Health", "of Mettle", "of Vitality", "of Vigor", "of Spirit", "of Heart"],
+    "suffixes": ["of Life", "of Constitution", "of Health", "of Mettle", "of Vitality", "of Vigor", "of Spirit", "of Heart"]
   },
   "fire_melee": {
     "attribute": "reduced_burn_time",
     "enchantment": "fire_aspect",
     "slots": ["mainhand", "offhand"],
     "prefixes": ["Nether", "Burning", "Fiery", "Blazing", "Searing", "Scorching", "Ablaze", "Igniting", "Flaming", "Flickering", "Smoldering", "Igneous"],
-    "suffixes": ["of the Nether", "of the Pyro", "of the Flamekeeper", "of Scorching", "of Burning", "of the Blaze", "of Magma"],
+    "suffixes": ["of the Nether", "of the Pyro", "of the Flamekeeper", "of Scorching", "of Burning", "of the Blaze", "of Magma"]
   },
   "damage_increase": {
     "attribute": "damage_percent",
     "enchantment": "sharpness",
     "slots": ["mainhand", "offhand"],
     "prefixes": ["Piglin Brute's", "Brutal", "Feral", "Pillager's", "Vindicator's", "Berserking", "Barbaric", "Champion's", "Warrior's", "Butcher", "Jagged", "Spiked", "Precise", "Angry", "Menacing", "Keen", "Superior", "Hurtful", "Ruthless", "Demonic", "Zealous", "Deadly", "Slayer's", "Razor", "Sharp", "Honed", "Serrated", "Violent", "Hacking", "Murderous", "Nasty", "Mean", "Dangerous", "Savage", "Pointy", "Masterful"],
-    "suffixes": ["of the Brute", "of Devastation", "of Carnage", "of the Pillager", "of the Vindicator", "of the Berserker", "of Barbarism", "of Strength", "of Death", "of Slaying", "of Butchering", "of Slashing", "of Battle", "of War", "of the Champion", "of the Warrior"],
+    "suffixes": ["of the Brute", "of Devastation", "of Carnage", "of the Pillager", "of the Vindicator", "of the Berserker", "of Barbarism", "of Strength", "of Death", "of Slaying", "of Butchering", "of Slashing", "of Battle", "of War", "of the Champion", "of the Warrior"]
   },
   "knockback": {
     "attribute": "knockback",
     "enchantment": "knockback",
     "slots": ["mainhand", "offhand"],
     "prefixes": ["Mighty", "Forceful", "Strong", "Heavy", "Unpleasant", "Lead", "Ringing", "Bulky", "Hoglin's", "Iron Golem's", "Slamming", "Slinging", "Hurling", "Large", "Huge", "Massive", "Oversized", "Big", "Poweful"],
-    "suffixes": ["of Might", "of Heavy Blows", "of Ringing Blows", "of the Giant", "of the Hulk", "of the Hoglin", "of the Ravager", "of the Iron Golem", "of Power"],
+    "suffixes": ["of Might", "of Heavy Blows", "of Ringing Blows", "of the Giant", "of the Hulk", "of the Hoglin", "of the Ravager", "of the Iron Golem", "of Power"]
   }
 }

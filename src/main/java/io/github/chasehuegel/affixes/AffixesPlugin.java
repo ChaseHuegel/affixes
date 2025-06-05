@@ -23,11 +23,11 @@ public final class AffixesPlugin extends JavaPlugin {
     };
 
     private final String[] defaultEnchantmentResources = new String[] {
-            "enchantments/base.json",
+        "enchantments/base.json",
     };
 
     private final String[] defaultAttributeResources = new String[] {
-            "attributes/base.json",
+        "attributes/base.json",
     };
 
     @Override
@@ -48,7 +48,7 @@ public final class AffixesPlugin extends JavaPlugin {
                 continue;
             }
 
-            materialDefinitions.addAll(loadedResource.items);
+            materialDefinitions.addAll(loadedResource);
         }
 
         //  Load affixes
@@ -59,7 +59,7 @@ public final class AffixesPlugin extends JavaPlugin {
                 continue;
             }
 
-            affixes.putAll(loadedResource.items);
+            affixes.putAll(loadedResource);
         }
 
         //  Load enchantments
@@ -70,7 +70,7 @@ public final class AffixesPlugin extends JavaPlugin {
                 continue;
             }
 
-            enchantmentDefinitions.putAll(loadedResource.items);
+            enchantmentDefinitions.putAll(loadedResource);
         }
 
         //  Load attributes
@@ -81,7 +81,7 @@ public final class AffixesPlugin extends JavaPlugin {
                 continue;
             }
 
-            attributeDefinitions.putAll(loadedResource.items);
+            attributeDefinitions.putAll(loadedResource);
         }
 
         //  Create generators

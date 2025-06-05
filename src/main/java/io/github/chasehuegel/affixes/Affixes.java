@@ -1,8 +1,5 @@
 package io.github.chasehuegel.affixes;
 
-import java.util.Map;
+import java.util.HashMap;
 
-public class Affixes {
-
-    public Map<String, Affix> items;
-}
+public class Affixes extends HashMap<String, Affix> { }

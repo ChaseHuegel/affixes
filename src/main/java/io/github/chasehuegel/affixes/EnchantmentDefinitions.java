@@ -1,9 +1,6 @@
 package io.github.chasehuegel.affixes;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class EnchantmentDefinitions {
-
-    public Map<String, List<EnchantmentDefinition>> items;
-}
+public class EnchantmentDefinitions extends HashMap<String, List<EnchantmentDefinition>> { }

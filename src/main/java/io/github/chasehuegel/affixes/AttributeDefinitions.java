@@ -1,9 +1,6 @@
 package io.github.chasehuegel.affixes;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class AttributeDefinitions {
-
-    public Map<String, List<AttributeDefinition>> items;
-}
+public class AttributeDefinitions extends HashMap<String, List<AttributeDefinition>> { }

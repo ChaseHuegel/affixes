@@ -1,8 +1,5 @@
 package io.github.chasehuegel.affixes;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class MaterialDefinitions {
-
-    public List<MaterialDefinition> items;
-}
+public class MaterialDefinitions extends ArrayList<MaterialDefinition> {}
