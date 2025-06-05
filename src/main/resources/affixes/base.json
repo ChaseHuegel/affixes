@@ -31,7 +31,7 @@
     "attribute": "knockback",
     "enchantment": "knockback",
     "slots": ["mainhand", "offhand"],
-    "prefixes": ["Mighty", "Forceful", "Strong", "Heavy", "Unpleasant", "Lead", "Ringing", "Bulky", "Hoglin's", "Iron Golem's", "Slamming", "Slinging", "Hurling", "Large", "Huge", "Massive", "Oversized", "Big", "Poweful"],
+    "prefixes": ["Mighty", "Forceful", "Strong", "Heavy", "Unpleasant", "Lead", "Ringing", "Bulky", "Hoglin's", "Iron Golem's", "Slamming", "Slinging", "Hurling", "Large", "Huge", "Massive", "Oversized", "Big", "Powerful"],
     "suffixes": ["of Might", "of Heavy Blows", "of Ringing Blows", "of the Giant", "of the Hulk", "of the Hoglin", "of the Ravager", "of the Iron Golem", "of Power"]
   }
 }
