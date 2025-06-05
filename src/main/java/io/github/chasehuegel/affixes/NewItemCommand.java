@@ -1,5 +1,6 @@
 package io.github.chasehuegel.affixes;
 
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -18,11 +19,30 @@ public class NewItemCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (!(sender instanceof Player player)) {
-            return false;
+            sender.sendMessage("This command can only be run by a player.");
+            return true;
         }
 
-        ItemStack item = itemGenerator.generate();
-        player.getInventory().addItem(item);
+        if (args.length == 0 || !args[0].equalsIgnoreCase("new")) {
+            player.sendMessage(NamedTextColor.RED + "Usage: /affixes new [amount]");
+            return true;
+        }
+
+        int amount = 1;
+        if (args.length > 1) {
+            amount = Integer.parseInt(args[1]);
+            if (amount <= 0) {
+                player.sendMessage(NamedTextColor.RED + "Invalid amount: " + args[1]);
+                return true;
+            }
+        }
+
+        for (int i = 0; i < amount; i++) {
+            ItemStack item = itemGenerator.generate();
+            player.getInventory().addItem(item);
+        }
+
+        player.sendMessage(NamedTextColor.GREEN + "Generated " + amount + " items with affixes.");
         return true;
     }
 }
