@@ -25,11 +25,11 @@ public class ItemGenerator {
 
     public ItemStack generate(MaterialDefinition materialDefinition) {
         String itemName = getRandomValue(materialDefinition.names);
-        String materialName = getRandomValue(materialDefinition.materials);
+        MaterialInfo materialInfo = getWeightedRandomMaterialInfo(materialDefinition.materials);
         int rarityLevel = getWeightedRandomRarityLevel();
         Rarity rarity = rarities.get(rarityLevel);
 
-        var material = Material.matchMaterial(materialName);
+        var material = Material.matchMaterial(materialInfo.name);
         if (material == null) {
             return null;
         }
@@ -39,14 +39,26 @@ public class ItemGenerator {
             return null;
         }
 
+        //  Init the item
         var item = ItemStack.of(material);
         ItemMeta meta = item.getItemMeta();
 
+        //  Set model data
+        int modelData;
+        if (materialInfo.modelMax <= materialInfo.modelMin) {
+            modelData = materialInfo.modelMin;
+        } else {
+            modelData = random.nextInt(materialInfo.modelMin, materialInfo.modelMax + 1);
+        }
+        meta.setCustomModelData(modelData);
+
+        //  Set base item name
         Component nameComponent = Component.text(itemName)
                 .color(rarityTextColor)
                 .decoration(TextDecoration.ITALIC, false);
         meta.displayName(nameComponent);
 
+        //  Determine number of affixes
         int affixCount;
         if (rarity.maxAffixes <= rarity.minAffixes) {
             affixCount = rarity.minAffixes;
@@ -54,6 +66,7 @@ public class ItemGenerator {
             affixCount = random.nextInt(rarity.minAffixes, rarity.maxAffixes + 1);
         }
 
+        //  Apply affixes to random allowed slots
         boolean appliedAnyAffixes = false;
         for (int i = 0; i < affixCount; i++) {
             String slotName = getRandomValue(materialDefinition.slots);
@@ -80,19 +93,38 @@ public class ItemGenerator {
     private int getWeightedRandomRarityLevel() {
         float totalWeight = 0f;
         for (Rarity rarity : rarities) {
-            totalWeight += rarity.chance;
+            totalWeight += rarity.weight;
         }
 
         float r = new Random().nextFloat() * totalWeight;
         float runningSum = 0f;
 
         for (int i = 0; i < rarities.size(); i++) {
-            runningSum += rarities.get(i).chance;
+            runningSum += rarities.get(i).weight;
             if (r <= runningSum) {
                 return i;
             }
         }
 
         return random.nextInt(rarities.size());
+    }
+
+    private MaterialInfo getWeightedRandomMaterialInfo(List<MaterialInfo> materialInfos) {
+        float totalWeight = 0f;
+        for (MaterialInfo materialInfo : materialInfos) {
+            totalWeight += materialInfo.weight;
+        }
+
+        float r = new Random().nextFloat() * totalWeight;
+        float runningSum = 0f;
+
+        for (MaterialInfo materialInfo : materialInfos) {
+            runningSum += materialInfo.weight;
+            if (r <= runningSum) {
+                return materialInfo;
+            }
+        }
+
+        return getRandomValue(materialInfos);
     }
 }

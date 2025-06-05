@@ -5,14 +5,11 @@
       "offhand"
     ],
     "materials": [
-      "minecraft:wooden_sword",
-      "minecraft:stone_sword",
-      "minecraft:iron_sword",
-      "minecraft:iron_sword",
-      "minecraft:golden_sword",
-      "minecraft:golden_sword",
-      "minecraft:diamond_sword",
-      "minecraft:diamond_sword"
+      {"name": "minecraft:wooden_sword", "weight": 0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:stone_sword", "weight": 0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:iron_sword", "weight": 0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:golden_sword", "weight": 0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:diamond_sword", "weight": 0, "modelMin": 0, "modelMax": 0}
     ],
     "names": [
       "Sword",
