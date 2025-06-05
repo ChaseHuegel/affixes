@@ -1,0 +1,29 @@
+[
+  {
+    "slots": [
+      "head"
+    ],
+    "materials": [
+      {"name": "minecraft:leather_helmet", "weight": 0.2, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:chainmail_helmet", "weight": 0.1, "modelMin": 0, "modelMax": 0, "stats": {"armor": 2, "toughness": 1}},
+      {"name": "minecraft:iron_helmet", "weight": 0.3, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:golden_helmet", "weight": 0.1, "modelMin": 0, "modelMax": 0, "stats": {"armor": 2, "knockbackResistance": 0.05}},
+      {"name": "minecraft:diamond_helmet", "weight": 0.05, "modelMin": 0, "modelMax": 0}
+    ],
+    "names": [
+      "Helm",
+      "Helmet",
+      "Hat",
+      "Cap",
+      "Thinker",
+      "Hood",
+      "Cowl",
+      "Mask",
+      "Headpiece",
+      "Crown",
+      "Circlet",
+      "Skullcap",
+      "Headdress"
+    ]
+  }
+]

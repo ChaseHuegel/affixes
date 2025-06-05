@@ -16,6 +16,7 @@ public final class AffixesPlugin extends JavaPlugin {
     private final String[] defaultMaterialResources = new String[] {
         "materials/swords.json",
         "materials/axes.json",
+        "materials/helmets.json",
     };
 
     private final String[] defaultAffixResources = new String[] {

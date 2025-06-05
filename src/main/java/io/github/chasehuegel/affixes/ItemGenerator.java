@@ -8,6 +8,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.EquipmentSlotGroup;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -198,6 +199,12 @@ public class ItemGenerator {
 
         if (modelData > 0) {
             meta.setCustomModelData(modelData);
+        }
+
+        //  If the rarity is unbreakable, make the item unbreakable
+        if (rarity.unbreakable) {
+            meta.setUnbreakable(true);
+            meta.removeItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         }
 
         //  Set base item name
