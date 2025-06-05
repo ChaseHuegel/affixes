@@ -47,8 +47,13 @@ public class ItemGenerator {
                 .decoration(TextDecoration.ITALIC, false);
         meta.displayName(nameComponent);
 
-        int maxAffixes = Math.max(1, rarityLevel + 1);
-        int affixCount = maxAffixes > 1 ? random.nextInt(1, maxAffixes) : 1;
+        int affixCount;
+        if (rarity.maxAffixes <= rarity.minAffixes) {
+            affixCount = rarity.minAffixes;
+        } else {
+            affixCount = random.nextInt(rarity.minAffixes, rarity.maxAffixes + 1);
+        }
+
         boolean appliedAnyAffixes = false;
         for (int i = 0; i < affixCount; i++) {
             String slotName = getRandomValue(materialDefinition.slots);

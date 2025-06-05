@@ -174,7 +174,7 @@ public class AffixGenerator {
 
         Registry<Enchantment> enchantmentRegistry = RegistryAccess.registryAccess().getRegistry(RegistryKey.ENCHANTMENT);
         Enchantment enchantment = enchantmentRegistry.get(enchantmentKey);
-        int level = enchantmentDefinition.max <= enchantmentDefinition.min ? enchantmentDefinition.max : random.nextInt(enchantmentDefinition.min, enchantmentDefinition.max + 1);
+        int level = enchantmentDefinition.max <= enchantmentDefinition.min ? enchantmentDefinition.min : random.nextInt(enchantmentDefinition.min, enchantmentDefinition.max + 1);
 
         if (meta.hasEnchant(enchantment)) {
             return false;
@@ -190,7 +190,7 @@ public class AffixGenerator {
         }
 
         Attribute attribute = Registry.ATTRIBUTE.get(attributeKey);
-        float amount = attributeDefinition.max <= attributeDefinition.min ? attributeDefinition.max : random.nextFloat(attributeDefinition.min, attributeDefinition.max);
+        float amount = attributeDefinition.max <= attributeDefinition.min ? attributeDefinition.min : random.nextFloat(attributeDefinition.min, attributeDefinition.max);
         AttributeModifier.Operation operation = getOperation(attributeDefinition.operation);
         EquipmentSlotGroup slot = EquipmentSlotGroup.getByName(slotName);
         NamespacedKey modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, UUID.randomUUID().toString());

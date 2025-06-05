@@ -2,23 +2,35 @@
   - name: Common
     color: green
     chance: 0.55
+    minAffixes: 1
+    maxAffixes: 1
   - name: Uncommon
     color: yellow
     chance: 0.25
+    minAffixes: 1
+    maxAffixes: 2
   - name: Rare
     color: aqua
     chance: 0.12
     enchantable: true
+    minAffixes: 1
+    maxAffixes: 3
   - name: Epic
     color: light_purple
     chance: 0.05
+    minAffixes: 2
+    maxAffixes: 3
     enchantable: true
   - name: Legendary
     color: gold
     chance: 0.02
+    minAffixes: 2
+    maxAffixes: 4
     enchantable: true
   - name: Mythic
     color: red
     chance: 0.01
+    minAffixes: 3
+    maxAffixes: 5
     enchantable: true
     unbreakable: true
