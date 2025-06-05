@@ -128,11 +128,13 @@ public class ItemGenerator {
 
         var material = Material.matchMaterial(materialInfo.name);
         if (material == null) {
+            AffixesPlugin.Logger.warning("Unknown material: " + materialInfo.name);
             return null;
         }
 
         NamedTextColor rarityTextColor = NamedTextColor.NAMES.value(rarity.color.toLowerCase());
         if (rarityTextColor == null) {
+            AffixesPlugin.Logger.warning("Unknown rarity color: " + rarity.color);
             return null;
         }
 
@@ -229,6 +231,7 @@ public class ItemGenerator {
         }
 
         if (!appliedAnyAffixes) {
+            AffixesPlugin.Logger.warning("Failed to apply any affixes.");
             return null;
         }
 
