@@ -2,3 +2,8 @@ name: affixes
 version: '1.0-SNAPSHOT'
 main: io.github.chasehuegel.affixes.AffixesPlugin
 api-version: '1.21'
+commands:
+  affixes:
+    description: The affixes plugin.
+    usage: /<command>
+    permission: affixes.commands
