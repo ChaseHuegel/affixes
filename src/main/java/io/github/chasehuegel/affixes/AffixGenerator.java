@@ -112,10 +112,10 @@ public class AffixGenerator {
 
         //  If this text has already been applied, reroll
         int rerolls = 0;
-        boolean alreadyAppliedText = containsTextComponent(displayName, text);
+        boolean alreadyAppliedText = componentContainsText(displayName, text);
         while (alreadyAppliedText && rerolls < 3) {
             text = getRandomValue(textOptions);
-            alreadyAppliedText = containsTextComponent(displayName, text);
+            alreadyAppliedText = componentContainsText(displayName, text);
             rerolls++;
         }
 
@@ -265,7 +265,7 @@ public class AffixGenerator {
         return container.get(namespacedKey, type);
     }
 
-    private boolean containsTextComponent(Component component, String text) {
+    private boolean componentContainsText(Component component, String text) {
         if (component instanceof TextComponent textComponent) {
             if (textComponent.content().contains(text)) {
                 return true;
@@ -273,7 +273,7 @@ public class AffixGenerator {
         }
 
         for (Component child : component.children()) {
-            if (containsTextComponent(child, text)) {
+            if (componentContainsText(child, text)) {
                 return true;
             }
         }
