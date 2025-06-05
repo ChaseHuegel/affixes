@@ -5,11 +5,11 @@
       "offhand"
     ],
     "materials": [
-      {"name": "minecraft:wooden_axe", "weight": 0, "modelMin": 0, "modelMax": 0},
-      {"name": "minecraft:stone_axe", "weight": 0, "modelMin": 0, "modelMax": 0},
-      {"name": "minecraft:iron_axe", "weight": 0, "modelMin": 0, "modelMax": 0},
-      {"name": "minecraft:golden_axe", "weight": 0, "modelMin": 0, "modelMax": 0},
-      {"name": "minecraft:diamond_axe", "weight": 0, "modelMin": 0, "modelMax": 0}
+      {"name": "minecraft:wooden_axe", "weight": 0.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:stone_axe", "weight": 0.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:iron_axe", "weight": 0.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:golden_axe", "weight": 0.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:diamond_axe", "weight": 0.0, "modelMin": 0, "modelMax": 0}
     ],
     "names": [
       "Axe",

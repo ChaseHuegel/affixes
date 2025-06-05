@@ -43,14 +43,17 @@ public class ItemGenerator {
         var item = ItemStack.of(material);
         ItemMeta meta = item.getItemMeta();
 
-        //  Set model data
+        //  Determine then set model data
         int modelData;
         if (materialInfo.modelMax <= materialInfo.modelMin) {
             modelData = materialInfo.modelMin;
         } else {
             modelData = random.nextInt(materialInfo.modelMin, materialInfo.modelMax + 1);
         }
-        meta.setCustomModelData(modelData);
+
+        if (modelData > 0) {
+            meta.setCustomModelData(modelData);
+        }
 
         //  Set base item name
         Component nameComponent = Component.text(itemName)
@@ -96,12 +99,16 @@ public class ItemGenerator {
             totalWeight += rarity.weight;
         }
 
-        float r = new Random().nextFloat() * totalWeight;
-        float runningSum = 0f;
+        if (totalWeight == 0f) {
+            return random.nextInt(rarities.size());
+        }
 
+        float roll = random.nextFloat() * totalWeight;
+
+        float runningSum = 0f;
         for (int i = 0; i < rarities.size(); i++) {
             runningSum += rarities.get(i).weight;
-            if (r <= runningSum) {
+            if (roll <= runningSum) {
                 return i;
             }
         }
@@ -115,12 +122,16 @@ public class ItemGenerator {
             totalWeight += materialInfo.weight;
         }
 
-        float r = new Random().nextFloat() * totalWeight;
-        float runningSum = 0f;
+        if (totalWeight == 0f) {
+            return getRandomValue(materialInfos);
+        }
 
+        float roll = random.nextFloat() * totalWeight;
+
+        float runningSum = 0f;
         for (MaterialInfo materialInfo : materialInfos) {
             runningSum += materialInfo.weight;
-            if (r <= runningSum) {
+            if (roll <= runningSum) {
                 return materialInfo;
             }
         }
