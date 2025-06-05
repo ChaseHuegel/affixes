@@ -159,7 +159,10 @@ public class AffixGenerator {
 
         if (!applyAttribute) {
             EnchantmentDefinition enchantmentDefinition = enchantmentDefinitions.get(affix.enchantment).get(rarityIndex);
-            return applyEnchantment(meta, enchantmentDefinition);
+            if (applyEnchantment(meta, enchantmentDefinition)) {
+                return true;
+            }
+            //  If the enchantment couldn't be applied, try to fallback to attributes
         }
 
         AttributeDefinition attributeDefinition = attributeDefinitions.get(affix.attribute).get(rarityIndex);
@@ -176,8 +179,15 @@ public class AffixGenerator {
         Enchantment enchantment = enchantmentRegistry.get(enchantmentKey);
         int level = enchantmentDefinition.max <= enchantmentDefinition.min ? enchantmentDefinition.min : random.nextInt(enchantmentDefinition.min, enchantmentDefinition.max + 1);
 
+        //  If the enchant is already present, and its max level is >1, just increase its level.
         if (meta.hasEnchant(enchantment)) {
-            return false;
+            if (enchantment.getMaxLevel() <= 1) {
+                //  This enchantment can't be applied or increased
+                return false;
+            }
+
+            level = meta.getEnchantLevel(enchantment) + 1;
+            meta.removeEnchant(enchantment);
         }
 
         return meta.addEnchant(enchantment, level, true);
@@ -193,6 +203,21 @@ public class AffixGenerator {
         float amount = attributeDefinition.max <= attributeDefinition.min ? attributeDefinition.min : random.nextFloat(attributeDefinition.min, attributeDefinition.max);
         AttributeModifier.Operation operation = getOperation(attributeDefinition.operation);
         EquipmentSlotGroup slot = EquipmentSlotGroup.getByName(slotName);
+
+        //  If the same kind of modifier is already present, remove it and add it onto the amount
+        Collection<AttributeModifier> modifiers = meta.getAttributeModifiers(attribute);
+        if (modifiers != null) {
+            for (AttributeModifier modifier : modifiers) {
+                if (modifier.getOperation() != operation || modifier.getSlotGroup() != slot) {
+                    continue;
+                }
+
+                meta.removeAttributeModifier(attribute, modifier);
+                amount += modifier.getAmount();
+                break;
+            }
+        }
+
         NamespacedKey modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, UUID.randomUUID().toString());
         AttributeModifier modifier = new AttributeModifier(modifierKey, amount, operation, slot);
 
