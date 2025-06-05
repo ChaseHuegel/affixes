@@ -20,6 +20,7 @@ public final class AffixesPlugin extends JavaPlugin {
         "materials/swords.json",
         "materials/axes.json",
         "materials/helmets.json",
+        "materials/chestplates.json",
         "affixes/base.json",
         "enchantments/base.json",
         "attributes/base.json",
