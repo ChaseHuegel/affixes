@@ -104,7 +104,7 @@ public class ItemGenerator {
         Map.entry(Material.DIAMOND_BOOTS,      new ArmorStats(3.0, 2.0, 0.0, EquipmentSlotGroup.FEET)),
 
         // Netherite Armor
-        Map.entry(Material.NETHERITE_HELMET,     new ArmorStats(3.0, 3.0, 0.01, EquipmentSlotGroup.HEAD)),
+        Map.entry(Material.NETHERITE_HELMET,     new ArmorStats(3.0, 3.0, 0.1, EquipmentSlotGroup.HEAD)),
         Map.entry(Material.NETHERITE_CHESTPLATE, new ArmorStats(8.0, 3.0, 0.1,  EquipmentSlotGroup.CHEST)),
         Map.entry(Material.NETHERITE_LEGGINGS,   new ArmorStats(6.0, 3.0, 0.0,  EquipmentSlotGroup.LEGS)),
         Map.entry(Material.NETHERITE_BOOTS,      new ArmorStats(3.0, 3.0, 0.0,  EquipmentSlotGroup.FEET)),
