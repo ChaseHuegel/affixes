@@ -1,4 +1,4 @@
-﻿package io.github.chasehuegel.affixes;
+package io.github.chasehuegel.affixes;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
