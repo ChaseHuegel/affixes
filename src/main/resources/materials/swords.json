@@ -8,7 +8,7 @@
       {"name": "minecraft:wooden_sword", "weight": 0.05, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:stone_sword", "weight": 0.1, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:iron_sword", "weight": 0.3, "modelMin": 0, "modelMax": 0},
-      {"name": "minecraft:golden_sword", "weight": 0.2, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:golden_sword", "weight": 0.2, "modelMin": 0, "modelMax": 0, "stats": {"attackDamage": 7.0, "attackSpeed":  -2.4}},
       {"name": "minecraft:diamond_sword", "weight": 0.05, "modelMin": 0, "modelMax": 0}
     ],
     "names": [

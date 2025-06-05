@@ -6,4 +6,5 @@ public class MaterialInfo {
     public float weight;
     public int modelMin;
     public int modelMax;
+    public Stats stats;
 }

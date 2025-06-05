@@ -142,6 +142,11 @@ public class ItemGenerator {
         //  Set any tool stats
         ToolStats toolStats = vanillaToolStats.get(item.getType());
         if (toolStats != null) {
+            //  Use any custom stats
+            if (materialInfo.stats != null) {
+                toolStats = new ToolStats(materialInfo.stats.attackDamage, materialInfo.stats.attackSpeed);
+            }
+
             //  Set attack damage
             NamespacedKey modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, UUID.randomUUID().toString());
             var modifier = new AttributeModifier(modifierKey, toolStats.attackDamage(), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND);
@@ -156,6 +161,11 @@ public class ItemGenerator {
         //  Set any armor stats
         ArmorStats armorStats = vanillaArmorStats.get(item.getType());
         if (armorStats != null) {
+            //  Use any custom stats
+            if (materialInfo.stats != null) {
+                armorStats = new ArmorStats(materialInfo.stats.armor, materialInfo.stats.toughness, materialInfo.stats.knockbackResistance, armorStats.slot);
+            }
+
             //  Set armor
             if (armorStats.armor > 0) {
                 NamespacedKey modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, UUID.randomUUID().toString());
