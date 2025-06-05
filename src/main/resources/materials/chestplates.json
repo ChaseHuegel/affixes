@@ -1,0 +1,24 @@
+[
+  {
+    "slots": [
+      "body"
+    ],
+    "materials": [
+      {"name": "minecraft:leather_chestplate", "weight": 0.2, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:chainmail_chestplate", "weight": 0.1, "modelMin": 0, "modelMax": 0, "stats": {"armor": 5, "toughness": 1}},
+      {"name": "minecraft:iron_chestplate", "weight": 0.3, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:golden_chestplate", "weight": 0.1, "modelMin": 0, "modelMax": 0, "stats": {"armor": 7, "knockbackResistance": 0.05}},
+      {"name": "minecraft:diamond_chestplate", "weight": 0.05, "modelMin": 0, "modelMax": 0}
+    ],
+    "names": [
+      "Body",
+      "Chestplate",
+      "Breastplate",
+      "Pauldrons",
+      "Guard",
+      "Tunic",
+      "Gown",
+      "Robe"
+    ]
+  }
+]
