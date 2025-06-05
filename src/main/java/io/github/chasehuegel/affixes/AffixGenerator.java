@@ -158,14 +158,14 @@ public class AffixGenerator {
 
         if (!applyAttribute) {
             EnchantmentDefinition enchantmentDefinition = enchantmentDefinitions.get(affix.enchantment).get(rarityIndex);
-            return applyEnchantment(meta, affix.enchantment, enchantmentDefinition);
+            return applyEnchantment(meta, enchantmentDefinition);
         }
 
         AttributeDefinition attributeDefinition = attributeDefinitions.get(affix.attribute).get(rarityIndex);
-        return applyAttribute(meta, slotName, affix.attribute, attributeDefinition);
+        return applyAttribute(meta, slotName, attributeDefinition);
     }
 
-    public boolean applyEnchantment(ItemMeta meta, String enchantmentDefinitionKey, EnchantmentDefinition enchantmentDefinition) {
+    public boolean applyEnchantment(ItemMeta meta, EnchantmentDefinition enchantmentDefinition) {
         NamespacedKey enchantmentKey = NamespacedKey.fromString(enchantmentDefinition.enchantment);
         if (enchantmentKey == null) {
             return false;
@@ -182,7 +182,7 @@ public class AffixGenerator {
         return meta.addEnchant(enchantment, level, true);
     }
 
-    public boolean applyAttribute(ItemMeta meta, String slotName, String attributeDefinitionKey, AttributeDefinition attributeDefinition) {
+    public boolean applyAttribute(ItemMeta meta, String slotName, AttributeDefinition attributeDefinition) {
         NamespacedKey attributeKey = NamespacedKey.fromString(attributeDefinition.attribute);
         if (attributeKey == null) {
             return false;
@@ -192,7 +192,7 @@ public class AffixGenerator {
         var amount = attributeDefinition.max <= attributeDefinition.min ? attributeDefinition.max : random.nextFloat(attributeDefinition.min, attributeDefinition.max);
         var operation = getOperation(attributeDefinition.operation);
         var slot = EquipmentSlotGroup.getByName(slotName);
-        var modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, slot + attributeDefinition.id);
+        var modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, UUID.randomUUID().toString());
         var modifier = new AttributeModifier(modifierKey, amount, operation, slot);
 
         return meta.addAttributeModifier(attribute, modifier);
