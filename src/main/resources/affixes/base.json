@@ -2,14 +2,14 @@
   "speed": {
     "attribute": "speed",
     "enchantment": "",
-    "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet", "any"],
+    "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet", "body", "any"],
     "prefixes": ["Brisk", "Fleeting", "Hasty", "Quick"],
     "suffixes": ["of Speed", "of Fleetness", "of the Fleetfoot", "of Urgency", "of Expedition", "of Bustling", "of Velocity", "of Rapidity", "of Swiftness", "of Alacrity", "of Quickness", "of Celerity", "of Dashing", "of Sprinting", "of Hurry"]
   },
   "health": {
     "attribute": "health",
     "enchantment": "",
-    "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet", "any"],
+    "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet", "body", "any"],
     "prefixes": ["Hearty", "Vigorous", "Vital", "Spirited"],
     "suffixes": ["of Life", "of Constitution", "of Health", "of Mettle", "of Vitality", "of Vigor", "of Spirit", "of Heart"]
   },
