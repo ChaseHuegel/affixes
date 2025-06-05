@@ -1,0 +1,25 @@
+[
+  {
+    "slots": [
+      "legs"
+    ],
+    "materials": [
+      {"name": "minecraft:leather_leggings", "weight": 0.2, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:chainmail_leggings", "weight": 0.1, "modelMin": 0, "modelMax": 0, "stats": {"armor": 4, "toughness": 1}},
+      {"name": "minecraft:iron_leggings", "weight": 0.3, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:golden_leggings", "weight": 0.1, "modelMin": 0, "modelMax": 0, "stats": {"armor": 5, "knockbackResistance": 0.05}},
+      {"name": "minecraft:diamond_leggings", "weight": 0.05, "modelMin": 0, "modelMax": 0}
+    ],
+    "names": [
+      "Leggings",
+      "Tassets",
+      "Greaves",
+      "Faulds",
+      "Leg Plates",
+      "Trousers",
+      "Britches",
+      "Strides",
+      "Pantaloons"
+    ]
+  }
+]

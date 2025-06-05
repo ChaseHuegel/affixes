@@ -1,0 +1,22 @@
+[
+  {
+    "slots": [
+      "feet"
+    ],
+    "materials": [
+      {"name": "minecraft:leather_boots", "weight": 0.2, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:chainmail_boots", "weight": 0.1, "modelMin": 0, "modelMax": 0, "stats": {"armor": 1, "toughness": 1}},
+      {"name": "minecraft:iron_boots", "weight": 0.3, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:golden_boots", "weight": 0.1, "modelMin": 0, "modelMax": 0, "stats": {"armor": 2, "knockbackResistance": 0.05}},
+      {"name": "minecraft:diamond_boots", "weight": 0.05, "modelMin": 0, "modelMax": 0}
+    ],
+    "names": [
+      "Boots",
+      "Sabatons",
+      "Walkers",
+      "Sandals",
+      "Shoes",
+      "Footwear"
+    ]
+  }
+]
