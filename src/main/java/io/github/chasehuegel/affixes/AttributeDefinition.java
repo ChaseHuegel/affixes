@@ -6,5 +6,4 @@ public class AttributeDefinition {
     public String operation;
     public float min;
     public float max;
-    public String id;
 }

@@ -1,210 +1,210 @@
 ﻿{
   "speed": [
-    {"attribute": "minecraft:movement_speed", "operation": "add_multiplied_base", "min": 0.01, "max": 0.03, "id": "158be077-7d56-48af-aefc-5c84010a56ca"},
-    {"attribute": "minecraft:movement_speed", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05, "id": "158be077-7d56-48af-aefc-5c84010a56ca"},
-    {"attribute": "minecraft:movement_speed", "operation": "add_multiplied_base", "min": 0.05, "max": 0.07, "id": "158be077-7d56-48af-aefc-5c84010a56ca"},
-    {"attribute": "minecraft:movement_speed", "operation": "add_multiplied_base", "min": 0.07, "max": 0.09, "id": "158be077-7d56-48af-aefc-5c84010a56ca"},
-    {"attribute": "minecraft:movement_speed", "operation": "add_multiplied_base", "min": 0.09, "max": 0.11, "id": "158be077-7d56-48af-aefc-5c84010a56ca"},
-    {"attribute": "minecraft:movement_speed", "operation": "add_multiplied_base", "min": 0.11, "max": 0.13, "id": "158be077-7d56-48af-aefc-5c84010a56ca"}
+    {"attribute": "minecraft:movement_speed", "operation": "add_multiplied_base", "min": 0.01, "max": 0.03},
+    {"attribute": "minecraft:movement_speed", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05},
+    {"attribute": "minecraft:movement_speed", "operation": "add_multiplied_base", "min": 0.05, "max": 0.07},
+    {"attribute": "minecraft:movement_speed", "operation": "add_multiplied_base", "min": 0.07, "max": 0.09},
+    {"attribute": "minecraft:movement_speed", "operation": "add_multiplied_base", "min": 0.09, "max": 0.11},
+    {"attribute": "minecraft:movement_speed", "operation": "add_multiplied_base", "min": 0.11, "max": 0.13}
   ],
   "health": [
-    {"attribute": "minecraft:max_health", "operation": "add_value", "min": 0.0, "max": 2.0, "id": "fcbabca6-96ef-434a-8097-510b0f99cd6f"},
-    {"attribute": "minecraft:max_health", "operation": "add_value", "min": 1.0, "max": 3.0, "id": "fcbabca6-96ef-434a-8097-510b0f99cd6f"},
-    {"attribute": "minecraft:max_health", "operation": "add_value", "min": 2.0, "max": 4.0, "id": "fcbabca6-96ef-434a-8097-510b0f99cd6f"},
-    {"attribute": "minecraft:max_health", "operation": "add_value", "min": 3.0, "max": 5.0, "id": "fcbabca6-96ef-434a-8097-510b0f99cd6f"},
-    {"attribute": "minecraft:max_health", "operation": "add_value", "min": 4.0, "max": 6.0, "id": "fcbabca6-96ef-434a-8097-510b0f99cd6f"},
-    {"attribute": "minecraft:max_health", "operation": "add_value", "min": 5.0, "max": 7.0, "id": "fcbabca6-96ef-434a-8097-510b0f99cd6f"}
+    {"attribute": "minecraft:max_health", "operation": "add_value", "min": 0.0, "max": 2.0},
+    {"attribute": "minecraft:max_health", "operation": "add_value", "min": 1.0, "max": 3.0},
+    {"attribute": "minecraft:max_health", "operation": "add_value", "min": 2.0, "max": 4.0},
+    {"attribute": "minecraft:max_health", "operation": "add_value", "min": 3.0, "max": 5.0},
+    {"attribute": "minecraft:max_health", "operation": "add_value", "min": 4.0, "max": 6.0},
+    {"attribute": "minecraft:max_health", "operation": "add_value", "min": 5.0, "max": 7.0}
   ],
   "knockback_resist": [
-    {"attribute": "minecraft:knockback_resistance", "operation": "add_value", "min": 0.03, "max": 0.05, "id": "aa56f4e7-2e80-4937-847b-cc8d97231e23"},
-    {"attribute": "minecraft:knockback_resistance", "operation": "add_value", "min": 0.05, "max": 0.10, "id": "aa56f4e7-2e80-4937-847b-cc8d97231e23"},
-    {"attribute": "minecraft:knockback_resistance", "operation": "add_value", "min": 0.10, "max": 0.15, "id": "aa56f4e7-2e80-4937-847b-cc8d97231e23"},
-    {"attribute": "minecraft:knockback_resistance", "operation": "add_value", "min": 0.15, "max": 0.20, "id": "aa56f4e7-2e80-4937-847b-cc8d97231e23"},
-    {"attribute": "minecraft:knockback_resistance", "operation": "add_value", "min": 0.20, "max": 0.25, "id": "aa56f4e7-2e80-4937-847b-cc8d97231e23"},
-    {"attribute": "minecraft:knockback_resistance", "operation": "add_value", "min": 0.25, "max": 0.30, "id": "aa56f4e7-2e80-4937-847b-cc8d97231e23"}
+    {"attribute": "minecraft:knockback_resistance", "operation": "add_value", "min": 0.03, "max": 0.05},
+    {"attribute": "minecraft:knockback_resistance", "operation": "add_value", "min": 0.05, "max": 0.10},
+    {"attribute": "minecraft:knockback_resistance", "operation": "add_value", "min": 0.10, "max": 0.15},
+    {"attribute": "minecraft:knockback_resistance", "operation": "add_value", "min": 0.15, "max": 0.20},
+    {"attribute": "minecraft:knockback_resistance", "operation": "add_value", "min": 0.20, "max": 0.25},
+    {"attribute": "minecraft:knockback_resistance", "operation": "add_value", "min": 0.25, "max": 0.30}
   ],
   "explosion_knockback_resist": [
-    {"attribute": "minecraft:explosion_knockback_resistance", "operation": "add_value", "min": 0.03, "max": 0.05, "id": "bcdf93ac-2932-4351-99c9-5a4fdd3bdf4a"},
-    {"attribute": "minecraft:explosion_knockback_resistance", "operation": "add_value", "min": 0.05, "max": 0.10, "id": "bcdf93ac-2932-4351-99c9-5a4fdd3bdf4a"},
-    {"attribute": "minecraft:explosion_knockback_resistance", "operation": "add_value", "min": 0.10, "max": 0.15, "id": "bcdf93ac-2932-4351-99c9-5a4fdd3bdf4a"},
-    {"attribute": "minecraft:explosion_knockback_resistance", "operation": "add_value", "min": 0.15, "max": 0.20, "id": "bcdf93ac-2932-4351-99c9-5a4fdd3bdf4a"},
-    {"attribute": "minecraft:explosion_knockback_resistance", "operation": "add_value", "min": 0.20, "max": 0.25, "id": "bcdf93ac-2932-4351-99c9-5a4fdd3bdf4a"},
-    {"attribute": "minecraft:explosion_knockback_resistance", "operation": "add_value", "min": 0.25, "max": 0.30, "id": "bcdf93ac-2932-4351-99c9-5a4fdd3bdf4a"}
+    {"attribute": "minecraft:explosion_knockback_resistance", "operation": "add_value", "min": 0.03, "max": 0.05},
+    {"attribute": "minecraft:explosion_knockback_resistance", "operation": "add_value", "min": 0.05, "max": 0.10},
+    {"attribute": "minecraft:explosion_knockback_resistance", "operation": "add_value", "min": 0.10, "max": 0.15},
+    {"attribute": "minecraft:explosion_knockback_resistance", "operation": "add_value", "min": 0.15, "max": 0.20},
+    {"attribute": "minecraft:explosion_knockback_resistance", "operation": "add_value", "min": 0.20, "max": 0.25},
+    {"attribute": "minecraft:explosion_knockback_resistance", "operation": "add_value", "min": 0.25, "max": 0.30}
   ],
   "attack_speed": [
-    {"attribute": "minecraft:attack_speed", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05, "id": "63fd07fc-f332-4e70-a113-0c8d328bb74e"},
-    {"attribute": "minecraft:attack_speed", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10, "id": "63fd07fc-f332-4e70-a113-0c8d328bb74e"},
-    {"attribute": "minecraft:attack_speed", "operation": "add_multiplied_base", "min": 0.10, "max": 0.15, "id": "63fd07fc-f332-4e70-a113-0c8d328bb74e"},
-    {"attribute": "minecraft:attack_speed", "operation": "add_multiplied_base", "min": 0.15, "max": 0.20, "id": "63fd07fc-f332-4e70-a113-0c8d328bb74e"},
-    {"attribute": "minecraft:attack_speed", "operation": "add_multiplied_base", "min": 0.20, "max": 0.25, "id": "63fd07fc-f332-4e70-a113-0c8d328bb74e"},
-    {"attribute": "minecraft:attack_speed", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30, "id": "63fd07fc-f332-4e70-a113-0c8d328bb74e"}
+    {"attribute": "minecraft:attack_speed", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05},
+    {"attribute": "minecraft:attack_speed", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10},
+    {"attribute": "minecraft:attack_speed", "operation": "add_multiplied_base", "min": 0.10, "max": 0.15},
+    {"attribute": "minecraft:attack_speed", "operation": "add_multiplied_base", "min": 0.15, "max": 0.20},
+    {"attribute": "minecraft:attack_speed", "operation": "add_multiplied_base", "min": 0.20, "max": 0.25},
+    {"attribute": "minecraft:attack_speed", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30}
   ],
   "damage": [
-    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 0.0, "max": 1.0, "id": "37361a2a-dd75-40c4-852f-86d04a54c22c"},
-    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 1.0, "max": 1.5, "id": "37361a2a-dd75-40c4-852f-86d04a54c22c"},
-    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 1.5, "max": 2.0, "id": "37361a2a-dd75-40c4-852f-86d04a54c22c"},
-    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 2.0, "max": 2.5, "id": "37361a2a-dd75-40c4-852f-86d04a54c22c"},
-    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 2.5, "max": 3.0, "id": "37361a2a-dd75-40c4-852f-86d04a54c22c"},
-    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 3.0, "max": 3.5, "id": "37361a2a-dd75-40c4-852f-86d04a54c22c"}
+    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 0.0, "max": 1.0},
+    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 1.0, "max": 1.5},
+    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 1.5, "max": 2.0},
+    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 2.0, "max": 2.5},
+    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 2.5, "max": 3.0},
+    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 3.0, "max": 3.5}
   ],
   "damage_percent": [
-    {"attribute": "minecraft:attack_damage", "operation": "add_multiplied_total", "min": 0.03, "max": 0.05, "id": "35f95c22-52d1-4f2d-92da-45228b64aa94"},
-    {"attribute": "minecraft:attack_damage", "operation": "add_multiplied_total", "min": 0.05, "max": 0.10, "id": "35f95c22-52d1-4f2d-92da-45228b64aa94"},
-    {"attribute": "minecraft:attack_damage", "operation": "add_multiplied_total", "min": 0.10, "max": 0.15, "id": "35f95c22-52d1-4f2d-92da-45228b64aa94"},
-    {"attribute": "minecraft:attack_damage", "operation": "add_multiplied_total", "min": 0.15, "max": 0.20, "id": "35f95c22-52d1-4f2d-92da-45228b64aa94"},
-    {"attribute": "minecraft:attack_damage", "operation": "add_multiplied_total", "min": 0.20, "max": 0.25, "id": "35f95c22-52d1-4f2d-92da-45228b64aa94"},
-    {"attribute": "minecraft:attack_damage", "operation": "add_multiplied_total", "min": 0.25, "max": 0.30, "id": "35f95c22-52d1-4f2d-92da-45228b64aa94"}
+    {"attribute": "minecraft:attack_damage", "operation": "add_multiplied_total", "min": 0.03, "max": 0.05},
+    {"attribute": "minecraft:attack_damage", "operation": "add_multiplied_total", "min": 0.05, "max": 0.10},
+    {"attribute": "minecraft:attack_damage", "operation": "add_multiplied_total", "min": 0.10, "max": 0.15},
+    {"attribute": "minecraft:attack_damage", "operation": "add_multiplied_total", "min": 0.15, "max": 0.20},
+    {"attribute": "minecraft:attack_damage", "operation": "add_multiplied_total", "min": 0.20, "max": 0.25},
+    {"attribute": "minecraft:attack_damage", "operation": "add_multiplied_total", "min": 0.25, "max": 0.30}
   ],
   "knockback": [
-    {"attribute": "minecraft:attack_knockback", "operation": "add_value", "min": 0.05, "max": 0.10, "id": "bfcb2726-8dd2-48fd-8be6-efffb24db911"},
-    {"attribute": "minecraft:attack_knockback", "operation": "add_value", "min": 0.10, "max": 0.20, "id": "bfcb2726-8dd2-48fd-8be6-efffb24db911"},
-    {"attribute": "minecraft:attack_knockback", "operation": "add_value", "min": 0.20, "max": 0.35, "id": "bfcb2726-8dd2-48fd-8be6-efffb24db911"},
-    {"attribute": "minecraft:attack_knockback", "operation": "add_value", "min": 0.35, "max": 0.50, "id": "bfcb2726-8dd2-48fd-8be6-efffb24db911"},
-    {"attribute": "minecraft:attack_knockback", "operation": "add_value", "min": 0.50, "max": 1.00, "id": "bfcb2726-8dd2-48fd-8be6-efffb24db911"},
-    {"attribute": "minecraft:attack_knockback", "operation": "add_value", "min": 1.50, "max": 2.00, "id": "bfcb2726-8dd2-48fd-8be6-efffb24db911"}
+    {"attribute": "minecraft:attack_knockback", "operation": "add_value", "min": 0.05, "max": 0.10},
+    {"attribute": "minecraft:attack_knockback", "operation": "add_value", "min": 0.10, "max": 0.20},
+    {"attribute": "minecraft:attack_knockback", "operation": "add_value", "min": 0.20, "max": 0.35},
+    {"attribute": "minecraft:attack_knockback", "operation": "add_value", "min": 0.35, "max": 0.50},
+    {"attribute": "minecraft:attack_knockback", "operation": "add_value", "min": 0.50, "max": 1.00},
+    {"attribute": "minecraft:attack_knockback", "operation": "add_value", "min": 1.50, "max": 2.00}
   ],
   "armor": [
-    {"attribute": "minecraft:armor", "operation": "add_value", "min": 0.0, "max": 1.0, "id": "4f72bf8a-ef9a-43cf-8403-0ed6802895b8"},
-    {"attribute": "minecraft:armor", "operation": "add_value", "min": 1.0, "max": 1.5, "id": "4f72bf8a-ef9a-43cf-8403-0ed6802895b8"},
-    {"attribute": "minecraft:armor", "operation": "add_value", "min": 1.5, "max": 2.0, "id": "4f72bf8a-ef9a-43cf-8403-0ed6802895b8"},
-    {"attribute": "minecraft:armor", "operation": "add_value", "min": 2.0, "max": 2.5, "id": "4f72bf8a-ef9a-43cf-8403-0ed6802895b8"},
-    {"attribute": "minecraft:armor", "operation": "add_value", "min": 2.5, "max": 3.0, "id": "4f72bf8a-ef9a-43cf-8403-0ed6802895b8"},
-    {"attribute": "minecraft:armor", "operation": "add_value", "min": 3.0, "max": 3.5, "id": "4f72bf8a-ef9a-43cf-8403-0ed6802895b8"}
+    {"attribute": "minecraft:armor", "operation": "add_value", "min": 0.0, "max": 1.0},
+    {"attribute": "minecraft:armor", "operation": "add_value", "min": 1.0, "max": 1.5},
+    {"attribute": "minecraft:armor", "operation": "add_value", "min": 1.5, "max": 2.0},
+    {"attribute": "minecraft:armor", "operation": "add_value", "min": 2.0, "max": 2.5},
+    {"attribute": "minecraft:armor", "operation": "add_value", "min": 2.5, "max": 3.0},
+    {"attribute": "minecraft:armor", "operation": "add_value", "min": 3.0, "max": 3.5}
   ],
   "toughness": [
-    {"attribute": "minecraft:armor_toughness", "operation": "add_value", "min": 0.0, "max": 1.0, "id": "25964a68-0d9c-49d2-afa7-a297555bb50f"},
-    {"attribute": "minecraft:armor_toughness", "operation": "add_value", "min": 1.0, "max": 1.5, "id": "25964a68-0d9c-49d2-afa7-a297555bb50f"},
-    {"attribute": "minecraft:armor_toughness", "operation": "add_value", "min": 1.5, "max": 2.0, "id": "25964a68-0d9c-49d2-afa7-a297555bb50f"},
-    {"attribute": "minecraft:armor_toughness", "operation": "add_value", "min": 2.0, "max": 2.5, "id": "25964a68-0d9c-49d2-afa7-a297555bb50f"},
-    {"attribute": "minecraft:armor_toughness", "operation": "add_value", "min": 2.5, "max": 3.0, "id": "25964a68-0d9c-49d2-afa7-a297555bb50f"},
-    {"attribute": "minecraft:armor_toughness", "operation": "add_value", "min": 3.0, "max": 3.5, "id": "25964a68-0d9c-49d2-afa7-a297555bb50f"}
+    {"attribute": "minecraft:armor_toughness", "operation": "add_value", "min": 0.0, "max": 1.0},
+    {"attribute": "minecraft:armor_toughness", "operation": "add_value", "min": 1.0, "max": 1.5},
+    {"attribute": "minecraft:armor_toughness", "operation": "add_value", "min": 1.5, "max": 2.0},
+    {"attribute": "minecraft:armor_toughness", "operation": "add_value", "min": 2.0, "max": 2.5},
+    {"attribute": "minecraft:armor_toughness", "operation": "add_value", "min": 2.5, "max": 3.0},
+    {"attribute": "minecraft:armor_toughness", "operation": "add_value", "min": 3.0, "max": 3.5}
   ],
   "break_speed": [
-    {"attribute": "minecraft:block_break_speed", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05, "id": "aa164f26-6ee0-44dd-8895-24a2483cbf7c"},
-    {"attribute": "minecraft:block_break_speed", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10, "id": "aa164f26-6ee0-44dd-8895-24a2483cbf7c"},
-    {"attribute": "minecraft:block_break_speed", "operation": "add_multiplied_base", "min": 0.10, "max": 0.15, "id": "aa164f26-6ee0-44dd-8895-24a2483cbf7c"},
-    {"attribute": "minecraft:block_break_speed", "operation": "add_multiplied_base", "min": 0.15, "max": 0.20, "id": "aa164f26-6ee0-44dd-8895-24a2483cbf7c"},
-    {"attribute": "minecraft:block_break_speed", "operation": "add_multiplied_base", "min": 0.20, "max": 0.25, "id": "aa164f26-6ee0-44dd-8895-24a2483cbf7c"},
-    {"attribute": "minecraft:block_break_speed", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30, "id": "aa164f26-6ee0-44dd-8895-24a2483cbf7c"}
+    {"attribute": "minecraft:block_break_speed", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05},
+    {"attribute": "minecraft:block_break_speed", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10},
+    {"attribute": "minecraft:block_break_speed", "operation": "add_multiplied_base", "min": 0.10, "max": 0.15},
+    {"attribute": "minecraft:block_break_speed", "operation": "add_multiplied_base", "min": 0.15, "max": 0.20},
+    {"attribute": "minecraft:block_break_speed", "operation": "add_multiplied_base", "min": 0.20, "max": 0.25},
+    {"attribute": "minecraft:block_break_speed", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30}
   ],
   "block_range": [
-    {"attribute": "minecraft:block_interaction_range", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05, "id": "3cbabd29-2015-4991-b1c1-b9dd62de91a8"},
-    {"attribute": "minecraft:block_interaction_range", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10, "id": "3cbabd29-2015-4991-b1c1-b9dd62de91a8"},
-    {"attribute": "minecraft:block_interaction_range", "operation": "add_multiplied_base", "min": 0.10, "max": 0.15, "id": "3cbabd29-2015-4991-b1c1-b9dd62de91a8"},
-    {"attribute": "minecraft:block_interaction_range", "operation": "add_multiplied_base", "min": 0.15, "max": 0.20, "id": "3cbabd29-2015-4991-b1c1-b9dd62de91a8"},
-    {"attribute": "minecraft:block_interaction_range", "operation": "add_multiplied_base", "min": 0.20, "max": 0.25, "id": "3cbabd29-2015-4991-b1c1-b9dd62de91a8"},
-    {"attribute": "minecraft:block_interaction_range", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30, "id": "3cbabd29-2015-4991-b1c1-b9dd62de91a8"}
+    {"attribute": "minecraft:block_interaction_range", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05},
+    {"attribute": "minecraft:block_interaction_range", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10},
+    {"attribute": "minecraft:block_interaction_range", "operation": "add_multiplied_base", "min": 0.10, "max": 0.15},
+    {"attribute": "minecraft:block_interaction_range", "operation": "add_multiplied_base", "min": 0.15, "max": 0.20},
+    {"attribute": "minecraft:block_interaction_range", "operation": "add_multiplied_base", "min": 0.20, "max": 0.25},
+    {"attribute": "minecraft:block_interaction_range", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30}
   ],
   "entity_range": [
-    {"attribute": "minecraft:entity_interaction_range", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05, "id": "e6a5044d-7e0a-4691-9c3e-357925658b87"},
-    {"attribute": "minecraft:entity_interaction_range", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10, "id": "e6a5044d-7e0a-4691-9c3e-357925658b87"},
-    {"attribute": "minecraft:entity_interaction_range", "operation": "add_multiplied_base", "min": 0.10, "max": 0.15, "id": "e6a5044d-7e0a-4691-9c3e-357925658b87"},
-    {"attribute": "minecraft:entity_interaction_range", "operation": "add_multiplied_base", "min": 0.15, "max": 0.20, "id": "e6a5044d-7e0a-4691-9c3e-357925658b87"},
-    {"attribute": "minecraft:entity_interaction_range", "operation": "add_multiplied_base", "min": 0.20, "max": 0.25, "id": "e6a5044d-7e0a-4691-9c3e-357925658b87"},
-    {"attribute": "minecraft:entity_interaction_range", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30, "id": "e6a5044d-7e0a-4691-9c3e-357925658b87"}
+    {"attribute": "minecraft:entity_interaction_range", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05},
+    {"attribute": "minecraft:entity_interaction_range", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10},
+    {"attribute": "minecraft:entity_interaction_range", "operation": "add_multiplied_base", "min": 0.10, "max": 0.15},
+    {"attribute": "minecraft:entity_interaction_range", "operation": "add_multiplied_base", "min": 0.15, "max": 0.20},
+    {"attribute": "minecraft:entity_interaction_range", "operation": "add_multiplied_base", "min": 0.20, "max": 0.25},
+    {"attribute": "minecraft:entity_interaction_range", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30}
   ],
   "reduced_burn_time": [
-    {"attribute": "minecraft:burning_time", "operation": "add_multiplied_base", "min": -0.03, "max": -0.05, "id": "e892996c-0f45-4775-8f8b-a4d086e92c3a"},
-    {"attribute": "minecraft:burning_time", "operation": "add_multiplied_base", "min": -0.05, "max": -0.10, "id": "e892996c-0f45-4775-8f8b-a4d086e92c3a"},
-    {"attribute": "minecraft:burning_time", "operation": "add_multiplied_base", "min": -0.10, "max": -0.15, "id": "e892996c-0f45-4775-8f8b-a4d086e92c3a"},
-    {"attribute": "minecraft:burning_time", "operation": "add_multiplied_base", "min": -0.15, "max": -0.20, "id": "e892996c-0f45-4775-8f8b-a4d086e92c3a"},
-    {"attribute": "minecraft:burning_time", "operation": "add_multiplied_base", "min": -0.20, "max": -0.25, "id": "e892996c-0f45-4775-8f8b-a4d086e92c3a"},
-    {"attribute": "minecraft:burning_time", "operation": "add_multiplied_base", "min": -0.25, "max": -0.30, "id": "e892996c-0f45-4775-8f8b-a4d086e92c3a"}
+    {"attribute": "minecraft:burning_time", "operation": "add_multiplied_base", "min": -0.03, "max": -0.05},
+    {"attribute": "minecraft:burning_time", "operation": "add_multiplied_base", "min": -0.05, "max": -0.10},
+    {"attribute": "minecraft:burning_time", "operation": "add_multiplied_base", "min": -0.10, "max": -0.15},
+    {"attribute": "minecraft:burning_time", "operation": "add_multiplied_base", "min": -0.15, "max": -0.20},
+    {"attribute": "minecraft:burning_time", "operation": "add_multiplied_base", "min": -0.20, "max": -0.25},
+    {"attribute": "minecraft:burning_time", "operation": "add_multiplied_base", "min": -0.25, "max": -0.30}
   ],
   "reduced_fall_damage": [
-    {"attribute": "minecraft:fall_damage_multiplier", "operation": "add_multiplied_base", "min": -0.03, "max": -0.05, "id": "57d6cf89-0c27-44b5-8aa1-163ab4bbc30c"},
-    {"attribute": "minecraft:fall_damage_multiplier", "operation": "add_multiplied_base", "min": -0.05, "max": -0.10, "id": "57d6cf89-0c27-44b5-8aa1-163ab4bbc30c"},
-    {"attribute": "minecraft:fall_damage_multiplier", "operation": "add_multiplied_base", "min": -0.10, "max": -0.15, "id": "57d6cf89-0c27-44b5-8aa1-163ab4bbc30c"},
-    {"attribute": "minecraft:fall_damage_multiplier", "operation": "add_multiplied_base", "min": -0.15, "max": -0.20, "id": "57d6cf89-0c27-44b5-8aa1-163ab4bbc30c"},
-    {"attribute": "minecraft:fall_damage_multiplier", "operation": "add_multiplied_base", "min": -0.20, "max": -0.25, "id": "57d6cf89-0c27-44b5-8aa1-163ab4bbc30c"},
-    {"attribute": "minecraft:fall_damage_multiplier", "operation": "add_multiplied_base", "min": -0.25, "max": -0.30, "id": "57d6cf89-0c27-44b5-8aa1-163ab4bbc30c"}
+    {"attribute": "minecraft:fall_damage_multiplier", "operation": "add_multiplied_base", "min": -0.03, "max": -0.05},
+    {"attribute": "minecraft:fall_damage_multiplier", "operation": "add_multiplied_base", "min": -0.05, "max": -0.10},
+    {"attribute": "minecraft:fall_damage_multiplier", "operation": "add_multiplied_base", "min": -0.10, "max": -0.15},
+    {"attribute": "minecraft:fall_damage_multiplier", "operation": "add_multiplied_base", "min": -0.15, "max": -0.20},
+    {"attribute": "minecraft:fall_damage_multiplier", "operation": "add_multiplied_base", "min": -0.20, "max": -0.25},
+    {"attribute": "minecraft:fall_damage_multiplier", "operation": "add_multiplied_base", "min": -0.25, "max": -0.30}
   ],
   "jump": [
-    {"attribute": "minecraft:jump_strength", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05, "id": "63ef6993-1740-4ba5-a9d0-faf0a9178a40"},
-    {"attribute": "minecraft:jump_strength", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10, "id": "63ef6993-1740-4ba5-a9d0-faf0a9178a40"},
-    {"attribute": "minecraft:jump_strength", "operation": "add_multiplied_base", "min": 0.10, "max": 0.15, "id": "63ef6993-1740-4ba5-a9d0-faf0a9178a40"},
-    {"attribute": "minecraft:jump_strength", "operation": "add_multiplied_base", "min": 0.15, "max": 0.20, "id": "63ef6993-1740-4ba5-a9d0-faf0a9178a40"},
-    {"attribute": "minecraft:jump_strength", "operation": "add_multiplied_base", "min": 0.20, "max": 0.25, "id": "63ef6993-1740-4ba5-a9d0-faf0a9178a40"},
-    {"attribute": "minecraft:jump_strength", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30, "id": "63ef6993-1740-4ba5-a9d0-faf0a9178a40"}
+    {"attribute": "minecraft:jump_strength", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05},
+    {"attribute": "minecraft:jump_strength", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10},
+    {"attribute": "minecraft:jump_strength", "operation": "add_multiplied_base", "min": 0.10, "max": 0.15},
+    {"attribute": "minecraft:jump_strength", "operation": "add_multiplied_base", "min": 0.15, "max": 0.20},
+    {"attribute": "minecraft:jump_strength", "operation": "add_multiplied_base", "min": 0.20, "max": 0.25},
+    {"attribute": "minecraft:jump_strength", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30}
   ],
   "luck": [
-    {"attribute": "minecraft:luck", "operation": "add_value", "min": 0.00, "max": 0.25, "id": "1cd0d367-37e2-4198-b105-5a57df1966c4"},
-    {"attribute": "minecraft:luck", "operation": "add_value", "min": 0.25, "max": 0.50, "id": "1cd0d367-37e2-4198-b105-5a57df1966c4"},
-    {"attribute": "minecraft:luck", "operation": "add_value", "min": 0.50, "max": 1.00, "id": "1cd0d367-37e2-4198-b105-5a57df1966c4"},
-    {"attribute": "minecraft:luck", "operation": "add_value", "min": 1.00, "max": 1.50, "id": "1cd0d367-37e2-4198-b105-5a57df1966c4"},
-    {"attribute": "minecraft:luck", "operation": "add_value", "min": 1.50, "max": 2.00, "id": "1cd0d367-37e2-4198-b105-5a57df1966c4"},
-    {"attribute": "minecraft:luck", "operation": "add_value", "min": 2.00, "max": 2.50, "id": "1cd0d367-37e2-4198-b105-5a57df1966c4"}
+    {"attribute": "minecraft:luck", "operation": "add_value", "min": 0.00, "max": 0.25},
+    {"attribute": "minecraft:luck", "operation": "add_value", "min": 0.25, "max": 0.50},
+    {"attribute": "minecraft:luck", "operation": "add_value", "min": 0.50, "max": 1.00},
+    {"attribute": "minecraft:luck", "operation": "add_value", "min": 1.00, "max": 1.50},
+    {"attribute": "minecraft:luck", "operation": "add_value", "min": 1.50, "max": 2.00},
+    {"attribute": "minecraft:luck", "operation": "add_value", "min": 2.00, "max": 2.50}
   ],
   "mining_efficiency": [
-    {"attribute": "minecraft:mining_efficiency", "operation": "add_value", "min": 0.05, "max": 0.10, "id": "98391ea5-3c1f-4f44-9efe-b44ddeb7a61b"},
-    {"attribute": "minecraft:mining_efficiency", "operation": "add_value", "min": 0.10, "max": 0.20, "id": "98391ea5-3c1f-4f44-9efe-b44ddeb7a61b"},
-    {"attribute": "minecraft:mining_efficiency", "operation": "add_value", "min": 0.20, "max": 0.30, "id": "98391ea5-3c1f-4f44-9efe-b44ddeb7a61b"},
-    {"attribute": "minecraft:mining_efficiency", "operation": "add_value", "min": 0.30, "max": 0.40, "id": "98391ea5-3c1f-4f44-9efe-b44ddeb7a61b"},
-    {"attribute": "minecraft:mining_efficiency", "operation": "add_value", "min": 0.40, "max": 0.50, "id": "98391ea5-3c1f-4f44-9efe-b44ddeb7a61b"},
-    {"attribute": "minecraft:mining_efficiency", "operation": "add_value", "min": 0.50, "max": 0.60, "id": "98391ea5-3c1f-4f44-9efe-b44ddeb7a61b"}
+    {"attribute": "minecraft:mining_efficiency", "operation": "add_value", "min": 0.05, "max": 0.10},
+    {"attribute": "minecraft:mining_efficiency", "operation": "add_value", "min": 0.10, "max": 0.20},
+    {"attribute": "minecraft:mining_efficiency", "operation": "add_value", "min": 0.20, "max": 0.30},
+    {"attribute": "minecraft:mining_efficiency", "operation": "add_value", "min": 0.30, "max": 0.40},
+    {"attribute": "minecraft:mining_efficiency", "operation": "add_value", "min": 0.40, "max": 0.50},
+    {"attribute": "minecraft:mining_efficiency", "operation": "add_value", "min": 0.50, "max": 0.60}
   ],
   "movement_efficiency": [
-    {"attribute": "minecraft:movement_efficiency", "operation": "add_value", "min": 0.05, "max": 0.10, "id": "6614f542-8556-4457-aa5c-db20263a0035"},
-    {"attribute": "minecraft:movement_efficiency", "operation": "add_value", "min": 0.10, "max": 0.20, "id": "6614f542-8556-4457-aa5c-db20263a0035"},
-    {"attribute": "minecraft:movement_efficiency", "operation": "add_value", "min": 0.20, "max": 0.30, "id": "6614f542-8556-4457-aa5c-db20263a0035"},
-    {"attribute": "minecraft:movement_efficiency", "operation": "add_value", "min": 0.30, "max": 0.40, "id": "6614f542-8556-4457-aa5c-db20263a0035"},
-    {"attribute": "minecraft:movement_efficiency", "operation": "add_value", "min": 0.40, "max": 0.50, "id": "6614f542-8556-4457-aa5c-db20263a0035"},
-    {"attribute": "minecraft:movement_efficiency", "operation": "add_value", "min": 0.50, "max": 0.60, "id": "6614f542-8556-4457-aa5c-db20263a0035"}
+    {"attribute": "minecraft:movement_efficiency", "operation": "add_value", "min": 0.05, "max": 0.10},
+    {"attribute": "minecraft:movement_efficiency", "operation": "add_value", "min": 0.10, "max": 0.20},
+    {"attribute": "minecraft:movement_efficiency", "operation": "add_value", "min": 0.20, "max": 0.30},
+    {"attribute": "minecraft:movement_efficiency", "operation": "add_value", "min": 0.30, "max": 0.40},
+    {"attribute": "minecraft:movement_efficiency", "operation": "add_value", "min": 0.40, "max": 0.50},
+    {"attribute": "minecraft:movement_efficiency", "operation": "add_value", "min": 0.50, "max": 0.60}
   ],
   "oxygen_bonus": [
-    {"attribute": "minecraft:oxygen_bonus", "operation": "add_value", "min": 0.0, "max": 2.0, "id": "15226ead-a5b5-49c8-a307-5747eca315ab"},
-    {"attribute": "minecraft:oxygen_bonus", "operation": "add_value", "min": 2.0, "max": 3.5, "id": "15226ead-a5b5-49c8-a307-5747eca315ab"},
-    {"attribute": "minecraft:oxygen_bonus", "operation": "add_value", "min": 3.5, "max": 4.0, "id": "15226ead-a5b5-49c8-a307-5747eca315ab"},
-    {"attribute": "minecraft:oxygen_bonus", "operation": "add_value", "min": 4.0, "max": 5.5, "id": "15226ead-a5b5-49c8-a307-5747eca315ab"},
-    {"attribute": "minecraft:oxygen_bonus", "operation": "add_value", "min": 5.5, "max": 6.0, "id": "15226ead-a5b5-49c8-a307-5747eca315ab"},
-    {"attribute": "minecraft:oxygen_bonus", "operation": "add_value", "min": 6.0, "max": 7.5, "id": "15226ead-a5b5-49c8-a307-5747eca315ab"}
+    {"attribute": "minecraft:oxygen_bonus", "operation": "add_value", "min": 0.0, "max": 2.0},
+    {"attribute": "minecraft:oxygen_bonus", "operation": "add_value", "min": 2.0, "max": 3.5},
+    {"attribute": "minecraft:oxygen_bonus", "operation": "add_value", "min": 3.5, "max": 4.0},
+    {"attribute": "minecraft:oxygen_bonus", "operation": "add_value", "min": 4.0, "max": 5.5},
+    {"attribute": "minecraft:oxygen_bonus", "operation": "add_value", "min": 5.5, "max": 6.0},
+    {"attribute": "minecraft:oxygen_bonus", "operation": "add_value", "min": 6.0, "max": 7.5}
   ],
   "safe_fall": [
-    {"attribute": "minecraft:safe_fall_distance", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10, "id": "879de91d-9acc-4d51-9677-d1a5ec87d082"},
-    {"attribute": "minecraft:safe_fall_distance", "operation": "add_multiplied_base", "min": 0.10, "max": 0.20, "id": "879de91d-9acc-4d51-9677-d1a5ec87d082"},
-    {"attribute": "minecraft:safe_fall_distance", "operation": "add_multiplied_base", "min": 0.20, "max": 0.30, "id": "879de91d-9acc-4d51-9677-d1a5ec87d082"},
-    {"attribute": "minecraft:safe_fall_distance", "operation": "add_multiplied_base", "min": 0.30, "max": 0.40, "id": "879de91d-9acc-4d51-9677-d1a5ec87d082"},
-    {"attribute": "minecraft:safe_fall_distance", "operation": "add_multiplied_base", "min": 0.40, "max": 0.50, "id": "879de91d-9acc-4d51-9677-d1a5ec87d082"},
-    {"attribute": "minecraft:safe_fall_distance", "operation": "add_multiplied_base", "min": 0.50, "max": 0.60, "id": "879de91d-9acc-4d51-9677-d1a5ec87d082"}
+    {"attribute": "minecraft:safe_fall_distance", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10},
+    {"attribute": "minecraft:safe_fall_distance", "operation": "add_multiplied_base", "min": 0.10, "max": 0.20},
+    {"attribute": "minecraft:safe_fall_distance", "operation": "add_multiplied_base", "min": 0.20, "max": 0.30},
+    {"attribute": "minecraft:safe_fall_distance", "operation": "add_multiplied_base", "min": 0.30, "max": 0.40},
+    {"attribute": "minecraft:safe_fall_distance", "operation": "add_multiplied_base", "min": 0.40, "max": 0.50},
+    {"attribute": "minecraft:safe_fall_distance", "operation": "add_multiplied_base", "min": 0.50, "max": 0.60}
   ],
   "scale": [
-    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05, "id": "5564bb26-c16c-426c-99cc-9f4e85876200"},
-    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10, "id": "5564bb26-c16c-426c-99cc-9f4e85876200"},
-    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.10, "max": 0.15, "id": "5564bb26-c16c-426c-99cc-9f4e85876200"},
-    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.15, "max": 0.20, "id": "5564bb26-c16c-426c-99cc-9f4e85876200"},
-    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.20, "max": 0.25, "id": "5564bb26-c16c-426c-99cc-9f4e85876200"},
-    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30, "id": "5564bb26-c16c-426c-99cc-9f4e85876200"}
+    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05},
+    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10},
+    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.10, "max": 0.15},
+    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.15, "max": 0.20},
+    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.20, "max": 0.25},
+    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30}
   ],
   "sneak_speed": [
-    {"attribute": "minecraft:sneaking_speed", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05, "id": "7a655690-1494-4075-a752-a321586787fa"},
-    {"attribute": "minecraft:sneaking_speed", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10, "id": "7a655690-1494-4075-a752-a321586787fa"},
-    {"attribute": "minecraft:sneaking_speed", "operation": "add_multiplied_base", "min": 0.10, "max": 0.15, "id": "7a655690-1494-4075-a752-a321586787fa"},
-    {"attribute": "minecraft:sneaking_speed", "operation": "add_multiplied_base", "min": 0.15, "max": 0.20, "id": "7a655690-1494-4075-a752-a321586787fa"},
-    {"attribute": "minecraft:sneaking_speed", "operation": "add_multiplied_base", "min": 0.20, "max": 0.25, "id": "7a655690-1494-4075-a752-a321586787fa"},
-    {"attribute": "minecraft:sneaking_speed", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30, "id": "7a655690-1494-4075-a752-a321586787fa"}
+    {"attribute": "minecraft:sneaking_speed", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05},
+    {"attribute": "minecraft:sneaking_speed", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10},
+    {"attribute": "minecraft:sneaking_speed", "operation": "add_multiplied_base", "min": 0.10, "max": 0.15},
+    {"attribute": "minecraft:sneaking_speed", "operation": "add_multiplied_base", "min": 0.15, "max": 0.20},
+    {"attribute": "minecraft:sneaking_speed", "operation": "add_multiplied_base", "min": 0.20, "max": 0.25},
+    {"attribute": "minecraft:sneaking_speed", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30}
   ],
   "underwater_break_speed": [
-    {"attribute": "minecraft:submerged_mining_speed", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05, "id": "5bae7464-2adc-4bf9-9742-8f33f5c6febb"},
-    {"attribute": "minecraft:submerged_mining_speed", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10, "id": "5bae7464-2adc-4bf9-9742-8f33f5c6febb"},
-    {"attribute": "minecraft:submerged_mining_speed", "operation": "add_multiplied_base", "min": 0.10, "max": 0.15, "id": "5bae7464-2adc-4bf9-9742-8f33f5c6febb"},
-    {"attribute": "minecraft:submerged_mining_speed", "operation": "add_multiplied_base", "min": 0.15, "max": 0.20, "id": "5bae7464-2adc-4bf9-9742-8f33f5c6febb"},
-    {"attribute": "minecraft:submerged_mining_speed", "operation": "add_multiplied_base", "min": 0.20, "max": 0.25, "id": "5bae7464-2adc-4bf9-9742-8f33f5c6febb"},
-    {"attribute": "minecraft:submerged_mining_speed", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30, "id": "5bae7464-2adc-4bf9-9742-8f33f5c6febb"}
+    {"attribute": "minecraft:submerged_mining_speed", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05},
+    {"attribute": "minecraft:submerged_mining_speed", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10},
+    {"attribute": "minecraft:submerged_mining_speed", "operation": "add_multiplied_base", "min": 0.10, "max": 0.15},
+    {"attribute": "minecraft:submerged_mining_speed", "operation": "add_multiplied_base", "min": 0.15, "max": 0.20},
+    {"attribute": "minecraft:submerged_mining_speed", "operation": "add_multiplied_base", "min": 0.20, "max": 0.25},
+    {"attribute": "minecraft:submerged_mining_speed", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30}
   ],
   "sweep": [
-    {"attribute": "minecraft:sweeping_damage_ratio", "operation": "add_value", "min": 0.03, "max": 0.05, "id": "42977d74-dd72-45f3-b64a-7c53286b0b65"},
-    {"attribute": "minecraft:sweeping_damage_ratio", "operation": "add_value", "min": 0.05, "max": 0.10, "id": "42977d74-dd72-45f3-b64a-7c53286b0b65"},
-    {"attribute": "minecraft:sweeping_damage_ratio", "operation": "add_value", "min": 0.10, "max": 0.15, "id": "42977d74-dd72-45f3-b64a-7c53286b0b65"},
-    {"attribute": "minecraft:sweeping_damage_ratio", "operation": "add_value", "min": 0.15, "max": 0.20, "id": "42977d74-dd72-45f3-b64a-7c53286b0b65"},
-    {"attribute": "minecraft:sweeping_damage_ratio", "operation": "add_value", "min": 0.20, "max": 0.25, "id": "42977d74-dd72-45f3-b64a-7c53286b0b65"},
-    {"attribute": "minecraft:sweeping_damage_ratio", "operation": "add_value", "min": 0.25, "max": 0.30, "id": "42977d74-dd72-45f3-b64a-7c53286b0b65"}
+    {"attribute": "minecraft:sweeping_damage_ratio", "operation": "add_value", "min": 0.03, "max": 0.05},
+    {"attribute": "minecraft:sweeping_damage_ratio", "operation": "add_value", "min": 0.05, "max": 0.10},
+    {"attribute": "minecraft:sweeping_damage_ratio", "operation": "add_value", "min": 0.10, "max": 0.15},
+    {"attribute": "minecraft:sweeping_damage_ratio", "operation": "add_value", "min": 0.15, "max": 0.20},
+    {"attribute": "minecraft:sweeping_damage_ratio", "operation": "add_value", "min": 0.20, "max": 0.25},
+    {"attribute": "minecraft:sweeping_damage_ratio", "operation": "add_value", "min": 0.25, "max": 0.30}
   ],
   "water_speed": [
-    {"attribute": "minecraft:water_movement_efficiency", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10, "id": "7c3384ad-33f3-40ec-81e9-c3329f9a2813"},
-    {"attribute": "minecraft:water_movement_efficiency", "operation": "add_multiplied_base", "min": 0.10, "max": 0.20, "id": "7c3384ad-33f3-40ec-81e9-c3329f9a2813"},
-    {"attribute": "minecraft:water_movement_efficiency", "operation": "add_multiplied_base", "min": 0.20, "max": 0.30, "id": "7c3384ad-33f3-40ec-81e9-c3329f9a2813"},
-    {"attribute": "minecraft:water_movement_efficiency", "operation": "add_multiplied_base", "min": 0.30, "max": 0.40, "id": "7c3384ad-33f3-40ec-81e9-c3329f9a2813"},
-    {"attribute": "minecraft:water_movement_efficiency", "operation": "add_multiplied_base", "min": 0.40, "max": 0.50, "id": "7c3384ad-33f3-40ec-81e9-c3329f9a2813"},
-    {"attribute": "minecraft:water_movement_efficiency", "operation": "add_multiplied_base", "min": 0.50, "max": 0.60, "id": "7c3384ad-33f3-40ec-81e9-c3329f9a2813"}
+    {"attribute": "minecraft:water_movement_efficiency", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10},
+    {"attribute": "minecraft:water_movement_efficiency", "operation": "add_multiplied_base", "min": 0.10, "max": 0.20},
+    {"attribute": "minecraft:water_movement_efficiency", "operation": "add_multiplied_base", "min": 0.20, "max": 0.30},
+    {"attribute": "minecraft:water_movement_efficiency", "operation": "add_multiplied_base", "min": 0.30, "max": 0.40},
+    {"attribute": "minecraft:water_movement_efficiency", "operation": "add_multiplied_base", "min": 0.40, "max": 0.50},
+    {"attribute": "minecraft:water_movement_efficiency", "operation": "add_multiplied_base", "min": 0.50, "max": 0.60}
   ]
 }
