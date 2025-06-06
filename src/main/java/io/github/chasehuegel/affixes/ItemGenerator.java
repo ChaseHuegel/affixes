@@ -26,6 +26,9 @@ public class ItemGenerator {
     private final Map<String, ItemDefinition> itemDefinitions;
     private final Map<String, List<EnchantmentDefinition>> enchantmentDefinitions;
     private final Map<String, List<AttributeDefinition>> attributeDefinitions;
+    private final Map<Integer, List<ItemDefinition>> itemDefinitionsByRarityLevel;
+    private final Map<String, Integer> rarityLevelsByName;
+    private final Map<String, Rarity> raritiesByName;
 
     private final Map<Material, ToolStats> vanillaToolStats = Map.ofEntries(
         // Swords
@@ -128,16 +131,44 @@ public class ItemGenerator {
         this.enchantmentDefinitions = enchantmentDefinitions;
         this.attributeDefinitions = attributeDefinitions;
         this.rarities = rarities;
+
+        raritiesByName = new HashMap<>();
+        rarityLevelsByName = new HashMap<>();
+        itemDefinitionsByRarityLevel = new HashMap<>();
+
+        for (int i = 0; i < rarities.size(); i++) {
+            Rarity rarity = rarities.get(i);
+
+            rarityLevelsByName.put(rarity.name, i);
+            raritiesByName.put(rarity.name, rarity);
+            itemDefinitionsByRarityLevel.put(i, new ArrayList<>());
+        }
+
+        for (ItemDefinition itemDefinition : itemDefinitions.values()) {
+            int rarityLevel = rarityLevelsByName.get(itemDefinition.rarity);
+            itemDefinitionsByRarityLevel.get(rarityLevel).add(itemDefinition);
+        }
     }
 
     public ItemStack generate() {
-        if (random.nextBoolean()) {
-            ItemDefinition itemDefinition = getRandomValue(new ArrayList<>(itemDefinitions.values()));
-            return generate(itemDefinition);
+        int rarityLevel = getWeightedRandomRarityLevel();
+
+        List<ItemDefinition> itemDefinitionsForRarity = itemDefinitionsByRarityLevel.get(rarityLevel);
+
+        //  Pick a material or item def with equal weight to all items
+        int totalDefinitionChoices = materialDefinitions.size() + itemDefinitionsForRarity.size();
+        int definitionIndex = random.nextInt(totalDefinitionChoices);
+
+        //  Within range of material defs
+        if (definitionIndex < materialDefinitions.size()) {
+            MaterialDefinition materialDefinition = materialDefinitions.get(definitionIndex);
+            return generate(materialDefinition, rarityLevel);
         }
 
-        MaterialDefinition materialDefinition = getRandomValue(materialDefinitions);
-        return generate(materialDefinition);
+        //  Else, within range of item defs
+        definitionIndex -= materialDefinitions.size();
+        ItemDefinition itemDefinition = itemDefinitionsForRarity.get(definitionIndex);
+        return generate(itemDefinition);
     }
 
     public ItemStack generate(MaterialDefinition materialDefinition) {
@@ -159,23 +190,13 @@ public class ItemGenerator {
     }
 
     public ItemStack generate(ItemDefinition itemDefinition) {
-        //  Find the Rarity
-        Rarity rarity = null;
-        int rarityLevel = -1;
-        for (int i = 0; i < rarities.size(); i++) {
-            rarity = rarities.get(i);
-            if (!Objects.equals(rarity.name, itemDefinition.rarity)) {
-                continue;
-            }
-
-            rarityLevel = i;
-            break;
-        }
-
-        if (rarityLevel == -1) {
+        Rarity rarity = raritiesByName.get(itemDefinition.rarity);
+        if (rarity == null) {
             AffixesPlugin.Logger.warning("Unknown rarity: " + itemDefinition.rarity);
             return null;
         }
+
+        int rarityLevel = rarityLevelsByName.get(itemDefinition.rarity);
 
         //  Define effect options for the generator
         var effectOptions = new EffectOptions();
