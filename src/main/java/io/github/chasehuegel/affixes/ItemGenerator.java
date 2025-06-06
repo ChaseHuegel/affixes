@@ -130,10 +130,24 @@ public class ItemGenerator {
         this.rarities = rarities;
     }
 
+    public ItemStack generate() {
+        if (random.nextBoolean()) {
+            ItemDefinition itemDefinition = getRandomValue(new ArrayList<>(itemDefinitions.values()));
+            return generate(itemDefinition);
+        }
+
+        MaterialDefinition materialDefinition = getRandomValue(materialDefinitions);
+        return generate(materialDefinition);
+    }
+
     public ItemStack generate(MaterialDefinition materialDefinition) {
+        int rarityLevel = getWeightedRandomRarityLevel();
+        return generate(materialDefinition, rarityLevel);
+    }
+
+    public ItemStack generate(MaterialDefinition materialDefinition, int rarityLevel) {
         String itemName = getRandomValue(materialDefinition.names);
         MaterialInfo materialInfo = getWeightedRandomMaterialInfo(materialDefinition.materials);
-        int rarityLevel = getWeightedRandomRarityLevel();
         Rarity rarity = rarities.get(rarityLevel);
 
         var effectOptions = new EffectOptions();
@@ -142,6 +156,50 @@ public class ItemGenerator {
         effectOptions.maxRandomAffixes = rarity.maxAffixes;
 
         return generate(itemName, materialInfo, rarity, materialDefinition.slots, effectOptions);
+    }
+
+    public ItemStack generate(ItemDefinition itemDefinition) {
+        //  Find the Rarity
+        Rarity rarity = null;
+        int rarityLevel = -1;
+        for (int i = 0; i < rarities.size(); i++) {
+            rarity = rarities.get(i);
+            if (!Objects.equals(rarity.name, itemDefinition.rarity)) {
+                continue;
+            }
+
+            rarityLevel = i;
+            break;
+        }
+
+        if (rarityLevel == -1) {
+            AffixesPlugin.Logger.warning("Unknown rarity: " + itemDefinition.rarity);
+            return null;
+        }
+
+        //  Define effect options for the generator
+        var effectOptions = new EffectOptions();
+
+        //  Collect any enchantment defs by rarity
+        if (itemDefinition.enchantments != null) {
+            effectOptions.enchantments = new ArrayList<>();
+            for (String key : itemDefinition.enchantments) {
+                effectOptions.enchantments.add(enchantmentDefinitions.get(key).get(rarityLevel));
+            }
+        }
+
+        //  Collect any attribute defs by rarity
+        if (itemDefinition.attributes != null) {
+            effectOptions.attributes = new ArrayList<>();
+            for (String key : itemDefinition.attributes) {
+                effectOptions.attributes.add(attributeDefinitions.get(key).get(rarityLevel));
+            }
+        }
+
+        //  Merge with any options the item def specifies
+        effectOptions = effectOptions.merge(itemDefinition.effectOptions);
+
+        return generate(itemDefinition.name, itemDefinition.material, rarity, itemDefinition.slots, effectOptions);
     }
 
     public ItemStack generate(String itemName, MaterialInfo materialInfo, Rarity rarity, List<String> allowedSlotNames, EffectOptions effectOptions) {
@@ -298,55 +356,6 @@ public class ItemGenerator {
 
         item.setItemMeta(meta);
         return item;
-    }
-
-    public ItemStack generate(ItemDefinition itemDefinition) {
-        //  Find the Rarity
-        Rarity rarity = null;
-        int rarityLevel = -1;
-        for (int i = 0; i < rarities.size(); i++) {
-            rarity = rarities.get(i);
-            if (!Objects.equals(rarity.name, itemDefinition.rarity)) {
-                continue;
-            }
-
-            rarityLevel = i;
-            break;
-        }
-
-        if (rarityLevel == -1) {
-            AffixesPlugin.Logger.warning("Unknown rarity: " + itemDefinition.rarity);
-            return null;
-        }
-
-        //  Define effect options for the generator
-        var effectOptions = new EffectOptions();
-
-        //  Collect any enchantment defs by rarity
-        if (itemDefinition.enchantments != null) {
-            effectOptions.enchantments = new ArrayList<>();
-            for (String key : itemDefinition.enchantments) {
-                effectOptions.enchantments.add(enchantmentDefinitions.get(key).get(rarityLevel));
-            }
-        }
-
-        //  Collect any attribute defs by rarity
-        if (itemDefinition.attributes != null) {
-            effectOptions.attributes = new ArrayList<>();
-            for (String key : itemDefinition.attributes) {
-                effectOptions.attributes.add(attributeDefinitions.get(key).get(rarityLevel));
-            }
-        }
-
-        //  Merge with any options the item def specifies
-        effectOptions = effectOptions.merge(itemDefinition.effectOptions);
-
-        return generate(itemDefinition.name, itemDefinition.material, rarity, itemDefinition.slots, effectOptions);
-    }
-
-    public ItemStack generate() {
-        MaterialDefinition materialDefinition = getRandomValue(materialDefinitions);
-        return generate(materialDefinition);
     }
 
     private <T> T getRandomValue(List<T> list) {
