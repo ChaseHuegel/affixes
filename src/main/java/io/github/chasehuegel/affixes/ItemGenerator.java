@@ -155,7 +155,7 @@ public class ItemGenerator {
         effectOptions.minRandomAffixes = rarity.minAffixes;
         effectOptions.maxRandomAffixes = rarity.maxAffixes;
 
-        return generate(itemName, materialInfo, rarity, materialDefinition.slots, effectOptions);
+        return generate(itemName, materialInfo, rarityLevel, rarity, materialDefinition.slots, effectOptions);
     }
 
     public ItemStack generate(ItemDefinition itemDefinition) {
@@ -199,25 +199,10 @@ public class ItemGenerator {
         //  Merge with any options the item def specifies
         effectOptions = effectOptions.merge(itemDefinition.effectOptions);
 
-        return generate(itemDefinition.name, itemDefinition.material, rarity, itemDefinition.slots, effectOptions);
+        return generate(itemDefinition.name, itemDefinition.material, rarityLevel, rarity, itemDefinition.slots, effectOptions);
     }
 
-    public ItemStack generate(String itemName, MaterialInfo materialInfo, Rarity rarity, List<String> allowedSlotNames, EffectOptions effectOptions) {
-        int rarityLevel = -1;
-        for (int i = 0; i < rarities.size(); i++) {
-            if (!Objects.equals(rarities.get(i).name, rarity.name)) {
-                continue;
-            }
-
-            rarityLevel = i;
-            break;
-        }
-
-        if (rarityLevel == -1) {
-            AffixesPlugin.Logger.warning("Unknown rarity: " + rarity.name);
-            return null;
-        }
-
+    public ItemStack generate(String itemName, MaterialInfo materialInfo, int rarityLevel, Rarity rarity, List<String> allowedSlotNames, EffectOptions effectOptions) {
         var material = Material.matchMaterial(materialInfo.name);
         if (material == null) {
             AffixesPlugin.Logger.warning("Unknown material: " + materialInfo.name);
