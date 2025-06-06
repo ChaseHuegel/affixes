@@ -127,7 +127,8 @@ public final class AffixesPlugin extends JavaPlugin {
         var itemGenerator = new ItemGenerator(affixGenerator, materialDefinitions, itemDefinitions, enchantmentDefinitions, attributeDefinitions, rarities);
 
         //  Register commands
-        Objects.requireNonNull(getCommand("affixes")).setExecutor(new NewItemCommand(itemGenerator));
+        Objects.requireNonNull(getCommand("affixes")).setExecutor(new AffixesCommandHandler(itemGenerator));
+        Objects.requireNonNull(getCommand("affixes")).setTabCompleter(new AffixesCommandHandler(itemGenerator));
     }
 
     @Override

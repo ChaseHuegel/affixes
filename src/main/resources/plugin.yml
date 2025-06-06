@@ -4,6 +4,6 @@ main: io.github.chasehuegel.affixes.AffixesPlugin
 api-version: '1.21'
 commands:
   affixes:
-    description: The affixes plugin.
-    usage: /affixes [new]
+    description: Procedural RPG items and affixes.
+    usage: /affixes help
     permission: affixes.commands
