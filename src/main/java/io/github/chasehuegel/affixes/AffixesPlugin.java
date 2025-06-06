@@ -26,6 +26,7 @@ public final class AffixesPlugin extends JavaPlugin {
         "affixes/base.json",
         "enchantments/base.json",
         "attributes/base.json",
+        "items/uniques.json",
     };
 
     @Override
@@ -106,9 +107,24 @@ public final class AffixesPlugin extends JavaPlugin {
             attributeDefinitions.putAll(loadedResource);
         }
 
+        //  Load items
+        var itemDefinitions = new HashMap<String, ItemDefinition>();
+        var itemsFolder = new File(getDataFolder(), "items/");
+        var itemsFiles = itemsFolder.listFiles();
+        assert itemsFiles != null;
+
+        for (File file : itemsFiles) {
+            var loadedResource = loadJsonResource(file, ItemDefinitions.class);
+            if (loadedResource == null) {
+                continue;
+            }
+
+            itemDefinitions.putAll(loadedResource);
+        }
+
         //  Create generators
         var affixGenerator = new AffixGenerator(rarities, affixes, enchantmentDefinitions, attributeDefinitions);
-        var itemGenerator = new ItemGenerator(affixGenerator, materialDefinitions, rarities);
+        var itemGenerator = new ItemGenerator(affixGenerator, materialDefinitions, itemDefinitions, enchantmentDefinitions, attributeDefinitions, rarities);
 
         //  Register commands
         Objects.requireNonNull(getCommand("affixes")).setExecutor(new NewItemCommand(itemGenerator));

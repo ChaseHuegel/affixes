@@ -1,0 +1,29 @@
+﻿{
+  "affixes:nether_sword": {
+    "name": "Netherbane",
+    "rarity": "mythic",
+    "slots": ["mainhand"],
+    "effectOptions": {
+      "randomAffixes": true,
+      "minRandomAffixes": 1,
+      "maxRandomAffixes": 2
+    },
+    "attributes": [
+      "reduced_burn_time",
+      "movement_efficiency"
+    ],
+    "enchantments": [
+      "fire_aspect",
+      "smite"
+    ],
+    "material": {
+      "name": "minecraft:golden_sword",
+      "modelMin": 0,
+      "modelMax": 0,
+      "stats": {
+        "attackDamage": 8.0,
+        "attackSpeed":  -2.4
+      }
+    }
+  }
+}

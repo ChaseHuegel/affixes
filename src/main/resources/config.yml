@@ -1,33 +1,33 @@
 ﻿rarities:
-  - name: Common
+  - name: common
     color: green
     weight: 0.55
     minAffixes: 1
     maxAffixes: 1
-  - name: Uncommon
+  - name: uncommon
     color: yellow
     weight: 0.25
     minAffixes: 1
     maxAffixes: 2
-  - name: Rare
+  - name: rare
     color: aqua
     weight: 0.12
     enchantable: true
     minAffixes: 1
     maxAffixes: 3
-  - name: Epic
+  - name: epic
     color: light_purple
     weight: 0.05
     minAffixes: 2
     maxAffixes: 3
     enchantable: true
-  - name: Legendary
+  - name: legendary
     color: gold
     weight: 0.02
     minAffixes: 2
     maxAffixes: 4
     enchantable: true
-  - name: Mythic
+  - name: mythic
     color: red
     weight: 0.01
     minAffixes: 3

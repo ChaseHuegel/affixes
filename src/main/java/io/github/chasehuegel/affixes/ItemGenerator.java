@@ -12,10 +12,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 public class ItemGenerator {
 
@@ -26,6 +23,9 @@ public class ItemGenerator {
     private final AffixGenerator affixGenerator;
     private final List<MaterialDefinition> materialDefinitions;
     private final List<Rarity> rarities;
+    private final Map<String, ItemDefinition> itemDefinitions;
+    private final Map<String, List<EnchantmentDefinition>> enchantmentDefinitions;
+    private final Map<String, List<AttributeDefinition>> attributeDefinitions;
 
     private final Map<Material, ToolStats> vanillaToolStats = Map.ofEntries(
         // Swords
@@ -114,9 +114,19 @@ public class ItemGenerator {
         Map.entry(Material.TURTLE_HELMET, new ArmorStats(2.0, 0.0, 0.0, EquipmentSlotGroup.HEAD))
     );
 
-    public ItemGenerator(AffixGenerator affixGenerator, List<MaterialDefinition> materialDefinitions, List<Rarity> rarities) {
+    public ItemGenerator(
+            AffixGenerator affixGenerator,
+            List<MaterialDefinition> materialDefinitions,
+            Map<String, ItemDefinition> itemDefinitions,
+            Map<String, List<EnchantmentDefinition>> enchantmentDefinitions,
+            Map<String, List<AttributeDefinition>> attributeDefinitions,
+            List<Rarity> rarities
+    ) {
         this.affixGenerator = affixGenerator;
         this.materialDefinitions = materialDefinitions;
+        this.itemDefinitions = itemDefinitions;
+        this.enchantmentDefinitions = enchantmentDefinitions;
+        this.attributeDefinitions = attributeDefinitions;
         this.rarities = rarities;
     }
 
@@ -125,6 +135,30 @@ public class ItemGenerator {
         MaterialInfo materialInfo = getWeightedRandomMaterialInfo(materialDefinition.materials);
         int rarityLevel = getWeightedRandomRarityLevel();
         Rarity rarity = rarities.get(rarityLevel);
+
+        var effectOptions = new EffectOptions();
+        effectOptions.randomAffixes = true;
+        effectOptions.minRandomAffixes = rarity.minAffixes;
+        effectOptions.maxRandomAffixes = rarity.maxAffixes;
+
+        return generate(itemName, materialInfo, rarity, materialDefinition.slots, effectOptions);
+    }
+
+    public ItemStack generate(String itemName, MaterialInfo materialInfo, Rarity rarity, List<String> allowedSlotNames, EffectOptions effectOptions) {
+        int rarityLevel = -1;
+        for (int i = 0; i < rarities.size(); i++) {
+            if (!Objects.equals(rarities.get(i).name, rarity.name)) {
+                continue;
+            }
+
+            rarityLevel = i;
+            break;
+        }
+
+        if (rarityLevel == -1) {
+            AffixesPlugin.Logger.warning("Unknown rarity: " + rarity.name);
+            return null;
+        }
 
         var material = Material.matchMaterial(materialInfo.name);
         if (material == null) {
@@ -215,28 +249,99 @@ public class ItemGenerator {
                 .decoration(TextDecoration.ITALIC, false);
         meta.displayName(nameComponent);
 
-        //  Determine number of affixes
-        int affixCount;
-        if (rarity.maxAffixes <= rarity.minAffixes) {
-            affixCount = rarity.minAffixes;
-        } else {
-            affixCount = random.nextInt(rarity.minAffixes, rarity.maxAffixes + 1);
+        boolean appliedAnyEffects = false;
+
+        //  Apply any specified affixes
+        if (effectOptions.affixes != null) {
+            for (Affix affix : effectOptions.affixes) {
+                String slotName = getRandomValue(allowedSlotNames);
+                appliedAnyEffects |= affixGenerator.applyEffect(meta, slotName, affix, rarity, rarityLevel);
+            }
         }
 
-        //  Apply affixes to random allowed slots
-        boolean appliedAnyAffixes = false;
-        for (int i = 0; i < affixCount; i++) {
-            String slotName = getRandomValue(materialDefinition.slots);
-            appliedAnyAffixes |= affixGenerator.generateAffix(meta, slotName, rarityLevel);
+        //  Apply any specified enchantments
+        if (effectOptions.enchantments != null) {
+            for (EnchantmentDefinition enchantmentDefinition : effectOptions.enchantments) {
+                appliedAnyEffects |= affixGenerator.applyEnchantment(meta, enchantmentDefinition);
+            }
         }
 
-        if (!appliedAnyAffixes) {
-            AffixesPlugin.Logger.warning("Failed to apply any affixes.");
+        //  Apply any specified attributes
+        if (effectOptions.attributes != null) {
+            for (AttributeDefinition attributeDefinition : effectOptions.attributes) {
+                String slotName = getRandomValue(allowedSlotNames);
+                appliedAnyEffects |= affixGenerator.applyAttribute(meta, slotName, attributeDefinition);
+            }
+        }
+
+        //  Apply random affixes if enabled
+        if (effectOptions.randomAffixes) {
+            //  Determine number of affixes
+            int affixCount;
+            if (effectOptions.maxRandomAffixes <= effectOptions.minRandomAffixes) {
+                affixCount = effectOptions.minRandomAffixes;
+            } else {
+                affixCount = random.nextInt(effectOptions.minRandomAffixes, effectOptions.maxRandomAffixes + 1);
+            }
+
+            //  Apply affixes to random allowed slots
+            for (int i = 0; i < affixCount; i++) {
+                String slotName = getRandomValue(allowedSlotNames);
+                appliedAnyEffects |= affixGenerator.generateAffix(meta, slotName, rarityLevel);
+            }
+        }
+
+        if (!appliedAnyEffects) {
+            AffixesPlugin.Logger.warning("Failed to generate an item with any effects.");
             return null;
         }
 
         item.setItemMeta(meta);
         return item;
+    }
+
+    public ItemStack generate(ItemDefinition itemDefinition) {
+        //  Find the Rarity
+        Rarity rarity = null;
+        int rarityLevel = -1;
+        for (int i = 0; i < rarities.size(); i++) {
+            rarity = rarities.get(i);
+            if (!Objects.equals(rarity.name, itemDefinition.rarity)) {
+                continue;
+            }
+
+            rarityLevel = i;
+            break;
+        }
+
+        if (rarityLevel == -1) {
+            AffixesPlugin.Logger.warning("Unknown rarity: " + itemDefinition.rarity);
+            return null;
+        }
+
+        //  Define effect options for the generator
+        var effectOptions = new EffectOptions();
+
+        //  Collect any enchantment defs by rarity
+        if (itemDefinition.enchantments != null) {
+            effectOptions.enchantments = new ArrayList<>();
+            for (String key : itemDefinition.enchantments) {
+                effectOptions.enchantments.add(enchantmentDefinitions.get(key).get(rarityLevel));
+            }
+        }
+
+        //  Collect any attribute defs by rarity
+        if (itemDefinition.attributes != null) {
+            effectOptions.attributes = new ArrayList<>();
+            for (String key : itemDefinition.attributes) {
+                effectOptions.attributes.add(attributeDefinitions.get(key).get(rarityLevel));
+            }
+        }
+
+        //  Merge with any options the item def specifies
+        effectOptions = effectOptions.merge(itemDefinition.effectOptions);
+
+        return generate(itemDefinition.name, itemDefinition.material, rarity, itemDefinition.slots, effectOptions);
     }
 
     public ItemStack generate() {
