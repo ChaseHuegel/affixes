@@ -8,11 +8,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.*;
-import java.util.logging.Logger;
 
 public final class AffixesPlugin extends JavaPlugin {
 
-    public static Logger Logger;
+    private static AffixesPlugin instance;
+    public static AffixesPlugin getInstance() {
+        return instance;
+    }
 
     public final static String NAMESPACE = "affixes";
 
@@ -31,21 +33,33 @@ public final class AffixesPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        Logger = getLogger();
+        init();
+    }
 
-        //  Init the config
-        FileConfiguration config = getConfig();
-        config.options().copyDefaults(true);
+    public void reload() {
+        getLogger().info("Reloading Affixes...");
+
+        reloadConfig();
+        init();
+
+        getLogger().info("Reloaded Affixes.");
+    }
+
+    private void init() {
+        instance = this;
+
+        //  Init default config
+        getConfig().options().copyDefaults(true);
         saveDefaultConfig();
 
-        //  Init default json resources
+        //  Init default resources
         for (String resource : defaultJsonResources) {
             File file = new File(getDataFolder(), resource);
             saveResourceIfNotExists(resource, file);
         }
 
         //  Load config
-        List<Rarity> rarities = loadRaritiesFromConfig(config);
+        List<Rarity> rarities = loadRaritiesFromConfig(getConfig());
 
         //  Load materials
         var materialDefinitions = new ArrayList<MaterialDefinition>();
@@ -129,11 +143,6 @@ public final class AffixesPlugin extends JavaPlugin {
         //  Register commands
         Objects.requireNonNull(getCommand("affixes")).setExecutor(new AffixesCommandHandler(itemGenerator));
         Objects.requireNonNull(getCommand("affixes")).setTabCompleter(new AffixesCommandHandler(itemGenerator));
-    }
-
-    @Override
-    public void onDisable() {
-        //  Do nothing
     }
 
     private <T> T loadJsonResource(File file, Class<T> tClass) {

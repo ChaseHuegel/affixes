@@ -192,7 +192,7 @@ public class ItemGenerator {
     public ItemStack generate(ItemDefinition itemDefinition) {
         Rarity rarity = raritiesByName.get(itemDefinition.rarity);
         if (rarity == null) {
-            AffixesPlugin.Logger.warning("Unknown rarity: " + itemDefinition.rarity);
+            AffixesPlugin.getInstance().getLogger().warning("Unknown rarity: " + itemDefinition.rarity);
             return null;
         }
 
@@ -226,13 +226,13 @@ public class ItemGenerator {
     public ItemStack generate(String itemName, MaterialInfo materialInfo, int rarityLevel, Rarity rarity, List<String> allowedSlotNames, EffectOptions effectOptions) {
         var material = Material.matchMaterial(materialInfo.name);
         if (material == null) {
-            AffixesPlugin.Logger.warning("Unknown material: " + materialInfo.name);
+            AffixesPlugin.getInstance().getLogger().warning("Unknown material: " + materialInfo.name);
             return null;
         }
 
         NamedTextColor rarityTextColor = NamedTextColor.NAMES.value(rarity.color.toLowerCase());
         if (rarityTextColor == null) {
-            AffixesPlugin.Logger.warning("Unknown rarity color: " + rarity.color);
+            AffixesPlugin.getInstance().getLogger().warning("Unknown rarity color: " + rarity.color);
             return null;
         }
 
@@ -356,7 +356,7 @@ public class ItemGenerator {
         }
 
         if (!appliedAnyEffects) {
-            AffixesPlugin.Logger.warning("Failed to generate an item with any effects.");
+            AffixesPlugin.getInstance().getLogger().warning("Failed to generate an item with any effects.");
             return null;
         }
 

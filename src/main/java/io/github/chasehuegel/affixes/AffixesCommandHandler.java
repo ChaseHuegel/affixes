@@ -120,6 +120,7 @@ public class AffixesCommandHandler implements CommandExecutor, TabCompleter {
         }
 
         sender.sendMessage("Reloading Affixes...");
+        AffixesPlugin.getInstance().reload();
         sender.sendMessage("Reloaded Affixes.");
         return true;
     }
