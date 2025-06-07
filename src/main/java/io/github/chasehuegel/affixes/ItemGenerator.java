@@ -190,7 +190,7 @@ public class ItemGenerator {
                 //  Failed. Try rerolling.
                 continue;
             }
-            
+
             return item;
         }
 
