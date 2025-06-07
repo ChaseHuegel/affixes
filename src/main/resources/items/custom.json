@@ -1,0 +1,22 @@
+﻿{
+  "affixes:torch": {
+    "name": "Torch",
+    "rarity": "",
+    "slots": ["mainhand","offhand"],
+    "effectOptions": {
+      "randomAffixes": true,
+      "minRandomAffixes": -1,
+      "maxRandomAffixes": -1
+    },
+    "enchantments": [
+      "fire_aspect"
+    ],
+    "material": {
+      "name": "minecraft:torch",
+      "stats": {
+        "attackDamage": 1.0,
+        "attackSpeed":  0.0
+      }
+    }
+  }
+}

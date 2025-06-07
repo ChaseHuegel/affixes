@@ -37,6 +37,7 @@ public final class AffixesPlugin extends JavaPlugin {
         "enchantments/base.json",
         "attributes/base.json",
         "items/uniques.json",
+        "items/custom.json",
     };
 
     @Override

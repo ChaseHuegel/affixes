@@ -149,7 +149,6 @@
       {"name": "minecraft:magenta_candle", "weight": 1.0, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:orange_candle", "weight": 1.0, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:white_candle", "weight": 1.0, "modelMin": 0, "modelMax": 0},
-      {"name": "minecraft:torch", "weight": 1.0, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:lantern", "weight": 1.0, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:soul_lantern", "weight": 1.0, "modelMin": 0, "modelMax": 0}
     ],

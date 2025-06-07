@@ -202,6 +202,7 @@ public class ItemGenerator {
         Rarity rarity;
         int rarityLevel;
 
+        //  Get rarity if defined
         if (itemDefinition.rarity == null || itemDefinition.rarity.isEmpty()) {
             rarity = raritiesByName.get(itemDefinition.rarity);
             if (rarity == null) {
@@ -233,6 +234,15 @@ public class ItemGenerator {
             for (String key : itemDefinition.attributes) {
                 effectOptions.attributes.add(attributeDefinitions.get(key).get(rarityLevel));
             }
+        }
+
+        //  negative affix count will use the rarity's options
+        if (itemDefinition.effectOptions.minRandomAffixes < 0) {
+            effectOptions.minRandomAffixes = rarity.minAffixes;
+        }
+
+        if (itemDefinition.effectOptions.maxRandomAffixes < 0) {
+            effectOptions.maxRandomAffixes = rarity.maxAffixes;
         }
 
         //  Merge with any options the item def specifies
