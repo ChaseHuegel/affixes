@@ -2,11 +2,10 @@ package io.github.chasehuegel.affixes.models;
 
 import java.util.List;
 
-public class Affix {
-
-    public String attribute;
-    public String enchantment;
-    public List<String> slots;
-    public List<String> prefixes;
-    public List<String> suffixes;
-}
+public record Affix (
+    String attribute,
+    String enchantment,
+    List<String> slots,
+    List<String> prefixes,
+    List<String> suffixes
+) {}

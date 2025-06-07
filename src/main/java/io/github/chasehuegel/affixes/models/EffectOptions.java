@@ -2,33 +2,45 @@ package io.github.chasehuegel.affixes.models;
 
 import java.util.List;
 
-public class EffectOptions {
+public record EffectOptions (
+    boolean randomAffixes,
+    int minRandomAffixes,
+    int maxRandomAffixes,
+    List<Affix> affixes,
+    List<EnchantmentDefinition> enchantments,
+    List<AttributeDefinition> attributes
+) {
 
-    public boolean randomAffixes;
-    public int minRandomAffixes;
-    public int maxRandomAffixes;
-    public List<Affix> affixes;
-    public List<EnchantmentDefinition> enchantments;
-    public List<AttributeDefinition> attributes;
-    
     public EffectOptions merge(EffectOptions other) {
-        randomAffixes |= other.randomAffixes;
+        var mergedRandomAffixes = this.randomAffixes | other.randomAffixes;
         
-        minRandomAffixes = Math.max(minRandomAffixes, other.minRandomAffixes);
-        maxRandomAffixes = Math.max(maxRandomAffixes, other.maxRandomAffixes);
+        var mergedMinRandomAffixes = Math.max(this.minRandomAffixes, other.minRandomAffixes);
+        var mergedMaxRandomAffixes = Math.max(this.maxRandomAffixes, other.maxRandomAffixes);
 
-        if (enchantments == null) {
-            enchantments = other.enchantments;
+        List<Affix> mergedAffixes = null;
+        if (this.affixes == null) {
+            mergedAffixes = other.affixes;
+        } else if (other.affixes != null) {
+            mergedAffixes = this.affixes;
+            mergedAffixes.addAll(other.affixes);
+        }
+
+        List<EnchantmentDefinition> mergedEnchantments = null;
+        if (this.enchantments == null) {
+            mergedEnchantments = other.enchantments;
         } else if (other.enchantments != null) {
-            enchantments.addAll(other.enchantments);
+            mergedEnchantments = this.enchantments;
+            mergedEnchantments.addAll(other.enchantments);
         }
 
-        if (attributes == null) {
-            attributes = other.attributes;
+        List<AttributeDefinition> mergedAttributes = null;
+        if (this.attributes == null) {
+            mergedAttributes = other.attributes;
         } else if (other.attributes != null) {
-            attributes.addAll(other.attributes);
+            mergedAttributes = this.attributes;
+            mergedAttributes.addAll(other.attributes);
         }
 
-        return this;
+        return new EffectOptions(mergedRandomAffixes, mergedMinRandomAffixes, mergedMaxRandomAffixes, mergedAffixes, mergedEnchantments, mergedAttributes);
     }
 }

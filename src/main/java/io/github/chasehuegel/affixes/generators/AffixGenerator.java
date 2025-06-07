@@ -47,7 +47,7 @@ public class AffixGenerator {
     }
 
     public boolean generateAffix(ItemStack item, ItemMeta meta, String slotName, int rarityLevel) {
-        if (affixesValues.stream().noneMatch(affix -> affix.slots.contains(slotName))) {
+        if (affixesValues.stream().noneMatch(affix -> affix.slots().contains(slotName))) {
             //  No affixes for the slot
             return false;
         }
@@ -63,7 +63,7 @@ public class AffixGenerator {
             Affix affix;
             do {
                 affix = getRandomValue(affixesValues);
-            } while (!affix.slots.contains(slotName));
+            } while (!affix.slots().contains(slotName));
 
             if (!applyName(meta, affix)) {
                 //  Reroll if the name couldn't be applied
@@ -83,7 +83,7 @@ public class AffixGenerator {
     }
 
     public boolean applyAffix(ItemStack item, ItemMeta meta, Affix affix, String slotName, int rarityLevel) {
-        if (!affix.slots.contains(slotName)) {
+        if (!affix.slots().contains(slotName)) {
             //  Affix doesn't support this slot
             return false;
         }
@@ -117,9 +117,9 @@ public class AffixGenerator {
 
         List<String> textOptions;
         if (applyPrefix) {
-            textOptions = affix.prefixes;
+            textOptions = affix.prefixes();
         } else {
-            textOptions = affix.suffixes;
+            textOptions = affix.suffixes();
         }
 
         String text = getRandomValue(textOptions);
@@ -162,19 +162,19 @@ public class AffixGenerator {
     }
 
     public boolean applyEffect(ItemStack item, ItemMeta meta, String slotName, Affix affix, Rarity rarity, int rarityIndex) {
-        boolean hasAttribute = affix.attribute != null && !affix.attribute.isEmpty();
-        boolean hasEnchantment = affix.enchantment != null && !affix.enchantment.isEmpty();
+        boolean hasAttribute = affix.attribute() != null && !affix.attribute().isEmpty();
+        boolean hasEnchantment = affix.enchantment() != null && !affix.enchantment().isEmpty();
 
         //  Choose to apply an attribute or enchantment
         boolean applyAttribute = hasAttribute;
-        if (hasAttribute && hasEnchantment && rarity.enchantable) {
+        if (hasAttribute && hasEnchantment && rarity.enchantable()) {
             applyAttribute = random.nextBoolean();
         }
 
         if (!applyAttribute) {
-            var enchantmentDefinitionByRarity = enchantmentDefinitions.get(affix.enchantment);
+            var enchantmentDefinitionByRarity = enchantmentDefinitions.get(affix.enchantment());
             if (enchantmentDefinitionByRarity == null) {
-                AffixesPlugin.getInstance().getLogger().warning("Unknown enchantment " + affix.enchantment);
+                AffixesPlugin.getInstance().getLogger().warning("Unknown enchantment " + affix.enchantment());
                 return false;
             }
 
@@ -189,9 +189,9 @@ public class AffixGenerator {
             return false;
         }
 
-        var attributeDefinitionsByRarity = attributeDefinitions.get(affix.attribute);
+        var attributeDefinitionsByRarity = attributeDefinitions.get(affix.attribute());
         if (attributeDefinitionsByRarity == null) {
-            AffixesPlugin.getInstance().getLogger().warning("Unknown attribute " + affix.attribute);
+            AffixesPlugin.getInstance().getLogger().warning("Unknown attribute " + affix.attribute());
             return false;
         }
 
@@ -200,14 +200,14 @@ public class AffixGenerator {
     }
 
     public boolean applyEnchantment(ItemStack item, ItemMeta meta, EnchantmentDefinition enchantmentDefinition) {
-        NamespacedKey enchantmentKey = NamespacedKey.fromString(enchantmentDefinition.enchantment);
+        NamespacedKey enchantmentKey = NamespacedKey.fromString(enchantmentDefinition.enchantment());
         if (enchantmentKey == null) {
             return false;
         }
 
         Registry<Enchantment> enchantmentRegistry = RegistryAccess.registryAccess().getRegistry(RegistryKey.ENCHANTMENT);
         Enchantment enchantment = enchantmentRegistry.get(enchantmentKey);
-        int level = enchantmentDefinition.max <= enchantmentDefinition.min ? enchantmentDefinition.min : random.nextInt(enchantmentDefinition.min, enchantmentDefinition.max + 1);
+        int level = enchantmentDefinition.max() <= enchantmentDefinition.min() ? enchantmentDefinition.min() : random.nextInt(enchantmentDefinition.min(), enchantmentDefinition.max() + 1);
 
         assert enchantment != null;
         if (!canEnchant(item, enchantment)) {
@@ -239,14 +239,14 @@ public class AffixGenerator {
     }
 
     public boolean applyAttribute(ItemMeta meta, String slotName, AttributeDefinition attributeDefinition) {
-        NamespacedKey attributeKey = NamespacedKey.fromString(attributeDefinition.attribute);
+        NamespacedKey attributeKey = NamespacedKey.fromString(attributeDefinition.attribute());
         if (attributeKey == null) {
             return false;
         }
 
         Attribute attribute = Registry.ATTRIBUTE.get(attributeKey);
-        float amount = attributeDefinition.max <= attributeDefinition.min ? attributeDefinition.min : random.nextFloat(attributeDefinition.min, attributeDefinition.max);
-        AttributeModifier.Operation operation = getOperation(attributeDefinition.operation);
+        float amount = attributeDefinition.max() <= attributeDefinition.min() ? attributeDefinition.min() : random.nextFloat(attributeDefinition.min(), attributeDefinition.max());
+        AttributeModifier.Operation operation = getOperation(attributeDefinition.operation());
         EquipmentSlotGroup slot = EquipmentSlotGroup.getByName(slotName);
 
         //  If the same kind of modifier is already present, remove it and add it onto the amount

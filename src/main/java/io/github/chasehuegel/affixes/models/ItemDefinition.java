@@ -2,13 +2,12 @@ package io.github.chasehuegel.affixes.models;
 
 import java.util.List;
 
-public class ItemDefinition {
-
-    public String name;
-    public String rarity;
-    public EffectOptions effectOptions;
-    public List<String> slots;
-    public List<String> attributes;
-    public List<String> enchantments;
-    public MaterialInfo material;
-}
+public record ItemDefinition (
+    String name,
+    String rarity,
+    EffectOptions effectOptions,
+    List<String> slots,
+    List<String> attributes,
+    List<String> enchantments,
+    MaterialInfo material
+) {}

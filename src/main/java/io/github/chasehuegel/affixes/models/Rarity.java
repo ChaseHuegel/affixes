@@ -2,25 +2,26 @@ package io.github.chasehuegel.affixes.models;
 
 import java.util.Map;
 
-public class Rarity {
-    public String name;
-    public String color;
-    public float weight;
-    public int minAffixes;
-    public int maxAffixes;
-    public boolean enchantable;
-    public boolean unbreakable;
+public record Rarity (
+    String name,
+    String color,
+    float weight,
+    int minAffixes,
+    int maxAffixes,
+    boolean enchantable,
+    boolean unbreakable
+) {
 
     public static Rarity fromMap(Map<?, ?> map) {
-        Rarity rarity = new Rarity();
-        rarity.name = (String) map.get("name");
-        rarity.color = (String) map.get("color");
-        rarity.weight = ((Number) map.get("weight")).floatValue();
-        rarity.minAffixes = ((Number) map.get("minAffixes")).intValue();
-        rarity.maxAffixes = ((Number) map.get("maxAffixes")).intValue();
-        rarity.enchantable = map.get("enchantable") != null && (Boolean) map.get("enchantable");
-        rarity.unbreakable = map.get("unbreakable") != null && (Boolean) map.get("unbreakable");
-        return rarity;
+        var name = (String) map.get("name");
+        var color = (String) map.get("color");
+        var weight = ((Number) map.get("weight")).floatValue();
+        var minAffixes = ((Number) map.get("minAffixes")).intValue();
+        var maxAffixes = ((Number) map.get("maxAffixes")).intValue();
+        var enchantable = map.get("enchantable") != null && (Boolean) map.get("enchantable");
+        var unbreakable = map.get("unbreakable") != null && (Boolean) map.get("unbreakable");
+        
+        return new Rarity(name, color, weight, minAffixes, maxAffixes, enchantable, unbreakable);
     }
 }
 

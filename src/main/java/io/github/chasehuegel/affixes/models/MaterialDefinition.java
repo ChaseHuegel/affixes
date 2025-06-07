@@ -2,8 +2,8 @@ package io.github.chasehuegel.affixes.models;
 
 import java.util.List;
 
-public class MaterialDefinition {
-    public List<String> slots;
-    public List<MaterialInfo> materials;
-    public List<String> names;
-}
+public record MaterialDefinition (
+    List<String> slots,
+    List<MaterialInfo> materials,
+    List<String> names
+) {}
