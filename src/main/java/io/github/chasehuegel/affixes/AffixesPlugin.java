@@ -1,6 +1,7 @@
 package io.github.chasehuegel.affixes;
 
 import com.google.gson.Gson;
+import io.github.chasehuegel.affixes.bstats.Metrics;
 import io.github.chasehuegel.affixes.commands.AffixesCommandHandler;
 import io.github.chasehuegel.affixes.generators.AffixGenerator;
 import io.github.chasehuegel.affixes.generators.ItemGenerator;
@@ -46,6 +47,9 @@ public final class AffixesPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        int pluginId = 26114;
+        Metrics metrics = new Metrics(this, pluginId);
+
         init();
     }
 
