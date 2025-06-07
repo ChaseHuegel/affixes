@@ -174,18 +174,24 @@ public class ItemGenerator {
             if (definitionIndex < materialDefinitions.size()) {
                 MaterialDefinition materialDefinition = materialDefinitions.get(definitionIndex);
                 ItemStack item = generate(materialDefinition, rarityLevel);
-                if (item != null) {
-                    return item;
+                if (item == null) {
+                    //  Failed. Try rerolling.
+                    continue;
                 }
+
+                return item;
             }
 
             //  Else, within range of item defs
             definitionIndex -= materialDefinitions.size();
             ItemDefinition itemDefinition = itemDefinitionsForRarity.get(definitionIndex);
             ItemStack item = generate(itemDefinition);
-            if (item != null) {
-                return item;
+            if (item == null) {
+                //  Failed. Try rerolling.
+                continue;
             }
+            
+            return item;
         }
 
         return null;
