@@ -1,11 +1,4 @@
 ﻿{
-  "name": {
-    "attribute": "",
-    "enchantment": "",
-    "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet"],
-    "prefixes": [],
-    "suffixes": []
-  },
   "speed": {
     "attribute": "speed",
     "enchantment": "",
