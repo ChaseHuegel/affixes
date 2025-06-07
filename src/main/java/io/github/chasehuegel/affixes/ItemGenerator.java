@@ -160,24 +160,35 @@ public class ItemGenerator {
     }
 
     public ItemStack generate() {
-        int rarityLevel = getWeightedRandomRarityLevel();
+        //  Allow up to 3 rerolls if generation fails to create an item
+        for (int i = 0; i < 3; i++) {
+            int rarityLevel = getWeightedRandomRarityLevel();
 
-        List<ItemDefinition> itemDefinitionsForRarity = itemDefinitionsByRarityLevel.get(rarityLevel);
+            List<ItemDefinition> itemDefinitionsForRarity = itemDefinitionsByRarityLevel.get(rarityLevel);
 
-        //  Pick a material or item def with equal weight to all items
-        int totalDefinitionChoices = materialDefinitions.size() + itemDefinitionsForRarity.size();
-        int definitionIndex = random.nextInt(totalDefinitionChoices);
+            //  Pick a material or item def with equal weight to all items
+            int totalDefinitionChoices = materialDefinitions.size() + itemDefinitionsForRarity.size();
+            int definitionIndex = random.nextInt(totalDefinitionChoices);
 
-        //  Within range of material defs
-        if (definitionIndex < materialDefinitions.size()) {
-            MaterialDefinition materialDefinition = materialDefinitions.get(definitionIndex);
-            return generate(materialDefinition, rarityLevel);
+            //  Within range of material defs
+            if (definitionIndex < materialDefinitions.size()) {
+                MaterialDefinition materialDefinition = materialDefinitions.get(definitionIndex);
+                ItemStack item = generate(materialDefinition, rarityLevel);
+                if (item != null) {
+                    return item;
+                }
+            }
+
+            //  Else, within range of item defs
+            definitionIndex -= materialDefinitions.size();
+            ItemDefinition itemDefinition = itemDefinitionsForRarity.get(definitionIndex);
+            ItemStack item = generate(itemDefinition);
+            if (item != null) {
+                return item;
+            }
         }
 
-        //  Else, within range of item defs
-        definitionIndex -= materialDefinitions.size();
-        ItemDefinition itemDefinition = itemDefinitionsForRarity.get(definitionIndex);
-        return generate(itemDefinition);
+        return null;
     }
 
     public ItemStack generate(MaterialDefinition materialDefinition) {

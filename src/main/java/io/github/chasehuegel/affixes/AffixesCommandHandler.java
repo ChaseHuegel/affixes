@@ -92,12 +92,19 @@ public class AffixesCommandHandler implements CommandExecutor, TabCompleter {
             return true;
         }
 
+        int itemsGenerated = 0;
         for (int i = 0; i < amount; i++) {
             ItemStack item = itemGenerator.generate();
+            if (item == null) {
+                sender.sendMessage(Component.text("Failed generate an item to give " + player.getName()).color(NamedTextColor.RED));
+                continue;
+            }
+
             player.getInventory().addItem(item);
+            itemsGenerated++;
         }
 
-        sender.sendMessage("Gave " + player.getName() + " " + amount + " items with affixes.");
+        sender.sendMessage("Gave " + player.getName() + " " + itemsGenerated + " items with affixes.");
         return true;
     }
 
