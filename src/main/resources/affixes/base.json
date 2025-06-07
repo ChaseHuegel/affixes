@@ -234,15 +234,15 @@
     "attribute": "enlarge",
     "enchantment": "",
     "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet"],
-    "prefixes": ["Enlarging", "Giant's", "Growing", "Hulking", "Titanic", "Brawny"],
-    "suffixes": ["of Enlargement", "of the Giant", "of the Hulk", "of Growth", "of the Titan"]
+    "prefixes": ["Enlarging", "Giant's", "Growing", "Hulking", "Titanic", "Brawny", "Ogre's"],
+    "suffixes": ["of Enlargement", "of the Giant", "of the Hulk", "of Growth", "of the Titan", "of the Ogre"]
   },
   "shrink": {
     "attribute": "shrink",
     "enchantment": "",
     "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet"],
-    "prefixes": ["Shrinking", "Shrunken", "Shortening", "Goblin"],
-    "suffixes": ["of Shrinking", "of Shortening", "of the Goblin"]
+    "prefixes": ["Shrinking", "Shrunken", "Shortening", "Goblin", "Dwarven", "Gnomish", "Endermite's"],
+    "suffixes": ["of Shrinking", "of Shortening", "of the Goblin", "of Dwarvenkind", "of the Endermite", "of Gnomekind", "of Goblinkind"]
   },
   "sneak_speed": {
     "attribute": "sneak_speed",
