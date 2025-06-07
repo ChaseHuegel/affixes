@@ -5,8 +5,11 @@ import io.github.chasehuegel.affixes.bstats.Metrics;
 import io.github.chasehuegel.affixes.commands.AffixesCommandHandler;
 import io.github.chasehuegel.affixes.generators.AffixGenerator;
 import io.github.chasehuegel.affixes.generators.ItemGenerator;
+import io.github.chasehuegel.affixes.listeners.EnchantingListener;
 import io.github.chasehuegel.affixes.models.*;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.HandlerList;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -16,12 +19,9 @@ import java.util.*;
 
 public final class AffixesPlugin extends JavaPlugin {
 
-    private static AffixesPlugin instance;
-    public static AffixesPlugin getInstance() {
-        return instance;
-    }
-
     public final static String NAMESPACE = "affixes";
+
+    public final boolean inDev = true;
 
     private final String[] defaultJsonResources = new String[] {
         "materials/swords.json",
@@ -47,24 +47,29 @@ public final class AffixesPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        //  Enable bstats
         int pluginId = 26114;
-        Metrics metrics = new Metrics(this, pluginId);
+        var metrics = new Metrics(this, pluginId);
 
-        init();
+        initialize();
+    }
+
+    @Override
+    public void onDisable() {
+        HandlerList.unregisterAll(this);
     }
 
     public void reload() {
         getLogger().info("Reloading Affixes...");
 
+        HandlerList.unregisterAll(this);
         reloadConfig();
-        init();
+        initialize();
 
         getLogger().info("Reloaded Affixes.");
     }
 
-    private void init() {
-        instance = this;
-
+    private void initialize() {
         //  Init default config
         getConfig().options().copyDefaults(true);
         saveDefaultConfig();
@@ -154,12 +159,14 @@ public final class AffixesPlugin extends JavaPlugin {
         }
 
         //  Create generators
-        var affixGenerator = new AffixGenerator(rarities, affixes, enchantmentDefinitions, attributeDefinitions);
-        var itemGenerator = new ItemGenerator(affixGenerator, materialDefinitions, itemDefinitions, enchantmentDefinitions, attributeDefinitions, rarities);
+        var affixGenerator = new AffixGenerator(this, rarities, affixes, enchantmentDefinitions, attributeDefinitions);
+        var itemGenerator = new ItemGenerator(this, affixGenerator, materialDefinitions, itemDefinitions, enchantmentDefinitions, attributeDefinitions, rarities);
 
         //  Register commands
-        Objects.requireNonNull(getCommand("affixes")).setExecutor(new AffixesCommandHandler(itemGenerator));
-        Objects.requireNonNull(getCommand("affixes")).setTabCompleter(new AffixesCommandHandler(itemGenerator));
+        var rootCommand = Objects.requireNonNull(getCommand("affixes"));
+        var rootCommandHandler = new AffixesCommandHandler(this, itemGenerator);
+        rootCommand.setExecutor(rootCommandHandler);
+        rootCommand.setTabCompleter(rootCommandHandler);
     }
 
     private <T> T loadJsonResource(File file, Class<T> tClass) {

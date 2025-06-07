@@ -19,9 +19,11 @@ import java.util.List;
 
 public class AffixesCommandHandler implements CommandExecutor, TabCompleter {
 
+    private final AffixesPlugin plugin;
     private final ItemGenerator itemGenerator;
 
-    public AffixesCommandHandler(ItemGenerator itemGenerator) {
+    public AffixesCommandHandler(AffixesPlugin plugin, ItemGenerator itemGenerator) {
+        this.plugin = plugin;
         this.itemGenerator = itemGenerator;
     }
 
@@ -129,7 +131,7 @@ public class AffixesCommandHandler implements CommandExecutor, TabCompleter {
         }
 
         sender.sendMessage("Reloading Affixes...");
-        AffixesPlugin.getInstance().reload();
+        plugin.reload();
         sender.sendMessage("Reloaded Affixes.");
         return true;
     }

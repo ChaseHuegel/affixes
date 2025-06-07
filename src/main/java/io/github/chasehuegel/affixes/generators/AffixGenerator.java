@@ -5,6 +5,7 @@ import io.github.chasehuegel.affixes.models.Affix;
 import io.github.chasehuegel.affixes.models.AttributeDefinition;
 import io.github.chasehuegel.affixes.models.EnchantmentDefinition;
 import io.github.chasehuegel.affixes.models.Rarity;
+import io.github.chasehuegel.affixes.util.AffixesInspector;
 import io.papermc.paper.registry.RegistryAccess;
 import io.papermc.paper.registry.RegistryKey;
 import net.kyori.adventure.text.Component;
@@ -19,7 +20,6 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
 import java.util.*;
@@ -27,6 +27,7 @@ import java.util.*;
 public class AffixGenerator {
 
     private final Random random = new Random();
+    private final AffixesPlugin plugin;
     private final List<Rarity> rarities;
     private final Map<String, Affix> affixes;
     private final List<Affix> affixesValues;
@@ -34,11 +35,13 @@ public class AffixGenerator {
     private final Map<String, List<AttributeDefinition>> attributeDefinitions;
 
     public AffixGenerator(
+        AffixesPlugin plugin,
         List<Rarity> rarities,
         Map<String, Affix> affixes,
         Map<String, List<EnchantmentDefinition>> enchantmentDefinitions,
         Map<String, List<AttributeDefinition>> attributeDefinitions
     ) {
+        this.plugin = plugin;
         this.rarities = rarities;
         this.affixes = affixes;
         this.affixesValues = new ArrayList<>(affixes.values());
@@ -112,8 +115,8 @@ public class AffixGenerator {
         }
 
         //  Only allow a single suffix
-        Boolean hasSuffix = getCustomMetadata(meta, "suffix", PersistentDataType.BOOLEAN);
-        boolean applyPrefix = (hasSuffix != null && hasSuffix) || random.nextBoolean();
+        boolean hasSuffix = AffixesInspector.getHasSuffix(meta);
+        boolean applyPrefix = hasSuffix || random.nextBoolean();
 
         List<String> textOptions;
         if (applyPrefix) {
@@ -146,14 +149,14 @@ public class AffixGenerator {
                     .decoration(TextDecoration.ITALIC, false)
                     .mergeStyle(displayName);
 
-            setCustomMetadata(meta, "prefix", PersistentDataType.BOOLEAN, true);
+            AffixesInspector.setHasPrefix(meta, true);
         } else {
             prefixComponent = displayName;
             suffixComponent = Component.text(" " + text)
                     .decoration(TextDecoration.ITALIC, false)
                     .mergeStyle(displayName);
 
-            setCustomMetadata(meta, "suffix", PersistentDataType.BOOLEAN, true);
+            AffixesInspector.setHasSuffix(meta, true);
         }
 
         Component newName = prefixComponent.append(suffixComponent);
@@ -174,7 +177,7 @@ public class AffixGenerator {
         if (!applyAttribute) {
             var enchantmentDefinitionByRarity = enchantmentDefinitions.get(affix.enchantment());
             if (enchantmentDefinitionByRarity == null) {
-                AffixesPlugin.getInstance().getLogger().warning("Unknown enchantment " + affix.enchantment());
+                plugin.getLogger().warning("Unknown enchantment " + affix.enchantment());
                 return false;
             }
 
@@ -191,7 +194,7 @@ public class AffixGenerator {
 
         var attributeDefinitionsByRarity = attributeDefinitions.get(affix.attribute());
         if (attributeDefinitionsByRarity == null) {
-            AffixesPlugin.getInstance().getLogger().warning("Unknown attribute " + affix.attribute());
+            plugin.getLogger().warning("Unknown attribute " + affix.attribute());
             return false;
         }
 
@@ -288,26 +291,6 @@ public class AffixGenerator {
 
     private <T> T getRandomValue(List<T> list) {
         return list.get(random.nextInt(list.size()));
-    }
-
-    private <P, C> void setCustomMetadata(ItemMeta meta, String key, PersistentDataType<P, C> type, C value) {
-        if (meta == null) {
-            return;
-        }
-
-        NamespacedKey namespacedKey = new NamespacedKey(AffixesPlugin.NAMESPACE, key);
-        PersistentDataContainer container = meta.getPersistentDataContainer();
-        container.set(namespacedKey, type, value);
-    }
-
-    private <P, C> C getCustomMetadata(ItemMeta meta, String key, PersistentDataType<P, C> type) {
-        if (meta == null) {
-            return null;
-        }
-
-        NamespacedKey namespacedKey = new NamespacedKey(AffixesPlugin.NAMESPACE, key);
-        PersistentDataContainer container = meta.getPersistentDataContainer();
-        return container.get(namespacedKey, type);
     }
 
     private boolean componentContainsText(Component component, String text) {

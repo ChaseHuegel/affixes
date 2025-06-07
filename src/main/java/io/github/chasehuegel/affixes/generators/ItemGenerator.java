@@ -20,6 +20,7 @@ import java.util.*;
 public class ItemGenerator {
 
     private final Random random = new Random();
+    private final AffixesPlugin plugin;
     private final AffixGenerator affixGenerator;
     private final List<MaterialDefinition> materialDefinitions;
     private final List<Rarity> rarities;
@@ -31,13 +32,15 @@ public class ItemGenerator {
     private final Map<String, Rarity> raritiesByName;
 
     public ItemGenerator(
-            AffixGenerator affixGenerator,
-            List<MaterialDefinition> materialDefinitions,
-            Map<String, ItemDefinition> itemDefinitions,
-            Map<String, List<EnchantmentDefinition>> enchantmentDefinitions,
-            Map<String, List<AttributeDefinition>> attributeDefinitions,
-            List<Rarity> rarities
+        AffixesPlugin plugin,
+        AffixGenerator affixGenerator,
+        List<MaterialDefinition> materialDefinitions,
+        Map<String, ItemDefinition> itemDefinitions,
+        Map<String, List<EnchantmentDefinition>> enchantmentDefinitions,
+        Map<String, List<AttributeDefinition>> attributeDefinitions,
+        List<Rarity> rarities
     ) {
+        this.plugin = plugin;
         this.affixGenerator = affixGenerator;
         this.materialDefinitions = materialDefinitions;
         this.itemDefinitions = itemDefinitions;
@@ -133,7 +136,7 @@ public class ItemGenerator {
         if (itemDefinition.rarity() != null && !itemDefinition.rarity().isEmpty()) {
             rarity = raritiesByName.get(itemDefinition.rarity());
             if (rarity == null) {
-                AffixesPlugin.getInstance().getLogger().warning("Unknown rarity: " + itemDefinition.rarity());
+                plugin.getLogger().warning("Unknown rarity: " + itemDefinition.rarity());
                 return null;
             }
 
@@ -183,13 +186,13 @@ public class ItemGenerator {
     public ItemStack generate(String itemName, MaterialInfo materialInfo, int rarityLevel, Rarity rarity, List<String> allowedSlotNames, EffectOptions effectOptions) {
         var material = Material.matchMaterial(materialInfo.name());
         if (material == null) {
-            AffixesPlugin.getInstance().getLogger().warning("Unknown material: " + materialInfo.name());
+            plugin.getLogger().warning("Unknown material: " + materialInfo.name());
             return null;
         }
 
         NamedTextColor rarityTextColor = NamedTextColor.NAMES.value(rarity.color().toLowerCase());
         if (rarityTextColor == null) {
-            AffixesPlugin.getInstance().getLogger().warning("Unknown rarity color: " + rarity.color());
+            plugin.getLogger().warning("Unknown rarity color: " + rarity.color());
             return null;
         }
 
@@ -313,7 +316,7 @@ public class ItemGenerator {
         }
 
         if (!appliedAnyEffects) {
-            AffixesPlugin.getInstance().getLogger().warning("Failed to generate an item with any effects.");
+            plugin.getLogger().warning("Failed to generate an item with any effects.");
             return null;
         }
 
