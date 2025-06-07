@@ -52,22 +52,29 @@ public class AffixGenerator {
             return false;
         }
 
-        //  Pick a random affix for the slot
-        Affix affix;
-        do {
-            affix = getRandomValue(affixesValues);
-        } while (!affix.slots.contains(slotName));
+        //  Attempt up to 3 rerolls
+        for (int i = 0; i < 3; i++) {
+            //  Pick a random affix for the slot
+            Affix affix;
+            do {
+                affix = getRandomValue(affixesValues);
+            } while (!affix.slots.contains(slotName));
 
-        if (!applyName(meta, affix)) {
-            return false;
+            if (!applyName(meta, affix)) {
+                //  Reroll if the name couldn't be applied
+                continue;
+            }
+
+            Rarity rarity = rarities.get(rarityLevel);
+            if (!applyEffect(item, meta, slotName, affix, rarity, rarityLevel)) {
+                //  Reroll if the effect couldn't be applied
+                continue;
+            }
+
+            return true;
         }
 
-        Rarity rarity = rarities.get(rarityLevel);
-        if (!applyEffect(item, meta, slotName, affix, rarity, rarityLevel)) {
-            return false;
-        }
-
-        return true;
+        return false;
     }
 
     public boolean applyAffix(ItemStack item, ItemMeta meta, Affix affix, String slotName, int rarityLevel) {

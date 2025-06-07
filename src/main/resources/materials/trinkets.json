@@ -217,7 +217,7 @@
     ],
     "materials": [
       {"name": "minecraft:lantern", "weight": 1.0, "modelMin": 0, "modelMax": 0},
-      {"name": "minecraft:soul_lantern", "weight": 1.0, "modelMin": 0, "modelMax": 0}
+      {"name": "minecraft:soul_lantern", "weight": 1.0, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:soul_torch", "weight": 1.0, "modelMin": 0, "modelMax": 0}
     ],
     "names": [
