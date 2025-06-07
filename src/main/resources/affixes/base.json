@@ -86,7 +86,7 @@
   "projectile_protection": {
     "attribute": "",
     "enchantment": "projectile_protection",
-    "slots": ["offhand", "head", "chest", "legs", "feet"],
+    "slots": ["head", "chest", "legs", "feet"],
     "prefixes": ["Skeleton's", "Arrow-turning", "Arrowproof", "Skeletonproof", "Turning", "Rebounding"],
     "suffixes": ["of the Skeleton", "of Rebound", "of Arrow-turning", "the Mirror"]
   },
@@ -154,8 +154,8 @@
     "suffixes": ["of Feather Falling", "of Descent", "of the Zephyr"]
   },
   "jump": {
-    "attribute": "",
-    "enchantment": "jump",
+    "attribute": "jump",
+    "enchantment": "",
     "slots": ["offhand", "legs", "feet"],
     "prefixes": ["Slime", "Slime's", "Bouncing", "Bounding", "Rabbit", "Rabbit's", "Springing", "Leaping", "Jumping", "Hopping", "Froggy"],
     "suffixes": ["of the Slime", "of Bouncing", "of Bounding", "of the Rabbit", "of Springing", "of Jumping", "of Hopping", "of the Frog"]
