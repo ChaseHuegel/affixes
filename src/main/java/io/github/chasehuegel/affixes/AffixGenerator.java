@@ -158,14 +158,26 @@ public class AffixGenerator {
         }
 
         if (!applyAttribute) {
-            EnchantmentDefinition enchantmentDefinition = enchantmentDefinitions.get(affix.enchantment).get(rarityIndex);
+            var enchantmentDefinitionByRarity = enchantmentDefinitions.get(affix.enchantment);
+            if (enchantmentDefinitionByRarity == null) {
+                AffixesPlugin.getInstance().getLogger().warning("Unknown enchantment " + affix.enchantment);
+                return false;
+            }
+
+            EnchantmentDefinition enchantmentDefinition = enchantmentDefinitionByRarity.get(rarityIndex);
             if (applyEnchantment(meta, enchantmentDefinition)) {
                 return true;
             }
             //  If the enchantment couldn't be applied, try to fallback to attributes
         }
 
-        AttributeDefinition attributeDefinition = attributeDefinitions.get(affix.attribute).get(rarityIndex);
+        var attributeDefinitionsByRarity = attributeDefinitions.get(affix.attribute);
+        if (attributeDefinitionsByRarity == null) {
+            AffixesPlugin.getInstance().getLogger().warning("Unknown attribute " + affix.attribute);
+            return false;
+        }
+
+        AttributeDefinition attributeDefinition = attributeDefinitionsByRarity.get(rarityIndex);
         return applyAttribute(meta, slotName, attributeDefinition);
     }
 
