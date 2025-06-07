@@ -1,5 +1,6 @@
 package io.github.chasehuegel.affixes.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public record EffectOptions (
@@ -17,27 +18,27 @@ public record EffectOptions (
         var mergedMinRandomAffixes = Math.max(this.minRandomAffixes, other.minRandomAffixes);
         var mergedMaxRandomAffixes = Math.max(this.maxRandomAffixes, other.maxRandomAffixes);
 
-        List<Affix> mergedAffixes = null;
-        if (this.affixes == null) {
+        List<Affix> mergedAffixes = this.affixes;
+        if (mergedAffixes == null) {
             mergedAffixes = other.affixes;
         } else if (other.affixes != null) {
-            mergedAffixes = this.affixes;
+            mergedAffixes = new ArrayList<>(this.affixes);
             mergedAffixes.addAll(other.affixes);
         }
 
-        List<EnchantmentDefinition> mergedEnchantments = null;
-        if (this.enchantments == null) {
+        List<EnchantmentDefinition> mergedEnchantments = this.enchantments;
+        if (mergedEnchantments == null) {
             mergedEnchantments = other.enchantments;
         } else if (other.enchantments != null) {
-            mergedEnchantments = this.enchantments;
+            mergedEnchantments = new ArrayList<>(this.enchantments);
             mergedEnchantments.addAll(other.enchantments);
         }
 
-        List<AttributeDefinition> mergedAttributes = null;
-        if (this.attributes == null) {
+        List<AttributeDefinition> mergedAttributes = this.attributes;
+        if (mergedAttributes == null) {
             mergedAttributes = other.attributes;
         } else if (other.attributes != null) {
-            mergedAttributes = this.attributes;
+            mergedAttributes = new ArrayList<>(this.attributes);
             mergedAttributes.addAll(other.attributes);
         }
 
