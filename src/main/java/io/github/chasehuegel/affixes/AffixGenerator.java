@@ -5,12 +5,14 @@ import io.papermc.paper.registry.RegistryKey;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.TextDecoration;
+import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Registry;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.EquipmentSlotGroup;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
@@ -39,7 +41,7 @@ public class AffixGenerator {
         this.attributeDefinitions = attributeDefinitions;
     }
 
-    public boolean generateAffix(ItemMeta meta, String slotName, int rarityLevel) {
+    public boolean generateAffix(ItemStack item, ItemMeta meta, String slotName, int rarityLevel) {
         if (affixesValues.stream().noneMatch(affix -> affix.slots.contains(slotName))) {
             //  No affixes for the slot
             return false;
@@ -61,14 +63,14 @@ public class AffixGenerator {
         }
 
         Rarity rarity = rarities.get(rarityLevel);
-        if (!applyEffect(meta, slotName, affix, rarity, rarityLevel)) {
+        if (!applyEffect(item, meta, slotName, affix, rarity, rarityLevel)) {
             return false;
         }
 
         return true;
     }
 
-    public boolean applyAffix(ItemMeta meta, Affix affix, String slotName, int rarityLevel) {
+    public boolean applyAffix(ItemStack item, ItemMeta meta, Affix affix, String slotName, int rarityLevel) {
         if (!affix.slots.contains(slotName)) {
             //  Affix doesn't support this slot
             return false;
@@ -84,7 +86,7 @@ public class AffixGenerator {
         }
 
         Rarity rarity = rarities.get(rarityLevel);
-        if (!applyEffect(meta, slotName, affix, rarity, rarityLevel)) {
+        if (!applyEffect(item, meta, slotName, affix, rarity, rarityLevel)) {
             return false;
         }
 
@@ -147,7 +149,7 @@ public class AffixGenerator {
         return true;
     }
 
-    public boolean applyEffect(ItemMeta meta, String slotName, Affix affix, Rarity rarity, int rarityIndex) {
+    public boolean applyEffect(ItemStack item, ItemMeta meta, String slotName, Affix affix, Rarity rarity, int rarityIndex) {
         boolean hasAttribute = affix.attribute != null && !affix.attribute.isEmpty();
         boolean hasEnchantment = affix.enchantment != null && !affix.enchantment.isEmpty();
 
@@ -165,7 +167,7 @@ public class AffixGenerator {
             }
 
             EnchantmentDefinition enchantmentDefinition = enchantmentDefinitionByRarity.get(rarityIndex);
-            if (applyEnchantment(meta, enchantmentDefinition)) {
+            if (applyEnchantment(item, meta, enchantmentDefinition)) {
                 return true;
             }
             //  If the enchantment couldn't be applied, try to fallback to attributes
@@ -181,7 +183,7 @@ public class AffixGenerator {
         return applyAttribute(meta, slotName, attributeDefinition);
     }
 
-    public boolean applyEnchantment(ItemMeta meta, EnchantmentDefinition enchantmentDefinition) {
+    public boolean applyEnchantment(ItemStack item, ItemMeta meta, EnchantmentDefinition enchantmentDefinition) {
         NamespacedKey enchantmentKey = NamespacedKey.fromString(enchantmentDefinition.enchantment);
         if (enchantmentKey == null) {
             return false;
@@ -190,6 +192,11 @@ public class AffixGenerator {
         Registry<Enchantment> enchantmentRegistry = RegistryAccess.registryAccess().getRegistry(RegistryKey.ENCHANTMENT);
         Enchantment enchantment = enchantmentRegistry.get(enchantmentKey);
         int level = enchantmentDefinition.max <= enchantmentDefinition.min ? enchantmentDefinition.min : random.nextInt(enchantmentDefinition.min, enchantmentDefinition.max + 1);
+
+        assert enchantment != null;
+        if (!canEnchant(item, enchantment)) {
+            return false;
+        }
 
         //  If the enchant is already present, and its max level is >1, just increase its level.
         if (meta.hasEnchant(enchantment)) {
@@ -203,6 +210,16 @@ public class AffixGenerator {
         }
 
         return meta.addEnchant(enchantment, level, true);
+    }
+
+    private boolean canEnchant(ItemStack item, Enchantment enchantment) {
+        //  Sharpness and fire aspect are allowed on anything that isn't a bow.
+        //  These enchants work on all items even if they normally aren't allowed.
+        if (enchantment == Enchantment.SHARPNESS || enchantment == Enchantment.FIRE_ASPECT) {
+            return item.getType() != Material.BOW && item.getType() != Material.CROSSBOW;
+        }
+
+        return enchantment.canEnchantItem(item);
     }
 
     public boolean applyAttribute(ItemMeta meta, String slotName, AttributeDefinition attributeDefinition) {

@@ -34,9 +34,23 @@
     "prefixes": ["Striking", "Quickstrike", "Rapid", "Lightning", "Hasty", "Flashing", "Rapidfire", "Flurry", "Whirlwind", "Hurricane"],
     "suffixes": ["of the Quickblade", "of Rapid Strikes", "of Lightning", "of Striking", "of Haste", "of Flurrying", "the Whirlwind", "the Hurricane"]
   },
+  "quick_charge": {
+    "attribute": "",
+    "enchantment": "quick_charge",
+    "slots": ["mainhand", "offhand"],
+    "prefixes": ["Striking", "Quickstrike", "Rapid", "Lightning", "Hasty", "Flashing", "Rapidfire", "Flurry", "Whirlwind", "Hurricane"],
+    "suffixes": ["of the Quickblade", "of Rapid Strikes", "of Lightning", "of Striking", "of Haste", "of Flurrying", "the Whirlwind", "the Hurricane"]
+  },
   "damage_increase": {
     "attribute": "damage_percent",
     "enchantment": "sharpness",
+    "slots": ["mainhand", "offhand"],
+    "prefixes": ["Pillager's", "Vindicator's", "Jagged", "Precise", "Angry", "Menacing", "Keen", "Superior", "Hurtful", "Ruthless", "Demonic", "Zealous", "Deadly", "Razor", "Sharp", "Honed", "Serrated", "Violent", "Hacking", "Murderous", "Nasty", "Mean", "Dangerous", "Savage", "Pointy", "Masterful"],
+    "suffixes": ["of the Pillager", "of the Vindicator", "of Strength", "of Death"]
+  },
+  "damage_bow": {
+    "attribute": "",
+    "enchantment": "power",
     "slots": ["mainhand", "offhand"],
     "prefixes": ["Pillager's", "Vindicator's", "Jagged", "Precise", "Angry", "Menacing", "Keen", "Superior", "Hurtful", "Ruthless", "Demonic", "Zealous", "Deadly", "Razor", "Sharp", "Honed", "Serrated", "Violent", "Hacking", "Murderous", "Nasty", "Mean", "Dangerous", "Savage", "Pointy", "Masterful"],
     "suffixes": ["of the Pillager", "of the Vindicator", "of Strength", "of Death"]
@@ -58,6 +72,13 @@
   "knockback": {
     "attribute": "knockback",
     "enchantment": "knockback",
+    "slots": ["mainhand", "offhand"],
+    "prefixes": ["Mighty", "Forceful", "Strong", "Unpleasant", "Lead", "Ringing", "Bulky", "Hoglin's", "Iron Golem's", "Slamming", "Slinging", "Hurling", "Large", "Huge", "Massive", "Oversized", "Big", "Powerful"],
+    "suffixes": ["of Might", "of Heavy Blows", "of Ringing Blows", "of the Giant", "of the Hoglin", "of the Ravager", "of the Iron Golem", "of Power"]
+  },
+  "knockback_bow": {
+    "attribute": "",
+    "enchantment": "punch",
     "slots": ["mainhand", "offhand"],
     "prefixes": ["Mighty", "Forceful", "Strong", "Unpleasant", "Lead", "Ringing", "Bulky", "Hoglin's", "Iron Golem's", "Slamming", "Slinging", "Hurling", "Large", "Huge", "Massive", "Oversized", "Big", "Powerful"],
     "suffixes": ["of Might", "of Heavy Blows", "of Ringing Blows", "of the Giant", "of the Hoglin", "of the Ravager", "of the Iron Golem", "of Power"]
@@ -306,5 +327,19 @@
     "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet"],
     "prefixes": ["Durable", "Unbreaking", "Unbroken"],
     "suffixes": ["the Unbroken", "of Unbreaking", "of Durability"]
+  },
+  "vanishing": {
+    "attribute": "",
+    "enchantment": "vanishing_curse",
+    "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet"],
+    "prefixes": ["Vanishing", "Cursed", "Fading", "Accursed", "Ghostly", "Doomed"],
+    "suffixes": ["of Vanishing", "of Fading", "of Doom"]
+  },
+  "binding": {
+    "attribute": "",
+    "enchantment": "binding_curse",
+    "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet"],
+    "prefixes": ["Binding", "Bound", "Sticky", "Accursed", "Haunted", "Grasping", "Soulbound"],
+    "suffixes": ["the Haunted", "of Haunting", "of Binding", "the Bound"]
   }
 }

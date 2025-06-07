@@ -145,6 +145,15 @@ public class ItemGenerator {
         }
 
         for (ItemDefinition itemDefinition : itemDefinitions.values()) {
+            //  If rarity is undefined, it can be randomly generated
+            //  so should be available to all rarities
+            if (itemDefinition.rarity == null || itemDefinition.rarity.isEmpty()) {
+                for (int i = 0; i < rarities.size(); i++) {
+                    itemDefinitionsByRarityLevel.get(i).add(itemDefinition);
+                }
+                continue;
+            }
+
             int rarityLevel = rarityLevelsByName.get(itemDefinition.rarity);
             itemDefinitionsByRarityLevel.get(rarityLevel).add(itemDefinition);
         }
@@ -190,13 +199,22 @@ public class ItemGenerator {
     }
 
     public ItemStack generate(ItemDefinition itemDefinition) {
-        Rarity rarity = raritiesByName.get(itemDefinition.rarity);
-        if (rarity == null) {
-            AffixesPlugin.getInstance().getLogger().warning("Unknown rarity: " + itemDefinition.rarity);
-            return null;
-        }
+        Rarity rarity;
+        int rarityLevel;
 
-        int rarityLevel = rarityLevelsByName.get(itemDefinition.rarity);
+        if (itemDefinition.rarity == null || itemDefinition.rarity.isEmpty()) {
+            rarity = raritiesByName.get(itemDefinition.rarity);
+            if (rarity == null) {
+                AffixesPlugin.getInstance().getLogger().warning("Unknown rarity: " + itemDefinition.rarity);
+                return null;
+            }
+
+            rarityLevel = rarityLevelsByName.get(itemDefinition.rarity);
+        } else {
+            //  Undefined rarity is randomized
+            rarityLevel = getWeightedRandomRarityLevel();
+            rarity = rarities.get(rarityLevel);
+        }
 
         //  Define effect options for the generator
         var effectOptions = new EffectOptions();
@@ -319,14 +337,14 @@ public class ItemGenerator {
         if (effectOptions.affixes != null) {
             for (Affix affix : effectOptions.affixes) {
                 String slotName = getRandomValue(allowedSlotNames);
-                appliedAnyEffects |= affixGenerator.applyEffect(meta, slotName, affix, rarity, rarityLevel);
+                appliedAnyEffects |= affixGenerator.applyEffect(item, meta, slotName, affix, rarity, rarityLevel);
             }
         }
 
         //  Apply any specified enchantments
         if (effectOptions.enchantments != null) {
             for (EnchantmentDefinition enchantmentDefinition : effectOptions.enchantments) {
-                appliedAnyEffects |= affixGenerator.applyEnchantment(meta, enchantmentDefinition);
+                appliedAnyEffects |= affixGenerator.applyEnchantment(item, meta, enchantmentDefinition);
             }
         }
 
@@ -351,7 +369,7 @@ public class ItemGenerator {
             //  Apply affixes to random allowed slots
             for (int i = 0; i < affixCount; i++) {
                 String slotName = getRandomValue(allowedSlotNames);
-                appliedAnyEffects |= affixGenerator.generateAffix(meta, slotName, rarityLevel);
+                appliedAnyEffects |= affixGenerator.generateAffix(item, meta, slotName, rarityLevel);
             }
         }
 
