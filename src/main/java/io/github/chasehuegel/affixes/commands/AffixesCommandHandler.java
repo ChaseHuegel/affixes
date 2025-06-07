@@ -1,5 +1,7 @@
-package io.github.chasehuegel.affixes;
+package io.github.chasehuegel.affixes.commands;
 
+import io.github.chasehuegel.affixes.AffixesPlugin;
+import io.github.chasehuegel.affixes.generators.ItemGenerator;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;

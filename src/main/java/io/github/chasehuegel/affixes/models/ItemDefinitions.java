@@ -1,4 +1,4 @@
-package io.github.chasehuegel.affixes;
+package io.github.chasehuegel.affixes.models;
 
 import java.util.HashMap;
 

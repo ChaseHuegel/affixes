@@ -1,5 +1,10 @@
-package io.github.chasehuegel.affixes;
+package io.github.chasehuegel.affixes.generators;
 
+import io.github.chasehuegel.affixes.AffixesPlugin;
+import io.github.chasehuegel.affixes.models.Affix;
+import io.github.chasehuegel.affixes.models.AttributeDefinition;
+import io.github.chasehuegel.affixes.models.EnchantmentDefinition;
+import io.github.chasehuegel.affixes.models.Rarity;
 import io.papermc.paper.registry.RegistryAccess;
 import io.papermc.paper.registry.RegistryKey;
 import net.kyori.adventure.text.Component;

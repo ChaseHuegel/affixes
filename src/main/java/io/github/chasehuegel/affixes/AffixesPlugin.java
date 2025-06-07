@@ -1,6 +1,10 @@
 package io.github.chasehuegel.affixes;
 
 import com.google.gson.Gson;
+import io.github.chasehuegel.affixes.commands.AffixesCommandHandler;
+import io.github.chasehuegel.affixes.generators.AffixGenerator;
+import io.github.chasehuegel.affixes.generators.ItemGenerator;
+import io.github.chasehuegel.affixes.models.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
