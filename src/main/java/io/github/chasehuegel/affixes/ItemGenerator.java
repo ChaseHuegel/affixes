@@ -220,7 +220,7 @@ public class ItemGenerator {
         int rarityLevel;
 
         //  Get rarity if defined
-        if (itemDefinition.rarity == null || itemDefinition.rarity.isEmpty()) {
+        if (itemDefinition.rarity != null && !itemDefinition.rarity.isEmpty()) {
             rarity = raritiesByName.get(itemDefinition.rarity);
             if (rarity == null) {
                 AffixesPlugin.getInstance().getLogger().warning("Unknown rarity: " + itemDefinition.rarity);
