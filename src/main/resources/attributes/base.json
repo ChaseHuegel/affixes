@@ -40,12 +40,12 @@
     {"attribute": "minecraft:attack_speed", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30}
   ],
   "damage": [
-    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 0.0, "max": 1.0},
-    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 1.0, "max": 1.5},
-    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 1.5, "max": 2.0},
-    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 2.0, "max": 2.5},
-    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 2.5, "max": 3.0},
-    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 3.0, "max": 3.5}
+    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 0.0, "max": 0.25},
+    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 0.25, "max": 0.5},
+    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 0.5, "max": 0.75},
+    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 0.75, "max": 1.0},
+    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 1.0, "max": 1.25},
+    {"attribute": "minecraft:attack_damage", "operation": "add_value", "min": 1.25, "max": 1.5}
   ],
   "damage_percent": [
     {"attribute": "minecraft:attack_damage", "operation": "add_multiplied_total", "min": 0.03, "max": 0.05},
@@ -167,13 +167,21 @@
     {"attribute": "minecraft:safe_fall_distance", "operation": "add_multiplied_base", "min": 0.40, "max": 0.50},
     {"attribute": "minecraft:safe_fall_distance", "operation": "add_multiplied_base", "min": 0.50, "max": 0.60}
   ],
-  "scale": [
+  "enlarge": [
     {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05},
     {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.05, "max": 0.10},
     {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.10, "max": 0.15},
     {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.15, "max": 0.20},
     {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.20, "max": 0.25},
     {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30}
+  ],
+  "shrink": [
+    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": -0.03, "max": -0.05},
+    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": -0.05, "max": -0.10},
+    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": -0.10, "max": -0.15},
+    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": -0.15, "max": -0.20},
+    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": -0.20, "max": -0.25},
+    {"attribute": "minecraft:scale", "operation": "add_multiplied_base", "min": -0.25, "max": -0.30}
   ],
   "sneak_speed": [
     {"attribute": "minecraft:sneaking_speed", "operation": "add_multiplied_base", "min": 0.03, "max": 0.05},

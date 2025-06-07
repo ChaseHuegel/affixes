@@ -1,37 +1,317 @@
 ﻿{
+  "name": {
+    "attribute": "",
+    "enchantment": "",
+    "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet"],
+    "prefixes": [],
+    "suffixes": []
+  },
   "speed": {
     "attribute": "speed",
     "enchantment": "",
-    "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet", "body", "any"],
-    "prefixes": ["Brisk", "Fleeting", "Hasty", "Quick"],
-    "suffixes": ["of Speed", "of Fleetness", "of the Fleetfoot", "of Urgency", "of Expedition", "of Bustling", "of Velocity", "of Rapidity", "of Swiftness", "of Alacrity", "of Quickness", "of Celerity", "of Dashing", "of Sprinting", "of Hurry"]
+    "slots": ["offhand", "legs", "feet"],
+    "prefixes": ["Enderman's", "Silverfish's", "Baby Zombie's","Brisk", "Fleeting", "Hasty", "Quick", "Dashing", "Sprinter's", "Swift", "Endercharged", "Fleet", "Skittering", "Phantom’s", "Gusty", "Warden’s", "Slippery", "Soaring", "Quickfooted"],
+    "suffixes": ["of the Silverfish", "of the Enderman", "of the Baby Zombie","of Speed", "of Fleetness", "of the Fleetfoot", "of Urgency", "of Expedition", "of Velocity", "of Rapidity", "of Swiftness", "of Alacrity", "of Quickness", "of Celerity", "of Dashing", "of Sprinting", "of Hurry", "of the Phantom", "of Echoes", "of the Fox", "of Ender Transit", "of the Gale", "of Blinding Speed"]
   },
   "health": {
     "attribute": "health",
     "enchantment": "",
-    "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet", "body", "any"],
-    "prefixes": ["Hearty", "Vigorous", "Vital", "Spirited"],
-    "suffixes": ["of Life", "of Constitution", "of Health", "of Mettle", "of Vitality", "of Vigor", "of Spirit", "of Heart"]
+    "slots": ["offhand", "head", "chest", "legs", "feet"],
+    "prefixes": ["Hearty", "Vigorous", "Vital", "Spirited", "Undying", "Absorbing"],
+    "suffixes": ["of Absorption", "of Undying", "the Living", "of Life", "of Constitution", "of Health", "of Vitality", "of Vigor", "of Spirit", "of Heart"]
   },
-  "fire_melee": {
-    "attribute": "reduced_burn_time",
-    "enchantment": "fire_aspect",
-    "slots": ["mainhand", "offhand"],
-    "prefixes": ["Nether", "Burning", "Fiery", "Blazing", "Searing", "Scorching", "Ablaze", "Igniting", "Flaming", "Flickering", "Smoldering", "Igneous"],
-    "suffixes": ["of the Nether", "of the Pyro", "of the Flamekeeper", "of Scorching", "of Burning", "of the Blaze", "of Magma"]
+  "knockback_resist": {
+    "attribute": "knockback_resist",
+    "enchantment": "",
+    "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet"],
+    "prefixes": ["Heavy", "Anchored", "Rooted", "Earthen", "Rootbound", "Clad", "Hefty", "Craggy", "Stable", "Grounded"],
+    "suffixes": ["of Roots", "the Unmoveable", "of Earth", "of Anchoring", "of Stability", "of the Anvil", "of Grounding"]
+  },
+  "explosion_resist": {
+    "attribute": "explosion_knockback_resist",
+    "enchantment": "blast_protection",
+    "slots": ["head", "chest", "legs", "feet"],
+    "prefixes": ["Obsidian", "Creeperproof","Bunker", "Blastproof", "Obsidianlined", "Ghastproof", "Shelled", "Cratered", "Blasted", "Witherproof"],
+    "suffixes": ["of Obsidian", "the Bunker", "of TNT Resistance", "the Obsidian Shell", "the Blast Ward", "of the Creeper", "of the Ghast", "of the Wither", "of Shock Absorption"]
+  },
+  "attack_speed": {
+    "attribute": "attack_speed",
+    "enchantment": "",
+    "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet"],
+    "prefixes": ["Striking", "Quickstrike", "Rapid", "Lightning", "Hasty", "Flashing", "Rapidfire", "Flurry", "Whirlwind", "Hurricane"],
+    "suffixes": ["of the Quickblade", "of Rapid Strikes", "of Lightning", "of Striking", "of Haste", "of Flurrying", "the Whirlwind", "the Hurricane"]
   },
   "damage_increase": {
     "attribute": "damage_percent",
     "enchantment": "sharpness",
     "slots": ["mainhand", "offhand"],
-    "prefixes": ["Piglin Brute's", "Brutal", "Feral", "Pillager's", "Vindicator's", "Berserking", "Barbaric", "Champion's", "Warrior's", "Butcher", "Jagged", "Spiked", "Precise", "Angry", "Menacing", "Keen", "Superior", "Hurtful", "Ruthless", "Demonic", "Zealous", "Deadly", "Slayer's", "Razor", "Sharp", "Honed", "Serrated", "Violent", "Hacking", "Murderous", "Nasty", "Mean", "Dangerous", "Savage", "Pointy", "Masterful"],
-    "suffixes": ["of the Brute", "of Devastation", "of Carnage", "of the Pillager", "of the Vindicator", "of the Berserker", "of Barbarism", "of Strength", "of Death", "of Slaying", "of Butchering", "of Slashing", "of Battle", "of War", "of the Champion", "of the Warrior"]
+    "prefixes": ["Pillager's", "Vindicator's", "Jagged", "Precise", "Angry", "Menacing", "Keen", "Superior", "Hurtful", "Ruthless", "Demonic", "Zealous", "Deadly", "Razor", "Sharp", "Honed", "Serrated", "Violent", "Hacking", "Murderous", "Nasty", "Mean", "Dangerous", "Savage", "Pointy", "Masterful"],
+    "suffixes": ["of the Pillager", "of the Vindicator", "of Strength", "of Death"]
+  },
+  "damage_bonus": {
+    "attribute": "damage",
+    "enchantment": "",
+    "slots": ["mainhand", "offhand"],
+    "prefixes": ["Piglin Brute's", "Brutal", "Feral", "Berserking", "Barbaric", "Champion's", "Warrior's", "Butcher"],
+    "suffixes": ["of the Piglin Brute", "of Devastation", "of Carnage", "of the Berserker", "of Barbarism", "of Butchering", "of Battle", "of War", "of the Champion", "of the Warrior"]
+  },
+  "smite": {
+    "attribute": "damage",
+    "enchantment": "smite",
+    "slots": ["mainhand", "offhand"],
+    "prefixes": ["Smiting", "Holy", "Blessed", "Witch Slaying", "Baneful", "Cleric's", "Slaying", "Slayer's"],
+    "suffixes": ["of Bane", "the Bane", "of Smiting", "of the Cleric", "of Undead Slaying", "of Blessings", "of Witch Hunting", "of Slaying", "of the Slayer"]
   },
   "knockback": {
     "attribute": "knockback",
     "enchantment": "knockback",
     "slots": ["mainhand", "offhand"],
-    "prefixes": ["Mighty", "Forceful", "Strong", "Heavy", "Unpleasant", "Lead", "Ringing", "Bulky", "Hoglin's", "Iron Golem's", "Slamming", "Slinging", "Hurling", "Large", "Huge", "Massive", "Oversized", "Big", "Powerful"],
-    "suffixes": ["of Might", "of Heavy Blows", "of Ringing Blows", "of the Giant", "of the Hulk", "of the Hoglin", "of the Ravager", "of the Iron Golem", "of Power"]
+    "prefixes": ["Mighty", "Forceful", "Strong", "Unpleasant", "Lead", "Ringing", "Bulky", "Hoglin's", "Iron Golem's", "Slamming", "Slinging", "Hurling", "Large", "Huge", "Massive", "Oversized", "Big", "Powerful"],
+    "suffixes": ["of Might", "of Heavy Blows", "of Ringing Blows", "of the Giant", "of the Hoglin", "of the Ravager", "of the Iron Golem", "of Power"]
+  },
+  "armor": {
+    "attribute": "armor",
+    "enchantment": "",
+    "slots": ["offhand", "head", "chest", "legs", "feet"],
+    "prefixes": ["Resilient", "Solid", "Reliable", "Stalwart", "Fortified", "Sturdy", "Hardened", "Reinforced", "Plated", "Hardy"],
+    "suffixes": ["of Reinforcement", "of Resilience", "of Reliability", "of Hardiness", "the Aegis"]
+  },
+  "toughness": {
+    "attribute": "toughness",
+    "enchantment": "",
+    "slots": ["offhand", "head", "chest", "legs", "feet"],
+    "prefixes": ["Tough", "Thick", "Firm", "Dense", "Fitted", "Bedrock"],
+    "suffixes": ["of Stone", "of Bedrock", "of Toughness", "of Thick Hide", "of Density", "of Beatings"]
+  },
+  "protection": {
+    "attribute": "",
+    "enchantment": "protection",
+    "slots": ["head", "chest", "legs", "feet"],
+    "prefixes": ["Protecting", "Defender's", "Stalwart", "Guarded", "Shielded"],
+    "suffixes": ["of the Bulwark", "of the Guard", "of Shielding", "of Protection", "of the Defender"]
+  },
+  "projectile_protection": {
+    "attribute": "",
+    "enchantment": "projectile_protection",
+    "slots": ["offhand", "head", "chest", "legs", "feet"],
+    "prefixes": ["Skeleton's", "Arrow-turning", "Arrowproof", "Skeletonproof", "Turning", "Rebounding"],
+    "suffixes": ["of the Skeleton", "of Rebound", "of Arrow-turning", "the Mirror"]
+  },
+  "fire_protection": {
+    "attribute": "",
+    "enchantment": "fire_protection",
+    "slots": ["head", "chest", "legs", "feet"],
+    "prefixes": ["Lavaproof", "Fireproof", ""],
+    "suffixes": ["of Magma", "of Lava", "of Fire Protection"]
+  },
+  "fire_aspect": {
+    "attribute": "",
+    "enchantment": "fire_aspect",
+    "slots": ["mainhand", "offhand"],
+    "prefixes": ["Burning", "Fiery", "Scorching", "Ablaze", "Igniting", "Flaming", "Flickering", "Igneous"],
+    "suffixes": ["of the Pyro", "of the Flamekeeper", "of Scorching", "of Burning", "of Fire"]
+  },
+  "flame": {
+    "attribute": "",
+    "enchantment": "flame",
+    "slots": ["mainhand", "offhand"],
+    "prefixes": ["Burning", "Fiery", "Scorching", "Ablaze", "Igniting", "Flaming", "Flickering", "Igneous"],
+    "suffixes": ["of the Pyro", "of the Flamekeeper", "of Scorching", "of Burning", "of Fire"]
+  },
+  "break_speed": {
+    "attribute": "break_speed",
+    "enchantment": "",
+    "slots": ["mainhand", "offhand", "head"],
+    "prefixes": ["Mining", "Digging", "Worker's", "Burrowing", "Breaking", "Destructive"],
+    "suffixes": ["of the Miner", "of Digging", "of Mining", "of the Worker", "of Breaking", "of Destruction"]
+  },
+  "block_range": {
+    "attribute": "block_range",
+    "enchantment": "",
+    "slots": ["mainhand", "offhand", "chest"],
+    "prefixes": ["Building", "Builder's", "Construction", "Planner's", "Stretching", "Remote", "Distant"],
+    "suffixes": ["of the Builder", "of the Planner", "of Construction", "of Remote Activation"]
+  },
+  "entity_range": {
+    "attribute": "entity_range",
+    "enchantment": "",
+    "slots": ["mainhand", "offhand", "chest"],
+    "prefixes": ["Long", "Pole-like", "Lunging", "Extending", "Poking", "Reaching"],
+    "suffixes": ["of Reach", "of Extension", "of Lunging", "of Poking", "of Distant Blows"]
+  },
+  "reduced_burn_time": {
+    "attribute": "reduced_burn_time",
+    "enchantment": "",
+    "slots": ["mainhand","offhand", "head", "chest", "legs", "feet"],
+    "prefixes": ["Hot", "Warm", "Soggy", "Moist", "Wet", "Burnt", "Ashy", "Blaze's", "Blazeproof", "Smoldering", "Nether", "Smokey", "Seared", "Magma Cube's", "Magma Cream Covered"],
+    "suffixes": ["of the Blaze", "of the Nether", "of the Magma Cube", "of Fire Resistance"]
+  },
+  "reduced_fall_damage": {
+    "attribute": "reduced_fall_damage",
+    "enchantment": "",
+    "slots": ["offhand", "feet"],
+    "prefixes": ["Cloudy", "Cushioned", "Feathery", "Feathered", "Airy", "Padded"],
+    "suffixes": ["of Cushioning", "of Falling", "of Air"]
+  },
+  "feather_falling": {
+    "attribute": "",
+    "enchantment": "feather_falling",
+    "slots": ["feet"],
+    "prefixes": ["Feather-falling", "Descending", "Zephyr's"],
+    "suffixes": ["of Feather Falling", "of Descent", "of the Zephyr"]
+  },
+  "jump": {
+    "attribute": "",
+    "enchantment": "jump",
+    "slots": ["offhand", "legs", "feet"],
+    "prefixes": ["Slime", "Slime's", "Bouncing", "Bounding", "Rabbit", "Rabbit's", "Springing", "Leaping", "Jumping", "Hopping", "Froggy"],
+    "suffixes": ["of the Slime", "of Bouncing", "of Bounding", "of the Rabbit", "of Springing", "of Jumping", "of Hopping", "of the Frog"]
+  },
+  "luck": {
+    "attribute": "luck",
+    "enchantment": "",
+    "slots": ["offhand", "head", "chest", "legs", "feet"],
+    "prefixes": ["Finder's", "Treasured", "Fortunate", "Lucky", "Greedy", "Wealthy", "Valuable", "Gilded", "Encrusted", "Fancy", "Expensive", "Remarkable", "Flawless"],
+    "suffixes": ["the Treasured", "of Luck", "of Greed", "of Wealth", "the Gilded", "of the Gambler", "of Wishing", "of Finding", "of Prosperity"]
+  },
+  "luck_looting": {
+    "attribute": "luck",
+    "enchantment": "looting",
+    "slots": ["mainhand"],
+    "prefixes": ["Finder's", "Treasured", "Fortunate", "Lucky", "Greedy", "Wealthy", "Valuable", "Gilded", "Encrusted", "Fancy", "Expensive", "Remarkable", "Flawless"],
+    "suffixes": ["the Treasured", "of Luck", "of Greed", "of Wealth", "the Gilded", "of the Gambler", "of Wishing", "of Finding", "of Prosperity"]
+  },
+  "luck_fortune": {
+    "attribute": "luck",
+    "enchantment": "fortune",
+    "slots": ["mainhand"],
+    "prefixes": ["Finder's", "Treasured", "Fortunate", "Lucky", "Greedy", "Wealthy", "Valuable", "Gilded", "Encrusted", "Fancy", "Expensive", "Remarkable", "Flawless"],
+    "suffixes": ["the Treasured", "of Luck", "of Greed", "of Wealth", "the Gilded", "of the Gambler", "of Wishing", "of Finding", "of Prosperity"]
+  },
+  "mining_efficiency": {
+    "attribute": "mining_efficiency",
+    "enchantment": "",
+    "slots": ["offhand", "head", "chest"],
+    "prefixes": ["Hardworking", "Well-crafted", "Laboring", "Efficient", "Masterwork", "Effective"],
+    "suffixes": ["of Hardwork", "the Hardworker", "of Efficiency", "of the Laborer", "of Work", "of Effectiveness"]
+  },
+  "efficiency": {
+    "attribute": "mining_efficiency",
+    "enchantment": "efficiency",
+    "slots": ["mainhand"],
+    "prefixes": ["Hardworking", "Well-crafted", "Laboring", "Efficient", "Masterwork", "Effective"],
+    "suffixes": ["of Hardwork", "the Hardworker", "of Efficiency", "of the Laborer", "of Work", "of Effectiveness"]
+  },
+  "movement_efficiency": {
+    "attribute": "movement_efficiency",
+    "enchantment": "",
+    "slots": ["legs", "feet"],
+    "prefixes": ["Sure-footed", "Trekking", "Striding", "Muddy", "Sandy", "Explorer's", "Wandering", "Wading"],
+    "suffixes": ["of Sure Footing", "of Trekking", "of Striding", "of the Explorer", "of Wading"]
+  },
+  "soul_speed": {
+    "attribute": "movement_efficiency",
+    "enchantment": "soul_speed",
+    "slots": ["feet"],
+    "prefixes": ["Sure-footed", "Trekking", "Striding", "Muddy", "Sandy", "Explorer's", "Wandering", "Wading"],
+    "suffixes": ["of Sure Footing", "of Trekking", "of Striding", "of the Explorer", "of Wading"]
+  },
+  "oxygen_bonus": {
+    "attribute": "oxygen_bonus",
+    "enchantment": "",
+    "slots": ["offhand", "head"],
+    "prefixes": ["Waterbreathing", "Diver's", "Drowned"],
+    "suffixes": ["of the Drowned", "of the Diver", "of Waterbreathing"]
+  },
+  "respiration": {
+    "attribute": "oxygen_bonus",
+    "enchantment": "respiration",
+    "slots": ["head"],
+    "prefixes": ["Waterbreathing", "Diver's", "Drowned"],
+    "suffixes": ["of the Drowned", "of the Diver", "of Waterbreathing"]
+  },
+  "safe_fall": {
+    "attribute": "safe_fall",
+    "enchantment": "",
+    "slots": ["offhand", "head"],
+    "prefixes": ["Safe Fall", "Daring", "Risky", "Trusting"],
+    "suffixes": ["of Safe Falling", "of the Daredevil", "of Risk", "of Trust", "of Daring"]
+  },
+  "enlarge": {
+    "attribute": "enlarge",
+    "enchantment": "",
+    "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet"],
+    "prefixes": ["Enlarging", "Giant's", "Growing", "Hulking", "Titanic", "Brawny"],
+    "suffixes": ["of Enlargement", "of the Giant", "of the Hulk", "of Growth", "of the Titan"]
+  },
+  "shrink": {
+    "attribute": "shrink",
+    "enchantment": "",
+    "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet"],
+    "prefixes": ["Shrinking", "Shrunken", "Shortening", "Goblin"],
+    "suffixes": ["of Shrinking", "of Shortening", "of the Goblin"]
+  },
+  "sneak_speed": {
+    "attribute": "sneak_speed",
+    "enchantment": "",
+    "slots": ["mainhand", "offhand", "head", "legs", "feet"],
+    "prefixes": ["Sneaky", "Stealthy", "Sneaking", "Stalking", "Stalker's", "Hunter's", "Hunting", "Thief", "Ninja"],
+    "suffixes": ["of Sneaking", "of Stealth", "of Stalking", "of Hunting", "of the Hunt", "the Thief"]
+  },
+  "swift_sneak": {
+    "attribute": "",
+    "enchantment": "swift_sneak",
+    "slots": ["feet"],
+    "prefixes": ["Sneaky", "Stealthy", "Sneaking", "Stalking", "Stalker's", "Hunter's", "Hunting", "Thief", "Ninja"],
+    "suffixes": ["of Sneaking", "of Stealth", "of Stalking", "of Hunting", "of the Hunt", "the Thief"]
+  },
+  "underwater_break_speed": {
+    "attribute": "underwater_break_speed",
+    "enchantment": "",
+    "slots": ["mainhand", "offhand", "head"],
+    "prefixes": ["Deep Sea", "Undersea", "Deeping", "Dredge's", "Dredging"],
+    "suffixes": ["of Fishfolk", "of the Deep", "of the Depths", "of Water Affinity", "of the Dredge"]
+  },
+  "aqua_affinity": {
+    "attribute": "underwater_break_speed",
+    "enchantment": "aqua_affinity",
+    "slots": ["head"],
+    "prefixes": ["Deep Sea", "Undersea", "Deeping", "Dredge's", "Dredging"],
+    "suffixes": ["of Fishfolk", "of the Deep", "of the Depths", "of Water Affinity", "of the Dredge"]
+  },
+  "sweep": {
+    "attribute": "sweep",
+    "enchantment": "",
+    "slots": ["mainhand", "offhand"],
+    "prefixes": ["Sweeping", "Slashing", "Broad", "Wide"],
+    "suffixes": ["of Slashing", "of Sweeping", "of Broad Strikes"]
+  },
+  "sweeping_edge": {
+    "attribute": "",
+    "enchantment": "sweeping_edge",
+    "slots": ["mainhand"],
+    "prefixes": ["Sweeping", "Slashing", "Broad", "Wide"],
+    "suffixes": ["of Slashing", "of Sweeping", "of Broad Strikes"]
+  },
+  "water_speed": {
+    "attribute": "water_speed",
+    "enchantment": "",
+    "slots": ["offhand", "head", "legs", "feet"],
+    "prefixes": ["Swimming", "Dolphin's", "Watery", "Sea", "Ocean"],
+    "suffixes": ["of Swimming", "of the Dolphin", "of Water", "of the Ocean", "of Dolphin's Grace", "of the Sea"]
+  },
+  "thorns": {
+    "attribute": "",
+    "enchantment": "thorns",
+    "slots": ["head", "chest", "legs", "feet"],
+    "prefixes": ["Thorned", "Thorny", "Spikey", "Spiked", "Reflective", "Harming"],
+    "suffixes": ["of Thorns", "of Reflection", "of Harming", "of Pain"]
+  },
+  "unbreaking": {
+    "attribute": "",
+    "enchantment": "unbreaking",
+    "slots": ["mainhand", "offhand", "head", "chest", "legs", "feet"],
+    "prefixes": ["Durable", "Unbreaking", "Unbroken"],
+    "suffixes": ["the Unbroken", "of Unbreaking", "of Durability"]
   }
 }

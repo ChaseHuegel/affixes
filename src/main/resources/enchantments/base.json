@@ -270,5 +270,37 @@
     {"enchantment": "minecraft:soul_speed", "min": 1, "max": 3},
     {"enchantment": "minecraft:soul_speed", "min": 2, "max": 4},
     {"enchantment": "minecraft:soul_speed", "min": 5, "max": 5}
+  ],
+  "blast_protection": [
+    {"enchantment": "minecraft:blast_protection", "min": 1, "max": 1},
+    {"enchantment": "minecraft:blast_protection", "min": 1, "max": 1},
+    {"enchantment": "minecraft:blast_protection", "min": 1, "max": 2},
+    {"enchantment": "minecraft:blast_protection", "min": 3, "max": 4},
+    {"enchantment": "minecraft:blast_protection", "min": 5, "max": 5},
+    {"enchantment": "minecraft:blast_protection", "min": 6, "max": 10}
+  ],
+  "protection": [
+    {"enchantment": "minecraft:protection", "min": 1, "max": 1},
+    {"enchantment": "minecraft:protection", "min": 1, "max": 1},
+    {"enchantment": "minecraft:protection", "min": 1, "max": 2},
+    {"enchantment": "minecraft:protection", "min": 3, "max": 4},
+    {"enchantment": "minecraft:protection", "min": 5, "max": 5},
+    {"enchantment": "minecraft:protection", "min": 6, "max": 10}
+  ],
+  "fire_protection": [
+    {"enchantment": "minecraft:fire_protection", "min": 1, "max": 1},
+    {"enchantment": "minecraft:fire_protection", "min": 1, "max": 1},
+    {"enchantment": "minecraft:fire_protection", "min": 1, "max": 2},
+    {"enchantment": "minecraft:fire_protection", "min": 3, "max": 4},
+    {"enchantment": "minecraft:fire_protection", "min": 5, "max": 5},
+    {"enchantment": "minecraft:fire_protection", "min": 6, "max": 10}
+  ],
+  "projectile_protection": [
+    {"enchantment": "minecraft:projectile_protection", "min": 1, "max": 1},
+    {"enchantment": "minecraft:projectile_protection", "min": 1, "max": 1},
+    {"enchantment": "minecraft:projectile_protection", "min": 1, "max": 2},
+    {"enchantment": "minecraft:projectile_protection", "min": 3, "max": 4},
+    {"enchantment": "minecraft:projectile_protection", "min": 5, "max": 5},
+    {"enchantment": "minecraft:projectile_protection", "min": 6, "max": 10}
   ]
 }
