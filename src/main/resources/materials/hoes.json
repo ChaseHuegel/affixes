@@ -1,0 +1,22 @@
+[
+  {
+    "slots": [
+      "mainhand",
+      "offhand"
+    ],
+    "materials": [
+      {"name": "minecraft:wooden_hoe", "weight": 0.05, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:stone_hoe", "weight": 0.1, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:iron_hoe", "weight": 0.3, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:golden_hoe", "weight": 0.2, "modelMin": 0, "modelMax": 0, "stats": {"attackDamage": 1.0, "attackSpeed":  0.0}},
+      {"name": "minecraft:diamond_hoe", "weight": 0.05, "modelMin": 0, "modelMax": 0}
+    ],
+    "names": [
+      "Hoe",
+      "Sickle",
+      "Scythe",
+      "Crook",
+      "Tiller"
+    ]
+  }
+]

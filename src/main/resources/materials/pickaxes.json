@@ -1,0 +1,22 @@
+[
+  {
+    "slots": [
+      "mainhand",
+      "offhand"
+    ],
+    "materials": [
+      {"name": "minecraft:wooden_pickaxe", "weight": 0.05, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:stone_pickaxe", "weight": 0.1, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:iron_pickaxe", "weight": 0.3, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:golden_pickaxe", "weight": 0.2, "modelMin": 0, "modelMax": 0, "stats": {"attackDamage": 5.0, "attackSpeed":  -2.8}},
+      {"name": "minecraft:diamond_pickaxe", "weight": 0.05, "modelMin": 0, "modelMax": 0}
+    ],
+    "names": [
+      "Pickaxe",
+      "Hewer",
+      "Breaker",
+      "War Pick",
+      "Pick"
+    ]
+  }
+]

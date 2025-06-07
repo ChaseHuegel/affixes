@@ -1,0 +1,23 @@
+[
+  {
+    "slots": [
+      "mainhand",
+      "offhand"
+    ],
+    "materials": [
+      {"name": "minecraft:wooden_shovel", "weight": 0.05, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:stone_shovel", "weight": 0.1, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:iron_shovel", "weight": 0.3, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:golden_shovel", "weight": 0.2, "modelMin": 0, "modelMax": 0, "stats": {"attackDamage": 4.5, "attackSpeed":  -3.0}},
+      {"name": "minecraft:diamond_shovel", "weight": 0.05, "modelMin": 0, "modelMax": 0}
+    ],
+    "names": [
+      "Shovel",
+      "Spade",
+      "Digger",
+      "Excavator",
+      "Mover",
+      "Trencher"
+    ]
+  }
+]

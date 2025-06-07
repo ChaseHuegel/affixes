@@ -1,0 +1,16 @@
+[
+  {
+    "slots": [
+      "mainhand",
+      "offhand"
+    ],
+    "materials": [
+      {"name": "minecraft:bow", "weight": 1.0, "modelMin": 0, "modelMax": 0}
+    ],
+    "names": [
+      "Bow",
+      "Longbow",
+      "Shortbow"
+    ]
+  }
+]
