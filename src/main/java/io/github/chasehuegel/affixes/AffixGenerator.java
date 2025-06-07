@@ -173,6 +173,10 @@ public class AffixGenerator {
             //  If the enchantment couldn't be applied, try to fallback to attributes
         }
 
+        if (!hasAttribute) {
+            return false;
+        }
+
         var attributeDefinitionsByRarity = attributeDefinitions.get(affix.attribute);
         if (attributeDefinitionsByRarity == null) {
             AffixesPlugin.getInstance().getLogger().warning("Unknown attribute " + affix.attribute);
