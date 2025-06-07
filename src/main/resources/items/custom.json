@@ -1,7 +1,6 @@
 ﻿{
   "affixes:torch": {
     "name": "Torch",
-    "rarity": "",
     "slots": ["mainhand","offhand"],
     "effectOptions": {
       "randomAffixes": true,
@@ -13,6 +12,25 @@
     ],
     "material": {
       "name": "minecraft:torch",
+      "stats": {
+        "attackDamage": 1.0,
+        "attackSpeed":  0.0
+      }
+    }
+  },
+  "affixes:soul_torch": {
+    "name": "Soul Torch",
+    "slots": ["mainhand","offhand"],
+    "effectOptions": {
+      "randomAffixes": true,
+      "minRandomAffixes": -1,
+      "maxRandomAffixes": -1
+    },
+    "enchantments": [
+      "fire_aspect"
+    ],
+    "material": {
+      "name": "minecraft:soul_torch",
       "stats": {
         "attackDamage": 1.0,
         "attackSpeed":  0.0
