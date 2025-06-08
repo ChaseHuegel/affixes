@@ -36,6 +36,7 @@ public final class AffixesPlugin extends JavaPlugin {
         "materials/helmets.json",
         "materials/chestplates.json",
         "materials/leggings.json",
+        "materials/shields.json",
         "materials/boots.json",
         "materials/hoes.json",
         "materials/pickaxes.json",

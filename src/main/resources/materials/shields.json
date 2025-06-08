@@ -1,0 +1,18 @@
+[
+  {
+    "slots": [
+      "offhand"
+    ],
+    "materials": [
+      {"name": "minecraft:shield", "weight": 1.0, "modelMin": 0, "modelMax": 0}
+    ],
+    "names": [
+      "Shield",
+      "Guard",
+      "Bulwark",
+      "Defender",
+      "Blocker",
+      "Wall"
+    ]
+  }
+]
