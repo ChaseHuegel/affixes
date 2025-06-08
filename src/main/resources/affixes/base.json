@@ -185,7 +185,7 @@
     "attribute": "luck",
     "enchantment": "",
     "slots": ["offhand", "head", "chest", "legs", "feet"],
-    "prefixes": ["Finder's", "Treasured", "Fortunate", "Lucky", "Greedy", "Wealthy", "Valuable", "Gilded", "Encrusted", "Fancy", "Expensive", "Remarkable", "Flawless"],
+    "prefixes": ["Exquisite", "Fine", "Finder's", "Treasured", "Fortunate", "Lucky", "Greedy", "Wealthy", "Valuable", "Gilded", "Encrusted", "Fancy", "Expensive", "Remarkable", "Flawless"],
     "suffixes": ["the Treasured", "of Luck", "of Greed", "of Wealth", "the Gilded", "of the Gambler", "of Wishing", "of Finding", "of Prosperity"]
   },
   "luck_looting": {
