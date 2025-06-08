@@ -4,16 +4,20 @@ import io.github.chasehuegel.affixes.AffixesPlugin;
 import io.github.chasehuegel.affixes.generators.ItemGenerator;
 import io.github.chasehuegel.affixes.models.MobDrop;
 import io.github.chasehuegel.affixes.util.Utils;
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +26,7 @@ import java.util.Random;
 
 public class MobDropListener implements Listener {
 
+    private final NamespacedKey fromSpawnerKey = new NamespacedKey(AffixesPlugin.NAMESPACE, "from_spawner");
     private final AffixesPlugin plugin;
     private final ItemGenerator itemGenerator;
     private final Map<EntityType, MobDrop> mobDrops;
@@ -37,14 +42,31 @@ public class MobDropListener implements Listener {
         }
     }
 
+    @EventHandler
+    public void onCreatureSpawn(CreatureSpawnEvent event) {
+        if (event.getSpawnReason() == CreatureSpawnEvent.SpawnReason.SPAWNER) {
+            LivingEntity entity = event.getEntity();
+            PersistentDataContainer data = entity.getPersistentDataContainer();
+            data.set(fromSpawnerKey, PersistentDataType.BOOLEAN, true);
+        }
+    }
+
     @EventHandler(priority = EventPriority.HIGH)
     public void onEntityDeath(EntityDeathEvent event) {
+        Entity victim = event.getEntity();
         Entity attacker = event.getDamageSource().getCausingEntity();
         if (!(attacker instanceof Player player)) {
             return;
         }
 
-        Entity victim = event.getEntity();
+        if (plugin.getConfig().getBoolean("sources.drops.blockSpawners")) {
+            PersistentDataContainer data = victim.getPersistentDataContainer();
+            Boolean value = data.get(fromSpawnerKey, PersistentDataType.BOOLEAN);
+            if (value != null && value) {
+                return;
+            }
+        }
+
         MobDrop mobDrop = mobDrops.get(victim.getType());
         if (mobDrop == null) {
             return;

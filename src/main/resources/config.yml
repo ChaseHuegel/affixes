@@ -11,6 +11,7 @@
     luckOfTheSeaBonusChance: 0.021
   drops:
     max: 32
+    blockSpawners: true
     luckBonusChance: 0.021
     mobs:
       - type: ELDER_GUARDIAN
