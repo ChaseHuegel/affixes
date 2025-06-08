@@ -51,9 +51,12 @@
       - type: DROWNED
         chance: 0.085
       - type: BLAZE
+        chance: 0.085
       - type: CAVE_SPIDER
       - type: CREEPER
+        chance: 0.085
       - type: ENDERMAN
+        chance: 0.085
       - type: ENDERMITE
       - type: HOGLIN
       - type: HUSK
@@ -61,6 +64,7 @@
       - type: PHANTOM
       - type: PIGLIN
       - type: PILLAGER
+        chance: 0.085
       - type: SHULKER
       - type: SILVERFISH
       - type: SKELETON
@@ -68,6 +72,7 @@
       - type: SPIDER
       - type: STRAY
       - type: VINDICATOR
+        chance: 0.085
       - type: ZOGLIN
       - type: ZOMBIE
       - type: ZOMBIE_VILLAGER
