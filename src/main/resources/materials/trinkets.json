@@ -64,7 +64,6 @@
       {"name": "minecraft:fishing_rod", "weight": 1.0, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:carrot_on_a_stick", "weight": 1.0, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:bell", "weight": 1.0, "modelMin": 0, "modelMax": 0},
-      {"name": "minecraft:book", "weight": 1.0, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:compass", "weight": 1.0, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:clock", "weight": 1.0, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:goat_horn", "weight": 1.0, "modelMin": 0, "modelMax": 0},
@@ -173,7 +172,9 @@
       {"name": "minecraft:raw_gold", "weight": 1.0, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:raw_iron", "weight": 1.0, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:iron_ingot", "weight": 1.0, "modelMin": 0, "modelMax": 0},
-      {"name": "minecraft:gold_ingot", "weight": 1.0, "modelMin": 0, "modelMax": 0}
+      {"name": "minecraft:gold_ingot", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:quartz", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:emerald", "weight": 1.0, "modelMin": 0, "modelMax": 0}
     ],
     "names": [
       "Prize",
@@ -216,9 +217,13 @@
       "offhand"
     ],
     "materials": [
+      {"name": "minecraft:book", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:paper", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:painting", "weight": 1.0, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:lantern", "weight": 1.0, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:soul_lantern", "weight": 1.0, "modelMin": 0, "modelMax": 0},
-      {"name": "minecraft:soul_torch", "weight": 1.0, "modelMin": 0, "modelMax": 0}
+      {"name": "minecraft:soul_torch", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:redstone_torch", "weight": 1.0, "modelMin": 0, "modelMax": 0}
     ],
     "names": [
       "Prize",
@@ -278,6 +283,62 @@
       {"name": "minecraft:magenta_candle", "weight": 1.0, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:orange_candle", "weight": 1.0, "modelMin": 0, "modelMax": 0},
       {"name": "minecraft:white_candle", "weight": 1.0, "modelMin": 0, "modelMax": 0}
+    ],
+    "names": [
+      "Prize",
+      "Find",
+      "Treasure",
+      "Possession",
+      "Ruin",
+      "Windfall",
+      "Trophy",
+      "Trinket",
+      "Collectible",
+      "Laurel",
+      "Decoration",
+      "Haul",
+      "Acquisition",
+      "Loot",
+      "Plunder",
+      "Spoil",
+      "Heirloom",
+      "Antique",
+      "Artifact",
+      "Keepsake",
+      "Curio",
+      "Antiquity",
+      "Fragment",
+      "Memento",
+      "Evidence",
+      "Monument",
+      "Remains",
+      "Remnant",
+      "Souvenir",
+      "Curiosity",
+      "Token",
+      "Handiwork",
+      "Bounty"
+    ]
+  },
+  {
+    "slots": [
+      "offhand"
+    ],
+    "materials": [
+      {"name": "minecraft:brick", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:nether_brick", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:resin_brick", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:prismarine_shard", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:prismarine_crystals", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:popped_chorus_fruit", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:firework_star", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:writable_book", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:bowl", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:slime_ball", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:ink_sac", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:glow_ink_sac", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:glowstone_dust", "weight": 1.0, "modelMin": 0, "modelMax": 0},
+      {"name": "minecraft:redstone", "weight": 1.0, "modelMin": 0, "modelMax": 0}
     ],
     "names": [
       "Prize",
