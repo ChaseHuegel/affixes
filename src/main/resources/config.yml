@@ -1,6 +1,10 @@
 ﻿sources:
   enchanting:
     chance: 1.0
+  chests:
+    chance: 0.6
+  fishing:
+    chance: 0.1
 rarities:
   - name: common
     color: green
