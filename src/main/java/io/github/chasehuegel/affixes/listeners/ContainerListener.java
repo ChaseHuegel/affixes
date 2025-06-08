@@ -40,7 +40,7 @@ public class ContainerListener implements Listener {
 
         Block block = event.getClickedBlock();
         assert block != null;
-        if (block.getType() != Material.CHEST && block.getType() != Material.TRAPPED_CHEST || block.getType() != Material.BARREL) {
+        if (block.getType() != Material.CHEST && block.getType() != Material.TRAPPED_CHEST && block.getType() != Material.BARREL) {
             return;
         }
 
