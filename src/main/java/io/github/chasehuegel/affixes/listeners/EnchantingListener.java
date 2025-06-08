@@ -2,7 +2,7 @@ package io.github.chasehuegel.affixes.listeners;
 
 import io.github.chasehuegel.affixes.AffixesPlugin;
 import io.github.chasehuegel.affixes.generators.ItemGenerator;
-import io.github.chasehuegel.affixes.util.AffixesInspector;
+import io.github.chasehuegel.affixes.util.AffixesMeta;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -34,7 +34,7 @@ public class EnchantingListener implements Listener {
 
         int enchantmentLevelTotal = 0;
         int rarityLevel = 0;
-        if (roll <= chance && !AffixesInspector.hasAnyAffixes(item)) {
+        if (roll <= chance && !AffixesMeta.hasAnyAffixes(item)) {
             enchantmentLevelTotal = getEnchantmentLevelTotal(event.getEnchantsToAdd());
             rarityLevel = itemGenerator.getWeightedRandomRarityLevel(enchantmentLevelTotal);
             itemGenerator.generateFrom(item, rarityLevel);

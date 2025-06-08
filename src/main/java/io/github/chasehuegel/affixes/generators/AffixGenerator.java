@@ -5,7 +5,7 @@ import io.github.chasehuegel.affixes.models.Affix;
 import io.github.chasehuegel.affixes.models.AttributeDefinition;
 import io.github.chasehuegel.affixes.models.EnchantmentDefinition;
 import io.github.chasehuegel.affixes.models.Rarity;
-import io.github.chasehuegel.affixes.util.AffixesInspector;
+import io.github.chasehuegel.affixes.util.AffixesMeta;
 import io.papermc.paper.registry.RegistryAccess;
 import io.papermc.paper.registry.RegistryKey;
 import net.kyori.adventure.text.Component;
@@ -86,7 +86,7 @@ public class AffixGenerator {
                 continue;
             }
 
-            AffixesInspector.appendAffixCode(meta, affixesKeys.get(affix));
+            AffixesMeta.appendAffixCode(meta, affixesKeys.get(affix));
             return newMeta;
         }
 
@@ -100,7 +100,7 @@ public class AffixGenerator {
         }
 
         //  Only allow a single suffix
-        boolean hasSuffix = AffixesInspector.getHasSuffix(meta);
+        boolean hasSuffix = AffixesMeta.getHasSuffix(meta);
         boolean applyPrefix = hasSuffix || random.nextBoolean();
 
         List<String> textOptions;
@@ -134,14 +134,14 @@ public class AffixGenerator {
                     .decoration(TextDecoration.ITALIC, false)
                     .mergeStyle(displayName);
 
-            AffixesInspector.setHasPrefix(meta, true);
+            AffixesMeta.setHasPrefix(meta, true);
         } else {
             prefixComponent = displayName;
             suffixComponent = Component.text(" " + text)
                     .decoration(TextDecoration.ITALIC, false)
                     .mergeStyle(displayName);
 
-            AffixesInspector.setHasSuffix(meta, true);
+            AffixesMeta.setHasSuffix(meta, true);
         }
 
         Component newName = prefixComponent.append(suffixComponent);

@@ -7,7 +7,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
-public class AffixesInspector {
+public class AffixesMeta {
 
     private static final String AFFIX_CODE_KEY = "code";
     private static final String HAS_SUFFIX_KEY = "has_suffix";

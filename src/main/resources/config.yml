@@ -5,6 +5,69 @@
     chance: 0.6
   fishing:
     chance: 0.1
+    luckOfTheSeaBonusChance: 0.021
+  drops:
+    max: 32
+    mobs:
+      - type: ELDER_GUARDIAN
+        chance: 1.0
+        lootingBonusChance: 0.03
+      - type: ENDER_DRAGON
+        chance: 1.0
+        lootingBonusChance: 0.03
+      - type: EVOKER
+        chance: 1.0
+        lootingBonusChance: 0.03
+      - type: ILLUSIONER
+        chance: 1.0
+        lootingBonusChance: 0.03
+      - type: GIANT
+        chance: 1.0
+        lootingBonusChance: 0.03
+      - type: WITHER
+        chance: 1.0
+        lootingBonusChance: 0.03
+      - type: WARDEN
+        chance: 1.0
+        lootingBonusChance: 0.03
+      - type: GHAST
+        chance: 0.085
+      - type: GUARDIAN
+        chance: 0.085
+      - type: PIGLIN_BRUTE
+        chance: 0.085
+      - type: RAVAGER
+        chance: 0.085
+      - type: VEX
+        chance: 0.085
+      - type: WITHER_SKELETON
+        chance: 0.085
+      - type: WITCH
+        chance: 0.085
+      - type: DROWNED
+        chance: 0.085
+      - type: BLAZE
+      - type: CAVE_SPIDER
+      - type: CREEPER
+      - type: ENDERMAN
+      - type: ENDERMITE
+      - type: HOGLIN
+      - type: HUSK
+      - type: MAGMA_CUBE
+      - type: PHANTOM
+      - type: PIGLIN
+      - type: PILLAGER
+      - type: SHULKER
+      - type: SILVERFISH
+      - type: SKELETON
+      - type: SLIME
+      - type: SPIDER
+      - type: STRAY
+      - type: VINDICATOR
+      - type: ZOGLIN
+      - type: ZOMBIE
+      - type: ZOMBIE_VILLAGER
+      - type: ZOMBIFIED_PIGLIN
 rarities:
   - name: common
     color: green

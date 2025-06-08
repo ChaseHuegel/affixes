@@ -8,6 +8,7 @@ import io.github.chasehuegel.affixes.generators.ItemGenerator;
 import io.github.chasehuegel.affixes.listeners.ChestListener;
 import io.github.chasehuegel.affixes.listeners.EnchantingListener;
 import io.github.chasehuegel.affixes.listeners.FishingListener;
+import io.github.chasehuegel.affixes.listeners.MobDropListener;
 import io.github.chasehuegel.affixes.models.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.HandlerList;
@@ -84,6 +85,7 @@ public final class AffixesPlugin extends JavaPlugin {
 
         //  Load config
         List<Rarity> rarities = loadRaritiesFromConfig(getConfig());
+        List<MobDrop> mobDrops = loadMobDropsFromConfig(getConfig());
 
         //  Load materials
         var materialDefinitions = new ArrayList<MaterialDefinition>();
@@ -175,6 +177,7 @@ public final class AffixesPlugin extends JavaPlugin {
         pluginManager.registerEvents(new EnchantingListener(this, itemGenerator), this);
         pluginManager.registerEvents(new FishingListener(this, itemGenerator), this);
         pluginManager.registerEvents(new ChestListener(this, itemGenerator), this);
+        pluginManager.registerEvents(new MobDropListener(this, itemGenerator, mobDrops), this);
     }
 
     private <T> T loadJsonResource(File file, Class<T> tClass) {
@@ -205,4 +208,15 @@ public final class AffixesPlugin extends JavaPlugin {
 
         return rarities;
     }
+
+    private List<MobDrop> loadMobDropsFromConfig(FileConfiguration config) {
+        List<MobDrop> drops = new ArrayList<>();
+
+        for (Map<?, ?> entry : config.getMapList("sources.drops.mobs")) {
+            drops.add(MobDrop.fromMap(entry));
+        }
+
+        return drops;
+    }
+
 }

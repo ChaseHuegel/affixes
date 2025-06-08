@@ -2,6 +2,7 @@ package io.github.chasehuegel.affixes.listeners;
 
 import io.github.chasehuegel.affixes.AffixesPlugin;
 import io.github.chasehuegel.affixes.generators.ItemGenerator;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
@@ -35,8 +36,9 @@ public class FishingListener implements Listener {
 
         double roll = random.nextDouble();
 
-        double baseChance = plugin.getConfig().getDouble("sources.fishing.chance");
-        double bonusChance = player.getInventory().getItemInMainHand().getEnchantmentLevel(Enchantment.LUCK_OF_THE_SEA) * 0.021;
+        FileConfiguration config = plugin.getConfig();
+        double baseChance = config.getDouble("sources.fishing.chance");
+        double bonusChance = player.getInventory().getItemInMainHand().getEnchantmentLevel(Enchantment.LUCK_OF_THE_SEA) * config.getDouble("sources.fishing.luckOfTheSeaBonusChance");
         double chance = baseChance + bonusChance;
 
         if (plugin.inDev) {
@@ -46,7 +48,7 @@ public class FishingListener implements Listener {
         if (roll > chance) {
             return;
         }
-        
+
         ItemStack item = itemGenerator.generate();
         itemEntity.setItemStack(item);
     }
