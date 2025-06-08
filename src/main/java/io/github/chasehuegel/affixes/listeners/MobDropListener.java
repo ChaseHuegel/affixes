@@ -3,6 +3,7 @@ package io.github.chasehuegel.affixes.listeners;
 import io.github.chasehuegel.affixes.AffixesPlugin;
 import io.github.chasehuegel.affixes.generators.ItemGenerator;
 import io.github.chasehuegel.affixes.models.MobDrop;
+import io.github.chasehuegel.affixes.util.Utils;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
@@ -52,11 +53,12 @@ public class MobDropListener implements Listener {
         double roll = random.nextDouble();
 
         double baseChance = mobDrop.chance();
-        double bonusChance = player.getInventory().getItemInMainHand().getEnchantmentLevel(Enchantment.LOOTING) * mobDrop.lootingBonusChance();
-        double chance = baseChance + bonusChance;
+        double lootingBonus = player.getInventory().getItemInMainHand().getEnchantmentLevel(Enchantment.LOOTING) * mobDrop.lootingBonusChance();
+        double luckBonus = Utils.getPlayerLuck(player) * plugin.getConfig().getDouble("sources.drops.luckBonusChance");
+        double chance = baseChance + lootingBonus + luckBonus;
 
         if (plugin.inDev) {
-            player.sendMessage("Roll: " + roll + " Chance: " + chance + " (base: " + baseChance + " bonus: " + bonusChance + ")");
+            player.sendMessage("Roll: " + roll + " Chance: " + chance + " (base: " + baseChance + " looting: " + lootingBonus + " luck: " + luckBonus + ")");
         }
 
         if (roll > chance) {
@@ -69,7 +71,7 @@ public class MobDropListener implements Listener {
         for (int i = 1; i < plugin.getConfig().getInt("sources.drops.max"); i++) {
             roll = random.nextDouble();
             if (plugin.inDev) {
-                player.sendMessage("Roll: " + roll + " Chance: " + chance + " (base: " + baseChance + " bonus: " + bonusChance + ")");
+                player.sendMessage("Roll: " + roll + " Chance: " + chance + " (base: " + baseChance + " looting: " + lootingBonus + " luck: " + luckBonus + ")");
             }
 
             if (roll > chance) {

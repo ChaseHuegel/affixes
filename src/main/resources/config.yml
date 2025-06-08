@@ -1,13 +1,17 @@
 ﻿sources:
   enchanting:
     chance: 1.0
+    luckBonusChance: 0.01
   chests:
     chance: 0.6
+    luckBonusChance: 0.01
   fishing:
     chance: 0.1
+    luckBonusChance: 0.01
     luckOfTheSeaBonusChance: 0.021
   drops:
     max: 32
+    luckBonusChance: 0.01
     mobs:
       - type: ELDER_GUARDIAN
         chance: 1.0

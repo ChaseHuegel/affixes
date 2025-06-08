@@ -2,6 +2,8 @@ package io.github.chasehuegel.affixes.listeners;
 
 import io.github.chasehuegel.affixes.AffixesPlugin;
 import io.github.chasehuegel.affixes.generators.ItemGenerator;
+import io.github.chasehuegel.affixes.util.Utils;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
@@ -38,11 +40,12 @@ public class FishingListener implements Listener {
 
         FileConfiguration config = plugin.getConfig();
         double baseChance = config.getDouble("sources.fishing.chance");
-        double bonusChance = player.getInventory().getItemInMainHand().getEnchantmentLevel(Enchantment.LUCK_OF_THE_SEA) * config.getDouble("sources.fishing.luckOfTheSeaBonusChance");
-        double chance = baseChance + bonusChance;
+        double luckOfTheSeaBonus = player.getInventory().getItemInMainHand().getEnchantmentLevel(Enchantment.LUCK_OF_THE_SEA) * config.getDouble("sources.fishing.luckOfTheSeaBonusChance");
+        double luckBonus = Utils.getPlayerLuck(player) * plugin.getConfig().getDouble("sources.fishing.luckBonusChance");
+        double chance = baseChance + luckOfTheSeaBonus + luckBonus;
 
         if (plugin.inDev) {
-            player.sendMessage("Roll: " + roll + " Chance: " + chance + " (base: " + baseChance + " bonus: " + bonusChance + ")");
+            player.sendMessage("Roll: " + roll + " Chance: " + chance + " (base: " + baseChance + " luckOfTheSea: " + luckOfTheSeaBonus + " luck: " + luckBonus + ")");
         }
 
         if (roll > chance) {

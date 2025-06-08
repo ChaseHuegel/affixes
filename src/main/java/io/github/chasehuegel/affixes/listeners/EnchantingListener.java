@@ -3,6 +3,7 @@ package io.github.chasehuegel.affixes.listeners;
 import io.github.chasehuegel.affixes.AffixesPlugin;
 import io.github.chasehuegel.affixes.generators.ItemGenerator;
 import io.github.chasehuegel.affixes.util.AffixesMeta;
+import io.github.chasehuegel.affixes.util.Utils;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -30,7 +31,10 @@ public class EnchantingListener implements Listener {
         ItemStack item = event.getItem();
 
         double roll = random.nextDouble();
-        double chance = plugin.getConfig().getDouble("sources.enchanting.chance");
+
+        double baseChance = plugin.getConfig().getDouble("sources.enchanting.chance");
+        double luckBonus = Utils.getPlayerLuck(player) * plugin.getConfig().getDouble("sources.enchanting.luckBonusChance");
+        double chance = baseChance + luckBonus;
 
         int enchantmentLevelTotal = 0;
         int rarityLevel = 0;
@@ -41,7 +45,7 @@ public class EnchantingListener implements Listener {
         }
 
         if (plugin.inDev) {
-            player.sendMessage("Roll: " + roll + " Chance: " + chance + " Enchant value: " + enchantmentLevelTotal + " Rarity level: " + rarityLevel);
+            player.sendMessage("Roll: " + roll + " Chance: " + chance + " (base: " + baseChance + " luck: " + luckBonus + ") Enchant value: " + enchantmentLevelTotal + " Rarity level: " + rarityLevel);
         }
     }
 

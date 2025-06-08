@@ -2,6 +2,7 @@ package io.github.chasehuegel.affixes.listeners;
 
 import io.github.chasehuegel.affixes.AffixesPlugin;
 import io.github.chasehuegel.affixes.generators.ItemGenerator;
+import io.github.chasehuegel.affixes.util.Utils;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
@@ -65,9 +66,13 @@ public class ChestListener implements Listener {
         @Override
         public void run() {
             double roll = random.nextDouble();
-            double chance = plugin.getConfig().getDouble("sources.chests.chance");
+
+            double baseChance = plugin.getConfig().getDouble("sources.chests.chance");
+            double luckBonus = Utils.getPlayerLuck(player) * plugin.getConfig().getDouble("sources.chests.luckBonusChance");
+            double chance = baseChance + luckBonus;
+
             if (plugin.inDev) {
-                player.sendMessage("Roll: " + roll + " Chance: " + chance);
+                player.sendMessage("Roll: " + roll + " Chance: " + chance + " (base: " + baseChance + " luck: " + luckBonus + ")");
             }
 
             if (roll > chance) {
@@ -96,7 +101,7 @@ public class ChestListener implements Listener {
             for (int i = 1; i < totalEmptySlots; i++) {
                 roll = random.nextDouble();
                 if (plugin.inDev) {
-                    player.sendMessage("Roll: " + roll + " Chance: " + chance);
+                    player.sendMessage("Roll: " + roll + " Chance: " + chance + " (base: " + baseChance + " luck: " + luckBonus + ")");
                 }
 
                 if (roll > chance) {
