@@ -39,13 +39,15 @@ public class FishingListener implements Listener {
         double bonusChance = player.getInventory().getItemInMainHand().getEnchantmentLevel(Enchantment.LUCK_OF_THE_SEA) * 0.021;
         double chance = baseChance + bonusChance;
 
-        if (roll <= chance) {
-            ItemStack item = itemGenerator.generate();
-            itemEntity.setItemStack(item);
-        }
-
         if (plugin.inDev) {
             player.sendMessage("Roll: " + roll + " Chance: " + chance + " (base: " + baseChance + " bonus: " + bonusChance + ")");
         }
+
+        if (roll > chance) {
+            return;
+        }
+        
+        ItemStack item = itemGenerator.generate();
+        itemEntity.setItemStack(item);
     }
 }
