@@ -6,6 +6,7 @@ import io.github.chasehuegel.affixes.commands.AffixesCommandHandler;
 import io.github.chasehuegel.affixes.generators.AffixGenerator;
 import io.github.chasehuegel.affixes.generators.ItemGenerator;
 import io.github.chasehuegel.affixes.listeners.EnchantingListener;
+import io.github.chasehuegel.affixes.listeners.FishingListener;
 import io.github.chasehuegel.affixes.models.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.HandlerList;
@@ -171,6 +172,7 @@ public final class AffixesPlugin extends JavaPlugin {
         //  Register listeners
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(new EnchantingListener(this, itemGenerator), this);
+        pluginManager.registerEvents(new FishingListener(this, itemGenerator), this);
     }
 
     private <T> T loadJsonResource(File file, Class<T> tClass) {
