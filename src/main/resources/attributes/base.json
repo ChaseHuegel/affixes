@@ -128,12 +128,12 @@
     {"attribute": "minecraft:jump_strength", "operation": "add_multiplied_base", "min": 0.25, "max": 0.30}
   ],
   "luck": [
-    {"attribute": "minecraft:luck", "operation": "add_value", "min": 0.00, "max": 0.25},
     {"attribute": "minecraft:luck", "operation": "add_value", "min": 0.25, "max": 0.50},
     {"attribute": "minecraft:luck", "operation": "add_value", "min": 0.50, "max": 1.00},
     {"attribute": "minecraft:luck", "operation": "add_value", "min": 1.00, "max": 1.50},
     {"attribute": "minecraft:luck", "operation": "add_value", "min": 1.50, "max": 2.00},
-    {"attribute": "minecraft:luck", "operation": "add_value", "min": 2.00, "max": 2.50}
+    {"attribute": "minecraft:luck", "operation": "add_value", "min": 2.00, "max": 2.50},
+    {"attribute": "minecraft:luck", "operation": "add_value", "min": 2.50, "max": 3.00}
   ],
   "mining_efficiency": [
     {"attribute": "minecraft:mining_efficiency", "operation": "add_value", "min": 0.05, "max": 0.10},
