@@ -266,7 +266,13 @@ public class ItemGenerator {
             //  Apply affixes to random allowed slots
             for (int i = 0; i < affixCount; i++) {
                 String slotName = getRandomValue(allowedSlotNames);
-                appliedAnyEffects |= affixGenerator.generateAffix(item, meta, slotName, rarityLevel);
+                ItemMeta updatedMeta = affixGenerator.generateAffix(item, meta, slotName, rarityLevel);
+                if (updatedMeta == null) {
+                    continue;
+                }
+
+                meta = updatedMeta;
+                appliedAnyEffects = true;
             }
         }
 
@@ -329,7 +335,13 @@ public class ItemGenerator {
         boolean appliedAnyEffects = false;
         for (int i = 0; i < affixCount; i++) {
             String slotName = getRandomValue(allowedSlotNames);
-            appliedAnyEffects |= affixGenerator.generateAffix(item, meta, slotName, rarityLevel);
+            ItemMeta updatedMeta = affixGenerator.generateAffix(item, meta, slotName, rarityLevel);
+            if (updatedMeta == null) {
+                continue;
+            }
+
+            meta = updatedMeta;
+            appliedAnyEffects = true;
         }
 
         if (!appliedAnyEffects) {

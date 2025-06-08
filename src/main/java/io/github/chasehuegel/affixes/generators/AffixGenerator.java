@@ -54,15 +54,15 @@ public class AffixGenerator {
         }
     }
 
-    public boolean generateAffix(ItemStack item, ItemMeta meta, String slotName, int rarityLevel) {
+    public ItemMeta generateAffix(ItemStack item, ItemMeta meta, String slotName, int rarityLevel) {
         if (affixesValues.stream().noneMatch(affix -> affix.slots().contains(slotName))) {
             //  No affixes for the slot
-            return false;
+            return null;
         }
 
         if (rarityLevel < 0 || rarityLevel >= rarities.size()) {
             //  rarity out of bounds
-            return false;
+            return null;
         }
 
         //  Attempt up to 3 rerolls
@@ -73,25 +73,24 @@ public class AffixGenerator {
             } while (!affix.slots().contains(slotName));
 
             //  Don't mutate the original meta in the case of rerolls
-            ItemMeta tempMeta = meta.clone();
+            ItemMeta newMeta = meta.clone();
 
-            if (!applyName(tempMeta, affix)) {
+            if (!applyName(newMeta, affix)) {
                 //  Reroll if the name couldn't be applied
                 continue;
             }
 
             Rarity rarity = rarities.get(rarityLevel);
-            if (!applyEffect(item, tempMeta, slotName, affix, rarity, rarityLevel)) {
+            if (!applyEffect(item, newMeta, slotName, affix, rarity, rarityLevel)) {
                 //  Reroll if the effect couldn't be applied
                 continue;
             }
 
-            meta = tempMeta;
             AffixesInspector.appendAffixCode(meta, affixesKeys.get(affix));
-            return true;
+            return newMeta;
         }
 
-        return false;
+        return null;
     }
 
     public boolean applyName(ItemMeta meta, Affix affix) {
