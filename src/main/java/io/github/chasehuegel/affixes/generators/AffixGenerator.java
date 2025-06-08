@@ -68,23 +68,26 @@ public class AffixGenerator {
 
         //  Attempt up to 3 rerolls
         for (int i = 0; i < 3; i++) {
-            //  Pick a random affix for the slot
             Affix affix;
             do {
                 affix = getRandomValue(affixesValues);
             } while (!affix.slots().contains(slotName));
 
-            if (!applyName(meta, affix)) {
+            //  Don't mutate the original meta in the case of rerolls
+            ItemMeta tempMeta = meta.clone();
+
+            if (!applyName(tempMeta, affix)) {
                 //  Reroll if the name couldn't be applied
                 continue;
             }
 
             Rarity rarity = rarities.get(rarityLevel);
-            if (!applyEffect(item, meta, slotName, affix, rarity, rarityLevel)) {
+            if (!applyEffect(item, tempMeta, slotName, affix, rarity, rarityLevel)) {
                 //  Reroll if the effect couldn't be applied
                 continue;
             }
 
+            meta = tempMeta;
             AffixesInspector.appendAffixCode(meta, affixesKeys.get(affix));
             return true;
         }
