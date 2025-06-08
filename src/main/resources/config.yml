@@ -1,38 +1,38 @@
 ﻿sources:
   enchanting:
     chance: 1.0
-    luckBonusChance: 0.01
+    luckBonusChance: 0.021
   chests:
     chance: 0.6
-    luckBonusChance: 0.01
+    luckBonusChance: 0.021
   fishing:
     chance: 0.1
-    luckBonusChance: 0.01
+    luckBonusChance: 0.021
     luckOfTheSeaBonusChance: 0.021
   drops:
     max: 32
-    luckBonusChance: 0.01
+    luckBonusChance: 0.021
     mobs:
       - type: ELDER_GUARDIAN
-        chance: 1.0
+        chance: 0.9
         lootingBonusChance: 0.03
       - type: ENDER_DRAGON
         chance: 1.0
         lootingBonusChance: 0.03
       - type: EVOKER
-        chance: 1.0
+        chance: 0.75
         lootingBonusChance: 0.03
       - type: ILLUSIONER
-        chance: 1.0
+        chance: 0.75
         lootingBonusChance: 0.03
       - type: GIANT
-        chance: 1.0
+        chance: 0.75
         lootingBonusChance: 0.03
       - type: WITHER
-        chance: 1.0
+        chance: 0.9
         lootingBonusChance: 0.03
       - type: WARDEN
-        chance: 1.0
+        chance: 0.9
         lootingBonusChance: 0.03
       - type: GHAST
         chance: 0.085
