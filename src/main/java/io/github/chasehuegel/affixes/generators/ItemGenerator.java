@@ -15,6 +15,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import javax.annotation.Nullable;
 import java.util.*;
 
 public class ItemGenerator {
@@ -200,54 +201,8 @@ public class ItemGenerator {
         var item = ItemStack.of(material);
         ItemMeta meta = item.getItemMeta();
 
-        //  Set any tool stats
-        ToolStats toolStats = VanillaStats.TOOLS.get(item.getType());
-        if (toolStats != null) {
-            //  Use any custom stats
-            if (materialInfo.stats() != null) {
-                toolStats = new ToolStats(materialInfo.stats().attackDamage(), materialInfo.stats().attackSpeed());
-            }
-
-            //  Set attack damage
-            NamespacedKey modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, UUID.randomUUID().toString());
-            var modifier = new AttributeModifier(modifierKey, toolStats.attackDamage(), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND);
-            meta.addAttributeModifier(Attribute.ATTACK_DAMAGE, modifier);
-
-            //  Set attack speed
-            modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, UUID.randomUUID().toString());
-            modifier = new AttributeModifier(modifierKey, toolStats.attackSpeed(), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND);
-            meta.addAttributeModifier(Attribute.ATTACK_SPEED, modifier);
-        }
-
-        //  Set any armor stats
-        ArmorStats armorStats = VanillaStats.ARMOR.get(item.getType());
-        if (armorStats != null) {
-            //  Use any custom stats
-            if (materialInfo.stats() != null) {
-                armorStats = new ArmorStats(materialInfo.stats().armor(), materialInfo.stats().toughness(), materialInfo.stats().knockbackResistance(), armorStats.slot());
-            }
-
-            //  Set armor
-            if (armorStats.armor() > 0) {
-                NamespacedKey modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, UUID.randomUUID().toString());
-                var modifier = new AttributeModifier(modifierKey, armorStats.armor(), AttributeModifier.Operation.ADD_NUMBER, armorStats.slot());
-                meta.addAttributeModifier(Attribute.ARMOR, modifier);
-            }
-
-            //  Set toughness
-            if (armorStats.toughness() > 0) {
-                NamespacedKey modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, UUID.randomUUID().toString());
-                var modifier = new AttributeModifier(modifierKey, armorStats.toughness(), AttributeModifier.Operation.ADD_NUMBER, armorStats.slot());
-                meta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, modifier);
-            }
-
-            //  Set knockback resistance
-            if (armorStats.knockbackResistance() > 0) {
-                NamespacedKey modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, UUID.randomUUID().toString());
-                var modifier = new AttributeModifier(modifierKey, armorStats.knockbackResistance(), AttributeModifier.Operation.ADD_NUMBER, armorStats.slot());
-                meta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, modifier);
-            }
-        }
+        //  Apply stats to any vanilla armor or tools with possible override from materialInfo
+        trySetStats(item, meta, materialInfo.stats());
 
         //  Determine then set model data
         int modelData;
@@ -324,11 +279,126 @@ public class ItemGenerator {
         return item;
     }
 
+    public ItemStack generateFrom(ItemStack item, int rarityLevel) {
+        ItemMeta meta = item.getItemMeta();
+
+        rarityLevel = Math.min(rarityLevel, rarities.size() - 1);
+        Rarity rarity = rarities.get(rarityLevel);
+
+        NamedTextColor rarityTextColor = NamedTextColor.NAMES.value(rarity.color().toLowerCase());
+        if (rarityTextColor == null) {
+            plugin.getLogger().warning("Unknown rarity color: " + rarity.color());
+            return null;
+        }
+
+        //  Apply rarity color to the name
+        var displayName = meta.displayName();
+        if (displayName == null) {
+            displayName = Component.translatable(item.getType()).decoration(TextDecoration.ITALIC, false);
+        }
+        Component nameComponent = displayName.color(rarityTextColor);
+        meta.displayName(nameComponent);
+
+        //  Apply stats to any vanilla armor or tools
+        trySetStats(item, meta, null);
+
+        //  If the rarity is unbreakable, make the item unbreakable
+        if (rarity.unbreakable()) {
+            meta.setUnbreakable(true);
+            meta.removeItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        }
+
+        //  Determine number of affixes
+        int affixCount;
+        if (rarity.maxAffixes() <= rarity.minAffixes()) {
+            affixCount = rarity.minAffixes();
+        } else {
+            affixCount = random.nextInt(rarity.minAffixes(), rarity.maxAffixes() + 1);
+        }
+
+        //  Determine which slots affixes will be applied to.
+        var allowedSlotNames = new ArrayList<String>();
+        ArmorStats armorStats = VanillaStats.ARMOR.get(item.getType());
+        if (armorStats != null) {
+            allowedSlotNames.add(armorStats.slot().toString());
+        } else {
+            allowedSlotNames.add("mainhand");
+            allowedSlotNames.add("offhand");
+        }
+
+        boolean appliedAnyEffects = false;
+        for (int i = 0; i < affixCount; i++) {
+            String slotName = getRandomValue(allowedSlotNames);
+            appliedAnyEffects |= affixGenerator.generateAffix(item, meta, slotName, rarityLevel);
+        }
+
+        if (!appliedAnyEffects) {
+            plugin.getLogger().warning("Failed to generate any effects for an item.");
+            return null;
+        }
+
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    private void trySetStats(ItemStack item, ItemMeta meta, @Nullable Stats statsOverride) {
+        //  If this is a vanilla tool, apply tool stats
+        ToolStats toolStats = VanillaStats.TOOLS.get(item.getType());
+        if (toolStats != null) {
+            if (statsOverride != null) {
+                toolStats = new ToolStats(statsOverride.attackDamage(), statsOverride.attackSpeed());
+            }
+
+            //  Set attack damage
+            NamespacedKey modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, UUID.randomUUID().toString());
+            var modifier = new AttributeModifier(modifierKey, toolStats.attackDamage(), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND);
+            meta.addAttributeModifier(Attribute.ATTACK_DAMAGE, modifier);
+
+            //  Set attack speed
+            modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, UUID.randomUUID().toString());
+            modifier = new AttributeModifier(modifierKey, toolStats.attackSpeed(), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND);
+            meta.addAttributeModifier(Attribute.ATTACK_SPEED, modifier);
+
+            return;
+        }
+
+        //  Else if this is vanilla armor, apply armor stats
+        ArmorStats armorStats = VanillaStats.ARMOR.get(item.getType());
+        if (armorStats == null) {
+            return;
+        }
+
+        if (statsOverride != null) {
+            armorStats = new ArmorStats(statsOverride.armor(), statsOverride.toughness(), statsOverride.knockbackResistance(), armorStats.slot());
+        }
+
+        //  Set armor
+        if (armorStats.armor() > 0) {
+            NamespacedKey modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, UUID.randomUUID().toString());
+            var modifier = new AttributeModifier(modifierKey, armorStats.armor(), AttributeModifier.Operation.ADD_NUMBER, armorStats.slot());
+            meta.addAttributeModifier(Attribute.ARMOR, modifier);
+        }
+
+        //  Set toughness
+        if (armorStats.toughness() > 0) {
+            NamespacedKey modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, UUID.randomUUID().toString());
+            var modifier = new AttributeModifier(modifierKey, armorStats.toughness(), AttributeModifier.Operation.ADD_NUMBER, armorStats.slot());
+            meta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, modifier);
+        }
+
+        //  Set knockback resistance
+        if (armorStats.knockbackResistance() > 0) {
+            NamespacedKey modifierKey = new NamespacedKey(AffixesPlugin.NAMESPACE, UUID.randomUUID().toString());
+            var modifier = new AttributeModifier(modifierKey, armorStats.knockbackResistance(), AttributeModifier.Operation.ADD_NUMBER, armorStats.slot());
+            meta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, modifier);
+        }
+    }
+
     private <T> T getRandomValue(List<T> list) {
         return list.get(random.nextInt(list.size()));
     }
 
-    private int getWeightedRandomRarityLevel() {
+    public int getWeightedRandomRarityLevel() {
         float totalWeight = 0f;
         for (Rarity rarity : rarities) {
             totalWeight += rarity.weight();
@@ -349,6 +419,31 @@ public class ItemGenerator {
         }
 
         return random.nextInt(rarities.size());
+    }
+
+    public int getWeightedRandomRarityLevel(int minRarityLevel) {
+        minRarityLevel = Math.min(minRarityLevel, rarities.size() - 1);
+
+        float totalWeight = 0f;
+        for (int i = minRarityLevel; i< rarities.size(); i++) {
+            totalWeight += rarities.get(i).weight();
+        }
+
+        if (totalWeight == 0f) {
+            return random.nextInt(minRarityLevel, rarities.size());
+        }
+
+        float roll = random.nextFloat() * totalWeight;
+
+        float runningSum = 0f;
+        for (int i = minRarityLevel; i < rarities.size(); i++) {
+            runningSum += rarities.get(i).weight();
+            if (roll <= runningSum) {
+                return i;
+            }
+        }
+
+        return random.nextInt(minRarityLevel, rarities.size());
     }
 
     private MaterialInfo getWeightedRandomMaterialInfo(List<MaterialInfo> materialInfos) {

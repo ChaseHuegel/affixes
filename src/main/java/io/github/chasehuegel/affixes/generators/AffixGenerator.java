@@ -30,6 +30,7 @@ public class AffixGenerator {
     private final AffixesPlugin plugin;
     private final List<Rarity> rarities;
     private final Map<String, Affix> affixes;
+    private final Map<Affix, String> affixesKeys;
     private final List<Affix> affixesValues;
     private final Map<String, List<EnchantmentDefinition>> enchantmentDefinitions;
     private final Map<String, List<AttributeDefinition>> attributeDefinitions;
@@ -47,6 +48,11 @@ public class AffixGenerator {
         this.affixesValues = new ArrayList<>(affixes.values());
         this.enchantmentDefinitions = enchantmentDefinitions;
         this.attributeDefinitions = attributeDefinitions;
+
+        affixesKeys = new HashMap<>();
+        for (Map.Entry<String, Affix> entry : affixes.entrySet()) {
+            affixesKeys.put(entry.getValue(), entry.getKey());
+        }
     }
 
     public boolean generateAffix(ItemStack item, ItemMeta meta, String slotName, int rarityLevel) {
@@ -79,33 +85,11 @@ public class AffixGenerator {
                 continue;
             }
 
+            AffixesInspector.appendAffixCode(meta, affixesKeys.get(affix));
             return true;
         }
 
         return false;
-    }
-
-    public boolean applyAffix(ItemStack item, ItemMeta meta, Affix affix, String slotName, int rarityLevel) {
-        if (!affix.slots().contains(slotName)) {
-            //  Affix doesn't support this slot
-            return false;
-        }
-
-        if (rarityLevel < 0 || rarityLevel >= rarities.size()) {
-            //  Rarity out of bounds
-            return false;
-        }
-
-        if (!applyName(meta, affix)) {
-            return false;
-        }
-
-        Rarity rarity = rarities.get(rarityLevel);
-        if (!applyEffect(item, meta, slotName, affix, rarity, rarityLevel)) {
-            return false;
-        }
-
-        return true;
     }
 
     public boolean applyName(ItemMeta meta, Affix affix) {

@@ -9,9 +9,23 @@ import org.bukkit.persistence.PersistentDataType;
 
 public class AffixesInspector {
 
-    private static final String AFFIX_CODE_KEY = "affixCode";
-    private static final String HAS_SUFFIX_KEY = "hasSuffix";
-    private static final String HAS_PREFIX_KEY = "hasPrefix";
+    private static final String AFFIX_CODE_KEY = "code";
+    private static final String HAS_SUFFIX_KEY = "has_suffix";
+    private static final String HAS_PREFIX_KEY = "has_prefix";
+
+    public static void appendAffixCode(ItemStack item, String value) {
+        appendAffixCode(item.getItemMeta(), value);
+    }
+
+    public static void appendAffixCode(ItemMeta meta, String value) {
+        String code = getAffixCode(meta);
+        if (code == null) {
+            code = "1";
+        }
+
+        code += "," + value;
+        setAffixCode(meta, code);
+    }
 
     public static boolean hasAnyAffixes(ItemStack item) {
         return hasAnyAffixes(item.getItemMeta());

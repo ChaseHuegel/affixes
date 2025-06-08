@@ -1,4 +1,7 @@
-﻿rarities:
+﻿sources:
+  enchanting:
+    chance: 1.0
+rarities:
   - name: common
     color: green
     weight: 0.55

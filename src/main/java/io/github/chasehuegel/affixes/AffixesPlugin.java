@@ -167,6 +167,10 @@ public final class AffixesPlugin extends JavaPlugin {
         var rootCommandHandler = new AffixesCommandHandler(this, itemGenerator);
         rootCommand.setExecutor(rootCommandHandler);
         rootCommand.setTabCompleter(rootCommandHandler);
+
+        //  Register listeners
+        PluginManager pluginManager = getServer().getPluginManager();
+        pluginManager.registerEvents(new EnchantingListener(this, itemGenerator), this);
     }
 
     private <T> T loadJsonResource(File file, Class<T> tClass) {
