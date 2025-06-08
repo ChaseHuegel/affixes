@@ -2,7 +2,7 @@
   enchanting:
     chance: 1.0
     luckBonusChance: 0.021
-  chests:
+  containers:
     chance: 0.6
     luckBonusChance: 0.021
   fishing:

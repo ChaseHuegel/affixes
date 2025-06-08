@@ -5,7 +5,7 @@ import io.github.chasehuegel.affixes.bstats.Metrics;
 import io.github.chasehuegel.affixes.commands.AffixesCommandHandler;
 import io.github.chasehuegel.affixes.generators.AffixGenerator;
 import io.github.chasehuegel.affixes.generators.ItemGenerator;
-import io.github.chasehuegel.affixes.listeners.ChestListener;
+import io.github.chasehuegel.affixes.listeners.ContainerListener;
 import io.github.chasehuegel.affixes.listeners.EnchantingListener;
 import io.github.chasehuegel.affixes.listeners.FishingListener;
 import io.github.chasehuegel.affixes.listeners.MobDropListener;
@@ -177,7 +177,7 @@ public final class AffixesPlugin extends JavaPlugin {
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(new EnchantingListener(this, itemGenerator), this);
         pluginManager.registerEvents(new FishingListener(this, itemGenerator), this);
-        pluginManager.registerEvents(new ChestListener(this, itemGenerator), this);
+        pluginManager.registerEvents(new ContainerListener(this, itemGenerator), this);
         pluginManager.registerEvents(new MobDropListener(this, itemGenerator, mobDrops), this);
     }
 
