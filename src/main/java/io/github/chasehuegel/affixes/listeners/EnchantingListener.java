@@ -30,6 +30,10 @@ public class EnchantingListener implements Listener {
         Player player = event.getEnchanter();
         ItemStack item = event.getItem();
 
+        if (AffixesMeta.hasAnyAffixes(item)) {
+            return;
+        }
+
         double roll = random.nextDouble();
 
         double baseChance = plugin.getConfig().getDouble("sources.enchanting.chance");
