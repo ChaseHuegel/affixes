@@ -2,6 +2,7 @@ package io.github.chasehuegel.affixes.util;
 
 import io.github.chasehuegel.affixes.AffixesPlugin;
 import org.bukkit.NamespacedKey;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -32,6 +33,15 @@ public class AffixesMeta {
     }
 
     public static boolean hasAnyAffixes(ItemMeta meta) {
+        var attributeModifiers = meta.getAttributeModifiers();
+        if (attributeModifiers != null) {
+            for (AttributeModifier modifier : attributeModifiers.values()) {
+                if (modifier.getKey().getNamespace().equals(AffixesPlugin.NAMESPACE)) {
+                    return true;
+                }
+            }
+        }
+
         return getAffixCode(meta) != null;
     }
 
