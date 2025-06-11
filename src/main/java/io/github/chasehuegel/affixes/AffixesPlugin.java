@@ -24,7 +24,7 @@ public final class AffixesPlugin extends JavaPlugin {
 
     public final static String NAMESPACE = "affixes";
 
-    public final boolean inDev = true;
+    public final boolean inDev = false;
 
     private final String[] defaultJsonResources = new String[] {
         "materials/swords.json",
@@ -175,7 +175,7 @@ public final class AffixesPlugin extends JavaPlugin {
 
         //  Register listeners
         PluginManager pluginManager = getServer().getPluginManager();
-        pluginManager.registerEvents(new EnchantingListener(this, itemGenerator), this);
+        pluginManager.registerEvents(new EnchantingListener(this, itemGenerator, rarities), this);
         pluginManager.registerEvents(new FishingListener(this, itemGenerator), this);
         pluginManager.registerEvents(new ContainerListener(this, itemGenerator), this);
         pluginManager.registerEvents(new MobDropListener(this, itemGenerator, mobDrops), this);
