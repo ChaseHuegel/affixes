@@ -433,29 +433,29 @@ public class ItemGenerator {
         return random.nextInt(rarities.size());
     }
 
-    public int getWeightedRandomRarityLevel(int minRarityLevel) {
-        minRarityLevel = Math.min(minRarityLevel, rarities.size() - 1);
+    public int getWeightedRandomRarityLevel(int minRarityLevel, int maxRarityLevel) {
+        minRarityLevel = Math.min(minRarityLevel, maxRarityLevel - 1);
 
         float totalWeight = 0f;
-        for (int i = minRarityLevel; i< rarities.size(); i++) {
+        for (int i = minRarityLevel; i < maxRarityLevel; i++) {
             totalWeight += rarities.get(i).weight();
         }
 
         if (totalWeight == 0f) {
-            return random.nextInt(minRarityLevel, rarities.size());
+            return random.nextInt(minRarityLevel, maxRarityLevel);
         }
 
         float roll = random.nextFloat() * totalWeight;
 
         float runningSum = 0f;
-        for (int i = minRarityLevel; i < rarities.size(); i++) {
+        for (int i = minRarityLevel; i < maxRarityLevel; i++) {
             runningSum += rarities.get(i).weight();
             if (roll <= runningSum) {
                 return i;
             }
         }
 
-        return random.nextInt(minRarityLevel, rarities.size());
+        return random.nextInt(minRarityLevel, maxRarityLevel);
     }
 
     private MaterialInfo getWeightedRandomMaterialInfo(List<MaterialInfo> materialInfos) {
