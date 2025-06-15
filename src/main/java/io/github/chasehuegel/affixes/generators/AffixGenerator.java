@@ -86,7 +86,6 @@ public class AffixGenerator {
                 continue;
             }
 
-            AffixesMeta.appendAffixCode(meta, affixesKeys.get(affix));
             return newMeta;
         }
 
@@ -168,6 +167,8 @@ public class AffixGenerator {
 
             EnchantmentDefinition enchantmentDefinition = enchantmentDefinitionByRarity.get(rarityIndex);
             if (applyEnchantment(item, meta, enchantmentDefinition)) {
+                plugin.getLogger().info("Adding affix code: " + affixesKeys.get(affix));
+                AffixesMeta.appendAffixCode(meta, affixesKeys.get(affix));
                 return true;
             }
             //  If the enchantment couldn't be applied, try to fallback to attributes
@@ -179,12 +180,16 @@ public class AffixGenerator {
 
         var attributeDefinitionsByRarity = attributeDefinitions.get(affix.attribute());
         if (attributeDefinitionsByRarity == null) {
-            plugin.getLogger().warning("Unknown attribute " + affix.attribute());
             return false;
         }
 
         AttributeDefinition attributeDefinition = attributeDefinitionsByRarity.get(rarityIndex);
-        return applyAttribute(meta, slotName, attributeDefinition);
+        if (applyAttribute(meta, slotName, attributeDefinition)) {
+            AffixesMeta.appendAffixCode(meta, affixesKeys.get(affix));
+            return true;
+        }
+
+        return false;
     }
 
     public boolean applyEnchantment(ItemStack item, ItemMeta meta, EnchantmentDefinition enchantmentDefinition) {
