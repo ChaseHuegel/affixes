@@ -16,7 +16,7 @@ public class AffixesMeta {
     private static final String RARITY_LEVEL_KEY = "rarity_level";
 
     public static void setRarityLevel(ItemStack item, Integer value) {
-        return setRarityLevel(item.getItemMeta(), value);
+        setRarityLevel(item.getItemMeta(), value);
     }
     
     public static void setRarityLevel(ItemMeta meta, Integer value) {

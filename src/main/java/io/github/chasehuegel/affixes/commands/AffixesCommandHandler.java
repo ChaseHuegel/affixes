@@ -6,12 +6,14 @@ import io.github.chasehuegel.affixes.util.AffixesMeta;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -36,15 +38,11 @@ public class AffixesCommandHandler implements CommandExecutor, TabCompleter {
         }
 
         if (args[0].equalsIgnoreCase("give")) {
-            return onGiveCommand(sender, command, label, args);
-        }
-
-        if (args[0].equalsIgnoreCase("inspect")) {
-            return onInspectCommand(sender, command, label, args);
-        }
-
-        if (args[0].equalsIgnoreCase("reload")) {
-            return onReloadCommand(sender, command, label, args);
+            onGiveCommand(sender, command, label, args);
+        } else if (args[0].equalsIgnoreCase("inspect")) {
+            onInspectCommand(sender, command, label, args);
+        } else if (args[0].equalsIgnoreCase("reload")) {
+            onReloadCommand(sender, command, label, args);
         }
 
         return true;
@@ -68,23 +66,23 @@ public class AffixesCommandHandler implements CommandExecutor, TabCompleter {
         return List.of();
     }
 
-    private boolean onGiveCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    private void onGiveCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (!sender.hasPermission("affixes.commands.give")) {
             sender.sendMessage(Component.text("Insufficient permissions.").color(NamedTextColor.RED));
-            return true;
+            return;
         }
 
         if (args.length < 2) {
             sender.sendMessage("Give a player a number of generated items.");
             sender.sendMessage("Usage: /affixes give <player> [amount]");
-            return true;
+            return;
         }
 
         Player player = Bukkit.getPlayer(args[1]);
         if (player == null) {
             sender.sendMessage(Component.text("Player " + args[1] + " not found.").color(NamedTextColor.RED));
             sender.sendMessage("Usage: /affixes give <player> [amount]");
-            return true;
+            return;
         }
 
         int amount = 1;
@@ -99,7 +97,7 @@ public class AffixesCommandHandler implements CommandExecutor, TabCompleter {
         if (amount <= 0) {
             sender.sendMessage(Component.text("Amount must be greater than zero.").color(NamedTextColor.RED));
             sender.sendMessage("Usage: /affixes give <player> [amount]");
-            return true;
+            return;
         }
 
         int itemsGenerated = 0;
@@ -115,7 +113,6 @@ public class AffixesCommandHandler implements CommandExecutor, TabCompleter {
         }
 
         sender.sendMessage("Gave " + player.getName() + " " + itemsGenerated + " items with affixes.");
-        return true;
     }
 
     private @Nullable List<String> onGiveTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -130,55 +127,52 @@ public class AffixesCommandHandler implements CommandExecutor, TabCompleter {
         return List.of();
     }
 
-    private boolean onReloadCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    private void onReloadCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (!sender.hasPermission("affixes.commands.reload")) {
             sender.sendMessage(Component.text("Insufficient permissions.").color(NamedTextColor.RED));
-            return true;
+            return;
         }
 
         sender.sendMessage("Reloading Affixes...");
         plugin.reload();
         sender.sendMessage("Reloaded Affixes.");
-        return true;
     }
 
-    private boolean onInspectCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    private void onInspectCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (!sender.hasPermission("affixes.commands.inspect")) {
             sender.sendMessage(Component.text("Insufficient permissions.").color(NamedTextColor.RED));
-            return true;
+            return;
         }
 
         Player player = (sender instanceof Player ? (Player)sender : null);;
         if (player == null) {
             sender.sendMessage(Component.text("This command can only be executed by players.").color(NamedTextColor.RED));
-            return true;
+            return;
         }
 
-        ItemStack item = player.getInventory().getItemInMaindHand();
-        if (item == null || item.getMaterial() == Material.AIR) {
+        ItemStack item = player.getInventory().getItemInMainHand();
+        if (item.getType() == Material.AIR) {
             sender.sendMessage(Component.text("You must have an item in your main hand.").color(NamedTextColor.RED));
-            return true;
+            return;
         }
 
         ItemMeta meta = item.getItemMeta();
 
-        sender.SendMessage("Name: " + meta.getDisplayName());
+        sender.sendMessage("Name: " + meta.displayName());
 
         Integer rarityLevel = AffixesMeta.getRarityLevel(meta);
-        sender.SendMessage("Rarity level: " + rarityLevel);
+        sender.sendMessage("Rarity level: " + rarityLevel);
 
         boolean hasAnyAffixes = AffixesMeta.hasAnyAffixes(meta);
-        sender.SendMessage("Has affixes: " + hasAnyAffixes);
+        sender.sendMessage("Has affixes: " + hasAnyAffixes);
 
         boolean hasPrefix = AffixesMeta.getHasPrefix(meta);
-        sender.SendMessage("Has prefix: " + hasPrefix);
+        sender.sendMessage("Has prefix: " + hasPrefix);
 
         boolean hasSuffix = AffixesMeta.getHasSuffix(meta);
-        sender.SendMessage("Has suffix: " + hasSuffix);
+        sender.sendMessage("Has suffix: " + hasSuffix);
 
         String affixCode = AffixesMeta.getAffixCode(meta);
-        sender.SendMessage("Affix code: " + affixCode);
-
-        return true;
+        sender.sendMessage("Affix code: " + affixCode);
     }
 }
