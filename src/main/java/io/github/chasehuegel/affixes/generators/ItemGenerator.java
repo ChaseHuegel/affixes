@@ -2,6 +2,7 @@ package io.github.chasehuegel.affixes.generators;
 
 import io.github.chasehuegel.affixes.AffixesPlugin;
 import io.github.chasehuegel.affixes.models.*;
+import io.github.chasehuegel.affixes.util.AffixesMeta;
 import io.github.chasehuegel.affixes.util.VanillaStats;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -200,6 +201,7 @@ public class ItemGenerator {
         //  Init the item
         var item = ItemStack.of(material);
         ItemMeta meta = item.getItemMeta();
+        AffixesMeta.setRarityLevel(meta, rarityLevel);
 
         //  Apply stats to any vanilla armor or tools with possible override from materialInfo
         trySetStats(item, meta, materialInfo.stats());

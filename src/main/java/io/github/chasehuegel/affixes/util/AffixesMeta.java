@@ -13,6 +13,23 @@ public class AffixesMeta {
     private static final String AFFIX_CODE_KEY = "code";
     private static final String HAS_SUFFIX_KEY = "has_suffix";
     private static final String HAS_PREFIX_KEY = "has_prefix";
+    private static final String RARITY_LEVEL_KEY = "rarity_level";
+
+    public static void setRarityLevel(ItemStack item, Integer value) {
+        return setRarityLevel(item.getItemMeta(), value);
+    }
+    
+    public static void setRarityLevel(ItemMeta meta, Integer value) {
+        setCustomMetadata(meta, RARITY_LEVEL_KEY, PersistentDataType.INTEGER, value);
+    }
+
+    public static Integer getRarityLevel(ItemStack item) {
+        return getRarityLevel(item.getItemMeta());
+    }
+
+    public static Integer getRarityLevel(ItemMeta meta) {
+        return getCustomMetadata(meta, RARITY_LEVEL_KEY, PersistentDataType.INTEGER);
+    }
 
     public static void appendAffixCode(ItemStack item, String value) {
         appendAffixCode(item.getItemMeta(), value);

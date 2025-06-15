@@ -2,6 +2,7 @@ package io.github.chasehuegel.affixes.commands;
 
 import io.github.chasehuegel.affixes.AffixesPlugin;
 import io.github.chasehuegel.affixes.generators.ItemGenerator;
+import io.github.chasehuegel.affixes.util.AffixesMeta;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
@@ -30,12 +31,16 @@ public class AffixesCommandHandler implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (args.length == 0 || args[0].equalsIgnoreCase("help")) {
-            sender.sendMessage("Usage: /affixes <give|reload|help>");
+            sender.sendMessage("Usage: /affixes <give|inspect|reload|help>");
             return true;
         }
 
         if (args[0].equalsIgnoreCase("give")) {
             return onGiveCommand(sender, command, label, args);
+        }
+
+        if (args[0].equalsIgnoreCase("inspect")) {
+            return onInspectCommand(sender, command, label, args);
         }
 
         if (args[0].equalsIgnoreCase("reload")) {
@@ -50,6 +55,7 @@ public class AffixesCommandHandler implements CommandExecutor, TabCompleter {
         if (args.length <= 1) {
             var options = new ArrayList<String>();
             options.add("give");
+            options.add("inspect");
             options.add("reload");
             options.add("help");
             return options;
@@ -133,6 +139,46 @@ public class AffixesCommandHandler implements CommandExecutor, TabCompleter {
         sender.sendMessage("Reloading Affixes...");
         plugin.reload();
         sender.sendMessage("Reloaded Affixes.");
+        return true;
+    }
+
+    private boolean onInspectCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+        if (!sender.hasPermission("affixes.commands.inspect")) {
+            sender.sendMessage(Component.text("Insufficient permissions.").color(NamedTextColor.RED));
+            return true;
+        }
+
+        Player player = (sender instanceof Player ? (Player)sender : null);;
+        if (player == null) {
+            sender.sendMessage(Component.text("This command can only be executed by players.").color(NamedTextColor.RED));
+            return true;
+        }
+
+        ItemStack item = player.getInventory().getItemInMaindHand();
+        if (item == null || item.getMaterial() == Material.AIR) {
+            sender.sendMessage(Component.text("You must have an item in your main hand.").color(NamedTextColor.RED));
+            return true;
+        }
+
+        ItemMeta meta = item.getItemMeta();
+
+        sender.SendMessage("Name: " + meta.getDisplayName());
+
+        Integer rarityLevel = AffixesMeta.getRarityLevel(meta);
+        sender.SendMessage("Rarity level: " + rarityLevel);
+
+        boolean hasAnyAffixes = AffixesMeta.hasAnyAffixes(meta);
+        sender.SendMessage("Has affixes: " + hasAnyAffixes);
+
+        boolean hasPrefix = AffixesMeta.getHasPrefix(meta);
+        sender.SendMessage("Has prefix: " + hasPrefix);
+
+        boolean hasSuffix = AffixesMeta.getHasSuffix(meta);
+        sender.SendMessage("Has suffix: " + hasSuffix);
+
+        String affixCode = AffixesMeta.getAffixCode(meta);
+        sender.SendMessage("Affix code: " + affixCode);
+
         return true;
     }
 }
