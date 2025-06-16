@@ -5,10 +5,7 @@ import io.github.chasehuegel.affixes.bstats.Metrics;
 import io.github.chasehuegel.affixes.commands.AffixesCommandHandler;
 import io.github.chasehuegel.affixes.generators.AffixGenerator;
 import io.github.chasehuegel.affixes.generators.ItemGenerator;
-import io.github.chasehuegel.affixes.listeners.ContainerListener;
-import io.github.chasehuegel.affixes.listeners.EnchantingListener;
-import io.github.chasehuegel.affixes.listeners.FishingListener;
-import io.github.chasehuegel.affixes.listeners.MobDropListener;
+import io.github.chasehuegel.affixes.listeners.*;
 import io.github.chasehuegel.affixes.models.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.HandlerList;
@@ -179,6 +176,11 @@ public final class AffixesPlugin extends JavaPlugin {
         pluginManager.registerEvents(new FishingListener(this, itemGenerator), this);
         pluginManager.registerEvents(new ContainerListener(this, itemGenerator), this);
         pluginManager.registerEvents(new MobDropListener(this, itemGenerator, mobDrops), this);
+        pluginManager.registerEvents(new FireAspectShieldListener(), this);
+        pluginManager.registerEvents(new ThornsShieldListener(), this);
+        pluginManager.registerEvents(new KnockbackShieldListener(), this);
+        pluginManager.registerEvents(new FireAspectArmorListener(), this);
+        pluginManager.registerEvents(new KnockbackArmorListener(), this);
     }
 
     private <T> T loadJsonResource(File file, Class<T> tClass) {

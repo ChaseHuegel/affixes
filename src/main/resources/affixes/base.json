@@ -72,7 +72,7 @@
   "knockback": {
     "attribute": "knockback",
     "enchantment": "knockback",
-    "slots": ["mainhand", "offhand"],
+    "slots": ["mainhand", "offhand", "chest"],
     "prefixes": ["Mighty", "Forceful", "Strong", "Unpleasant", "Lead", "Ringing", "Bulky", "Hoglin's", "Iron Golem's", "Slamming", "Slinging", "Hurling", "Large", "Huge", "Massive", "Oversized", "Big", "Powerful"],
     "suffixes": ["of Might", "of Heavy Blows", "of Ringing Blows", "of the Giant", "of the Hoglin", "of the Ravager", "of the Iron Golem", "of Power"]
   },
@@ -121,7 +121,7 @@
   "fire_aspect": {
     "attribute": "",
     "enchantment": "fire_aspect",
-    "slots": ["mainhand", "offhand"],
+    "slots": ["mainhand", "offhand", "chest"],
     "prefixes": ["Burning", "Fiery", "Scorching", "Ablaze", "Igniting", "Flaming", "Flickering", "Igneous"],
     "suffixes": ["of the Pyro", "of the Flamekeeper", "of Scorching", "of Burning", "of Fire"]
   },
@@ -317,7 +317,7 @@
   "thorns": {
     "attribute": "",
     "enchantment": "thorns",
-    "slots": ["head", "chest", "legs", "feet"],
+    "slots": ["head", "chest", "legs", "feet", "offhand"],
     "prefixes": ["Thorned", "Thorny", "Spikey", "Spiked", "Reflective", "Harming"],
     "suffixes": ["of Thorns", "of Reflection", "of Harming", "of Pain"]
   },

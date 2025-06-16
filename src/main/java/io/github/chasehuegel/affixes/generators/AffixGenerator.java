@@ -222,10 +222,15 @@ public class AffixGenerator {
     }
 
     private boolean canEnchant(ItemStack item, Enchantment enchantment) {
-        //  Sharpness and fire aspect are allowed on anything that isn't a bow.
+        //  Sharpness, fire aspect, and knockback are allowed on anything that isn't a bow.
         //  These enchants work on all items even if they normally aren't allowed.
-        if (enchantment == Enchantment.SHARPNESS || enchantment == Enchantment.FIRE_ASPECT) {
+        if (enchantment == Enchantment.SHARPNESS || enchantment == Enchantment.FIRE_ASPECT || enchantment == Enchantment.KNOCKBACK) {
             return item.getType() != Material.BOW && item.getType() != Material.CROSSBOW;
+        }
+
+        //  Thorns is allowed on shields
+        if (enchantment == Enchantment.THORNS) {
+            return item.getType() == Material.SHIELD;
         }
 
         return enchantment.canEnchantItem(item);
