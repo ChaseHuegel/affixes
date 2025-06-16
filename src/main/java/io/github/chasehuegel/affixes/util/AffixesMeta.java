@@ -50,16 +50,7 @@ public class AffixesMeta {
     }
 
     public static boolean hasAnyAffixes(ItemMeta meta) {
-        var attributeModifiers = meta.getAttributeModifiers();
-        if (attributeModifiers != null) {
-            for (AttributeModifier modifier : attributeModifiers.values()) {
-                if (modifier.getKey().getNamespace().equals(AffixesPlugin.NAMESPACE)) {
-                    return true;
-                }
-            }
-        }
-
-        return getAffixCode(meta) != null;
+        return getHasSuffix(meta) || getHasPrefix(meta) || getAffixCode(meta) != null;
     }
 
     public static String getAffixCode(ItemStack item) {
