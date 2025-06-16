@@ -167,7 +167,6 @@ public class AffixGenerator {
 
             EnchantmentDefinition enchantmentDefinition = enchantmentDefinitionByRarity.get(rarityIndex);
             if (applyEnchantment(item, meta, enchantmentDefinition)) {
-                plugin.getLogger().info("Adding affix code: " + affixesKeys.get(affix));
                 AffixesMeta.appendAffixCode(meta, affixesKeys.get(affix));
                 return true;
             }
