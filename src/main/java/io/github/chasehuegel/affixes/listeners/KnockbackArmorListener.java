@@ -30,7 +30,7 @@ public class KnockbackArmorListener implements Listener {
         Vector attackerVector = attacker.getLocation().toVector();
         Vector knockbackVector = attackerVector.subtract(playerVector)
                 .normalize()
-                .multiply(knockbackLevel * 0.6)
+                .multiply(knockbackLevel * 0.45)
                 .setY(0.35);
 
         attacker.setVelocity(knockbackVector);
