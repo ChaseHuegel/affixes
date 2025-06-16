@@ -181,6 +181,7 @@ public final class AffixesPlugin extends JavaPlugin {
         pluginManager.registerEvents(new KnockbackShieldListener(), this);
         pluginManager.registerEvents(new FireAspectArmorListener(), this);
         pluginManager.registerEvents(new KnockbackArmorListener(), this);
+        pluginManager.registerEvents(new ArrowAttackDamageListener(this), this);
     }
 
     private <T> T loadJsonResource(File file, Class<T> tClass) {
